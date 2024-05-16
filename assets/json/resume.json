@@ -22,38 +22,47 @@
   },
   "work": [
     {
-      "name": "Institute for Advanced Study, Princeton University",
-      "position": "Professor of Theoretical Physics",
-      "url": "https://example.com",
-      "startDate": "1933-01-01",
-      "endDate": "1955-01-01",
-      "summary": "Teaching at Palmer Physical Laboratory (now 302 Frist Campus Center). While not a professor at Princeton, I associated with the physics professors and continued to give lectures on campus.",
-      "highlights": ["Relativity"]
+      "name": "Graduate Research Assistant, Northern Arizona University",
+      "position": "Machine Learning Engineer",
+      "url": "https://nau.edu/",
+      "startDate": "2022-08-01",
+      "endDate": "current",
+      "summary": "Developing machine learning algorithms for computer vision applications. Conducting research on deep learning models for image classification and object detection."
     }
   ],
   "volunteer": [
     {
-      "organization": "People's Climate March",
-      "location": "Zurich, Switzerland",
-      "position": "Lead Organizer",
-      "url": "https://example.com",
-      "startDate": "2014-04-01",
-      "endDate": "2015-07-01",
-      "summary": "Lead organizer for the New York City branch of the People's Climate March, the largest climate march in history.",
-      "highlights": ["Awarded 'Climate Hero' award by Greenpeace for my efforts organizing the march.", "Men of the year 2014 by Time magazine"]
+      "organization": "Upbound",
+      "location": "Flagstaff, Arizona",
+      "position": "Supervisor",
+      "url": "https://nau.edu/upward-bound/",
+      "startDate": "2023-06-01",
+      "endDate": "2023-08-01",
+      "summary": "Supervised a team of volunteers and organized educational programs for high school students."
     }
   ],
   "education": [
     {
-      "institution": "University of Zurich, Zurich, Switzerland",
-      "location": "Zurich, Switzerland",
-      "url": "https://www.uzh.ch/",
-      "area": "Software Development",
+      "institution": "Northern Arizona University",
+      "location": "Flagstaff, Arizona, US",
+      "url": "https://nau.edu/",
+      "area": "Computer Science",
       "studyType": "PhD",
-      "startDate": "1905-01-01",
-      "endDate": "1905-01-01",
-      "score": "10",
-      "courses": ["Theory of Relativity"]
+      "startDate": "2022-08-01",
+      "endDate": "current",
+      "score": "4.0",
+      "courses": ["Deep Learning", "Data Mining and Machine Learning", "Modern Regression"]
+    },
+    {
+      "institution": "Kwame Nkrumah University of Science and Technology",
+      "location": "Kumasi, Ghana",
+      "url": "https://www.knust.edu.gh/",
+      "area": "Electrical/Electronics Engineering",
+      "studyType": "Bachelor's Degree",
+      "startDate": "2017-08-01",
+      "endDate": "2021-05-01",
+      "score": "3.76",
+      "courses": ["Linear Algebra", "Differential Equations", "Control Systems", "Power Systems"]
     }
   ],
   "awards": [
