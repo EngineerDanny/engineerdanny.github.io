@@ -22,12 +22,35 @@
   },
   "work": [
     {
-      "name": "Graduate Research Assistant, Northern Arizona University",
-      "position": "Machine Learning Engineer",
+      "name": "Northern Arizona University",
+      "position": "Graduate Research Assistant",
       "url": "https://nau.edu/",
-      "startDate": "2022-08-01",
+      "startDate": "2022-08-22",
       "endDate": "current",
-      "summary": "Developing machine learning algorithms for computer vision applications. Conducting research on deep learning models for image classification and object detection."
+      "summary": "Training and testing new machine learning algorithms and developing optimisation algorithms for microbiome sparse data sets."
+    },
+    {
+      "name": "Google Summer of Code",
+      "position": "Software Engineer Intern",
+      "url": "https://summerofcode.withgoogle.com/",
+      "startDate": "2022-05",
+      "endDate": "2022-09",
+      "summary": "Modified the tool, Rperform, to track quantitative performance metrics (runtime and memory usage) of R packages. Developed a custom GitHub Action to make it easier for package developers to use Rperform to test their code."
+    },
+    {
+      "name": "Kwame Nkrumah University of Science and Technology",
+      "position": "Teaching Assistant",
+      "url": "https://www.knust.edu.gh/",
+      "startDate": "2021-08",
+      "endDate": "2021-05",
+      "summary": "Assisted lecturers in teaching undergraduate courses in electrical/electronics engineering."
+    },
+    {
+      "name": "Chosen IT Business Solutions, LLC",
+      "position": "Full Stack Engineer",
+      "startDate": "2020-06",
+      "endDate": "2020-08",
+      "summary": "Assisted in the design and implementation of power distribution systems."
     }
   ],
   "volunteer": [
@@ -44,7 +67,7 @@
   "education": [
     {
       "institution": "Northern Arizona University",
-      "location": "Flagstaff, Arizona, US",
+      "location": "Flagstaff, Arizona",
       "url": "https://nau.edu/",
       "area": "Computer Science",
       "studyType": "PhD",
