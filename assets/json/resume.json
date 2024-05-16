@@ -48,10 +48,18 @@
     {
       "name": "Chosen IT Business Solutions, LLC",
       "position": "Full Stack Engineer",
-      "startDate": "2020-06",
-      "endDate": "2020-08",
-      "summary": "Assisted in the design and implementation of power distribution systems."
+      "startDate": "2021-03",
+      "endDate": "2022-05",
+      "summary": "Developed and maintained cross-platform applications using Flutter and PhP Laravel. Worked closely with clients to understand their requirements and deliver high-quality software solutions."
+    },
+    {
+      "name": "Godlives Delivery",
+      "position": "Full Stack Engineer",
+      "startDate": "2020-04",
+      "endDate": "2021-03",
+      "summary": "Built and maintained cross-platform mobile app with Flutter and the backend with Node.js and Express frameworks utilizing technologies like MongoDB for the database management, OneSignal for notifications and MailGun for email API service."
     }
+
   ],
   "volunteer": [
     {
