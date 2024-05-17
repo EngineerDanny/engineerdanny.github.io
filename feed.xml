@@ -1,935 +1,324 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="4.3.3">Jekyll</generator><link href="https://engineerdanny.github.io/feed.xml" rel="self" type="application/atom+xml"/><link href="https://engineerdanny.github.io/" rel="alternate" type="text/html" hreflang="en"/><updated>2024-05-17T04:58:18+00:00</updated><id>https://engineerdanny.github.io/feed.xml</id><title type="html">blank</title><entry><title type="html">a post with tabs</title><link href="https://engineerdanny.github.io/blog/2024/tabs/" rel="alternate" type="text/html" title="a post with tabs"/><published>2024-05-01T00:32:13+00:00</published><updated>2024-05-01T00:32:13+00:00</updated><id>https://engineerdanny.github.io/blog/2024/tabs</id><content type="html" xml:base="https://engineerdanny.github.io/blog/2024/tabs/"><![CDATA[<p>This is how a post with <a href="https://github.com/Ovski4/jekyll-tabs">tabs</a> looks like. Note that the tabs could be used for different purposes, not only for code.</p> <h2 id="first-tabs">First tabs</h2> <p>To add tabs, use the following syntax:</p> <div class="language-liquid highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="cp">{%</span><span class="w"> </span><span class="nt">tabs</span><span class="w"> </span><span class="nv">group-name</span><span class="w"> </span><span class="cp">%}</span>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" xml:lang="en"><generator uri="https://jekyllrb.com/" version="4.3.3">Jekyll</generator><link href="https://engineerdanny.github.io/feed.xml" rel="self" type="application/atom+xml"/><link href="https://engineerdanny.github.io/" rel="alternate" type="text/html" hreflang="en"/><updated>2024-05-17T05:09:12+00:00</updated><id>https://engineerdanny.github.io/feed.xml</id><title type="html">blank</title><entry><title type="html">Setting Up Github CI With Rperform</title><link href="https://engineerdanny.github.io/blog/2022/Setting-Up-Github-CI-With-Rperform/" rel="alternate" type="text/html" title="Setting Up Github CI With Rperform"/><published>2022-09-01T00:00:00+00:00</published><updated>2022-09-01T00:00:00+00:00</updated><id>https://engineerdanny.github.io/blog/2022/Setting-Up-Github-CI-With-Rperform</id><content type="html" xml:base="https://engineerdanny.github.io/blog/2022/Setting-Up-Github-CI-With-Rperform/"><![CDATA[<h3 id="introduction">Introduction</h3> <p>Rperform has great flexibility and usability. It internally supports automating the tests of your code on Github and creating comments to display the results. To set-up Rperform for your GitHub CI worflow, initialize Rperform with the command :</p> <div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">Rperform</span><span class="o">:</span><span class="n">init_rperform</span><span class="p">()</span><span class="w">
+</span></code></pre></div></div> <ul> <li> <p>The above command creates the Github workflow directory, which is the <code class="language-plaintext highlighter-rouge">.github/workflow/</code> directory and populates it with the needed workflow files (<code class="language-plaintext highlighter-rouge">rperform-receive.yaml</code> and <code class="language-plaintext highlighter-rouge">rperform-comment.yaml</code>).</p> </li> <li> <p>It also creates the <code class="language-plaintext highlighter-rouge">rperform</code> directory and populates it with files which make test configuration and customisation easier.</p> </li> </ul> <h3 id="running-the-script">Running the script</h3> <p>One of the most important files in the <code class="language-plaintext highlighter-rouge">rperform</code> directory is the <code class="language-plaintext highlighter-rouge">script.R</code> file, which is where the Rperform test functions should be written. The functions written in the file will be ran when the workflow is triggered. You can write multiple Rperform functions in the <code class="language-plaintext highlighter-rouge">script.R</code> file.</p> <p>With only these two functions, you can run four different types of tests:</p> <ol> <li><code class="language-plaintext highlighter-rouge">Rperform::plot_metrics()</code></li> <li><code class="language-plaintext highlighter-rouge">Rperform::plot_branchmetrics()</code></li> </ol> <p><strong>NOTE:</strong> The <code class="language-plaintext highlighter-rouge">save_plot</code> and <code class="language-plaintext highlighter-rouge">save_image</code> parameters must always be set to <code class="language-plaintext highlighter-rouge">TRUE</code> so that the outputs will be saved and displayed without any issues.</p> <p>After this set-up, anytime there is a Pull Request in the repository, the workflow will be triggered and the tests will be run. The results will be commented out by Github Bot in the PR.</p> <h3 id="customising-the-pr-comment">Customising the PR comment</h3> <p>There are the <code class="language-plaintext highlighter-rouge">header.R</code> and <code class="language-plaintext highlighter-rouge">footer.R</code> files inside the <code class="language-plaintext highlighter-rouge">rperform</code> directory which you can edit to customize the PR comment. The <code class="language-plaintext highlighter-rouge">glue</code> package is used to format and interpolate the strings so as to join the different sections of the comment. It must be noted that since any comment text is rendered in Markdown format, you must use the markdown syntax to edit the comment.</p> <h3 id="results">Results</h3> <p>Below is an example of the auto comment that is generated when the workflow is triggered by a PR.</p> <p><img width="824" alt="Screenshot 2022-08-12 at 11 55 57 AM" src="https://user-images.githubusercontent.com/47421661/184349192-2231a797-2de9-4de5-bf34-07ce49ac90db.png"/></p> <h3 id="testing-rperform-on-popular-r-packages">Testing Rperform on Popular R packages</h3> <p><strong>Rperform Test 1</strong></p> <ul> <li> <p>Test on the <a href="https://github.com/r-lib/styler">styler</a> package, main repository <a href="https://github.com/EngineerDanny/styler">here</a>.</p> </li> <li> <p>Inside the <code class="language-plaintext highlighter-rouge">script.R</code> file, the following changes were made. Basically, the tests paths were updated to run the time_metrics functions. Below is the image of the updated script.R file.</p> </li> </ul> <div class="language-R highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">## TEST 1</span><span class="w">
+</span><span class="n">Rperform</span><span class="o">::</span><span class="n">plot_metrics</span><span class="p">(</span><span class="w">
+  </span><span class="n">test_path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"tests/testthat/test-rmd.R"</span><span class="p">,</span><span class="w">
+  </span><span class="n">metric</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"time"</span><span class="p">,</span><span class="w"> </span><span class="n">num_commits</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">140</span><span class="p">,</span><span class="w">
+  </span><span class="n">save_data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">,</span><span class="w">
+  </span><span class="n">save_plots</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">,</span><span class="w">
+  </span><span class="n">total_width_in</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">20</span><span class="w">
+</span><span class="p">)</span><span class="w">
 
-<span class="cp">{%</span><span class="w"> </span><span class="nt">tab</span><span class="w"> </span><span class="nv">group-name</span><span class="w"> </span><span class="nv">tab-name-1</span><span class="w"> </span><span class="cp">%}</span>
+</span><span class="c1">## TEST 2</span><span class="w">
+</span><span class="n">Rperform</span><span class="o">::</span><span class="n">plot_metrics</span><span class="p">(</span><span class="w">
+  </span><span class="n">test_path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"tests/testthat/test-escaping.R"</span><span class="p">,</span><span class="w">
+  </span><span class="n">metric</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"time"</span><span class="p">,</span><span class="w"> </span><span class="n">num_commits</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">140</span><span class="p">,</span><span class="w">
+  </span><span class="n">save_data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">,</span><span class="w">
+  </span><span class="n">save_plots</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">,</span><span class="w">
+  </span><span class="n">total_width_in</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">20</span><span class="w">
+</span><span class="p">)</span><span class="w">
+</span></code></pre></div></div> <ul> <li>Sample <a href="https://github.com/EngineerDanny/styler/pull/1#issuecomment-1229242369">comment</a> created by running the tests. <img width="684" alt="Screenshot 2022-09-04 at 4 46 58 PM" src="https://user-images.githubusercontent.com/47421661/188338179-cc4f8371-29ff-4745-91e4-0a6282806b75.png"/></li> </ul> <p><strong>Rperform Test 2</strong></p> <ul> <li> <p>Test on the <a href="https://github.com/r-lib/devtools">devtools</a> package, original repository <a href="https://github.com/r-lib/devtools">here</a>.</p> </li> <li> <p>The <code class="language-plaintext highlighter-rouge">script.R</code> file is shown below :</p> </li> </ul> <div class="language-R highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">## TEST 1</span><span class="w">
+</span><span class="n">Rperform</span><span class="o">::</span><span class="n">plot_metrics</span><span class="p">(</span><span class="w">
+    </span><span class="n">test_path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"tests/testthat/test-utils.R"</span><span class="p">,</span><span class="w">
+    </span><span class="n">metric</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"time"</span><span class="p">,</span><span class="w"> </span><span class="n">num_commits</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">100</span><span class="p">,</span><span class="w">
+    </span><span class="n">save_data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">,</span><span class="w">
+    </span><span class="n">save_plots</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">,</span><span class="w">
+    </span><span class="n">total_width_in</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">30</span><span class="w">
+</span><span class="p">)</span><span class="w">
 
-Content 1
+</span><span class="c1">## TEST 2</span><span class="w">
+</span><span class="n">Rperform</span><span class="o">::</span><span class="n">plot_metrics</span><span class="p">(</span><span class="w">
+    </span><span class="n">test_path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"tests/testthat/test-check.R"</span><span class="p">,</span><span class="w">
+    </span><span class="n">metric</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"memory"</span><span class="p">,</span><span class="w"> </span><span class="n">num_commits</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">100</span><span class="p">,</span><span class="w">
+    </span><span class="n">save_data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">,</span><span class="w">
+    </span><span class="n">save_plots</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">TRUE</span><span class="p">,</span><span class="w">
+    </span><span class="n">total_width_in</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">30</span><span class="w">
+</span><span class="p">)</span><span class="w">
+</span></code></pre></div></div> <ul> <li>Sample <a href="https://github.com/EngineerDanny/devtools/pull/1#issuecomment-1229734119">comment</a> created by running the tests.</li> </ul> <p><img width="914" alt="Screenshot 2022-09-04 at 7 23 14 PM" src="https://user-images.githubusercontent.com/47421661/188348860-1a94a080-eaf0-455d-a6d1-299617269df2.png"/></p>]]></content><author><name></name></author><category term="rperform"/><category term="test"/><category term="r"/><summary type="html"><![CDATA[How to set-up Rperform Github CI]]></summary></entry><entry><title type="html">Implementing Custom Github Action Prototype in Rperform</title><link href="https://engineerdanny.github.io/blog/2022/Implementing-Custom-Github-Actions-in-Rperform/" rel="alternate" type="text/html" title="Implementing Custom Github Action Prototype in Rperform"/><published>2022-07-05T00:00:00+00:00</published><updated>2022-07-05T00:00:00+00:00</updated><id>https://engineerdanny.github.io/blog/2022/Implementing-Custom-Github-Actions-in-Rperform</id><content type="html" xml:base="https://engineerdanny.github.io/blog/2022/Implementing-Custom-Github-Actions-in-Rperform/"><![CDATA[<h2 id="abstract">ABSTRACT</h2> <p>In my previous <a href="">article</a>, I established the reason why Github Actions was the preferred choice over other tools like <a href="https://www.travis-ci.com">Travis CI</a> and <a href="https://www.appveyor.com/">Appveyor</a>. The main goal of this project as described <a href="https://github.com/rstats-gsoc/gsoc2022/wiki/RPerform">here</a> is to get Rperform working and easy to use with <code class="language-plaintext highlighter-rouge">Github Actions</code>. GitHub Actions enable DevOps to be done on Github and allows workflows to be run when other events are triggered in the repository. GitHub provides macOS, Linux and Windows virtual machines to run workflows. A workflow is a configurable process defined by YAML file which contains one or more jobs that may be run sequencially or parallel. Each job runs inside it’s own container or runner. Under each job, there are steps that runs a script or an action.</p> <h2 id="development-considerations">DEVELOPMENT CONSIDERATIONS</h2> <h3 id="the-repository">The repository</h3> <p>To develop a custom Github Actions, I had to consider whether to keep it in the main repository or create a new repository just for the Github Actions. I decided to keep it in the main repository because it is easier to maintain along with the main package as well. The main reason why I chose to do that was because this particular Github Action is specific to only this package and it is not generalized enough to be used with other packages.</p> <p>The only issue that I thought of was version control of the action. However, it can be fixed by specifying the version number of the action which must be the same as the version number of the Rperform package. e.g. <code class="language-plaintext highlighter-rouge">Rperform v0.0.1</code>:</p> <div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="pi">-</span> <span class="s">uses EngineerDanny/Rperform/actions/receive@v0.0.1</span>
+</code></pre></div></div> <h3 id="the-type-of-action">The Type of Action</h3> <p>According to the <a href="https://docs.github.com/en/actions/creating-actions/about-custom-actions#types-of-actions">documentation</a>, there are only three types of actions namely :</p> <ul> <li>Docker Container which supports only Linux OS</li> <li>Javascript which supports Linux, MacOS and Windows</li> <li><strong>Composite Actions</strong> which also support Linux, MacOS and Windows.</li> </ul> <p>Even though all the other types of actions are very important, I chose to use composite actions. It allows the combination of multiple workflow steps within one action. This feature makes it possible to combine multiple run commands into an action. If a workflow is set-up, it can execute the commands as a single step with that action. This flexibility is the main reason why I adopted this approach.</p> <h2 id="implementing-custom-github-actions-prototype">IMPLEMENTING CUSTOM GITHUB ACTIONS PROTOTYPE</h2> <p>I submitted a <a href="https://github.com/EngineerDanny/Rperform/pull/7">PR</a> which intends to create Github Actions to make it easier for package developers to use Rperform to test their code. The Actions are tested on a separate repository <a href="https://github.com/EngineerDanny/stringr/pull/2">stringr</a>.</p> <p>To make set-up easier, the Github workflow directory, which is the <code class="language-plaintext highlighter-rouge">.github/workflow/</code> directory, is created automatically when you ran <code class="language-plaintext highlighter-rouge">Rperform::init_rperform()</code> function. It is also populated with the needed workflow files to be able to run <code class="language-plaintext highlighter-rouge">Rperform</code> with ease. It adds the <code class="language-plaintext highlighter-rouge">rperform</code> directory and populates it with files which make test configuration and customisation easier. One of the most important files in that directory is the <code class="language-plaintext highlighter-rouge">script.R</code> file which is where the Rperform test functions should be written. <img width="485" alt="Screenshot 2022-07-01 at 3 33 40 PM" src="https://user-images.githubusercontent.com/47421661/176925448-eb5237f5-33ad-40e6-94a9-4c8dbaa81744.png"/></p> <p>When writing the Github Action for Rperform, I divided the action into two parts. These are the <strong><code class="language-plaintext highlighter-rouge">receive</code></strong> and <strong><code class="language-plaintext highlighter-rouge">comment</code></strong> parts. This decision was taken due to security reasons.</p> <h3 id="the-receive-action"><a href="https://github.com/EngineerDanny/Rperform/tree/main/actions/receive">The Receive Action</a></h3> <ul> <li>This action is represented by <a href="https://github.com/EngineerDanny/Rperform/tree/main/actions/receive">EngineerDanny/Rperform/actions/receive</a> <ul> <li>Triggered via PR or push to main branch.</li> <li>Reads <code class="language-plaintext highlighter-rouge">config.json</code> to prepare and run the benchmark job.</li> <li>Does not have read or write access due to <a href="https://securitylab.github.com/research/github-actions-preventing-pwn-requests/">security reasons</a>.</li> </ul> </li> <li>Below is the script inside receive.yaml file</li> </ul> <div class="language-yml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">name</span><span class="pi">:</span> <span class="s2">"</span><span class="s">receive"</span>
+<span class="na">description</span><span class="pi">:</span> <span class="s2">"</span><span class="s">Action</span><span class="nv"> </span><span class="s">to</span><span class="nv"> </span><span class="s">run</span><span class="nv"> </span><span class="s">Rperform</span><span class="nv"> </span><span class="s">benchmarks</span><span class="nv"> </span><span class="s">and</span><span class="nv"> </span><span class="s">upload</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">results."</span>
+<span class="na">inputs</span><span class="pi">:</span>
+  <span class="na">cache-version</span><span class="pi">:</span>
+    <span class="na">description</span><span class="pi">:</span> <span class="s2">"</span><span class="s">Integer</span><span class="nv"> </span><span class="s">to</span><span class="nv"> </span><span class="s">use</span><span class="nv"> </span><span class="s">as</span><span class="nv"> </span><span class="s">cache</span><span class="nv"> </span><span class="s">version.</span><span class="nv"> </span><span class="s">Increment</span><span class="nv"> </span><span class="s">to</span><span class="nv"> </span><span class="s">use</span><span class="nv"> </span><span class="s">new</span><span class="nv"> </span><span class="s">cache."</span>
+    <span class="na">required</span><span class="pi">:</span> <span class="kc">true</span>
+    <span class="na">default</span><span class="pi">:</span> <span class="m">1</span>
+  <span class="na">rperform_ref</span><span class="pi">:</span>
+    <span class="na">description</span><span class="pi">:</span> <span class="s2">"</span><span class="s">Which</span><span class="nv"> </span><span class="s">branch</span><span class="nv"> </span><span class="s">or</span><span class="nv"> </span><span class="s">tag</span><span class="nv"> </span><span class="s">of</span><span class="nv"> </span><span class="s">Rperform</span><span class="nv"> </span><span class="s">should</span><span class="nv"> </span><span class="s">be</span><span class="nv"> </span><span class="s">used.</span><span class="nv"> </span><span class="s">Mainly</span><span class="nv"> </span><span class="s">for</span><span class="nv"> </span><span class="s">debugging."</span>
+    <span class="na">required</span><span class="pi">:</span> <span class="kc">true</span>
+    <span class="na">default</span><span class="pi">:</span> <span class="s2">"</span><span class="s">@github-actions"</span>
 
-<span class="cp">{%</span><span class="w"> </span><span class="nt">endtab</span><span class="w"> </span><span class="cp">%}</span>
+<span class="na">runs</span><span class="pi">:</span>
+  <span class="na">using</span><span class="pi">:</span> <span class="s2">"</span><span class="s">composite"</span>
+  <span class="na">steps</span><span class="pi">:</span>
+    <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">Checkout repo</span>
+      <span class="na">uses</span><span class="pi">:</span> <span class="s">actions/checkout@v3</span>
+      <span class="na">with</span><span class="pi">:</span>
+        <span class="na">fetch-depth</span><span class="pi">:</span> <span class="m">0</span>
+    <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">Set up git user</span>
+      <span class="na">run</span><span class="pi">:</span> <span class="pi">|</span>
+        <span class="s">git config --local user.name "GitHub Actions"</span>
+        <span class="s">git config --local user.email "actions@github.com"</span>
+      <span class="na">shell</span><span class="pi">:</span> <span class="s">bash</span>
+    <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">Setup R</span>
+      <span class="na">uses</span><span class="pi">:</span> <span class="s">r-lib/actions/setup-r@v2</span>
+    <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">Install dependencies</span>
+      <span class="na">uses</span><span class="pi">:</span> <span class="s">r-lib/actions/setup-r-dependencies@v2</span>
+      <span class="na">with</span><span class="pi">:</span>
+        <span class="na">cache-version</span><span class="pi">:</span> <span class="s">$</span>
+        <span class="na">extra-packages</span><span class="pi">:</span> <span class="pi">|</span>
+          <span class="s">any::ggplot2</span>
+          <span class="s">any::dplyr</span>
+          <span class="s">any::gert</span>
+          <span class="s">any::glue</span>
+          <span class="s">github::EngineerDanny/Rperform$</span>
+    <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">Remove global installation</span>
+      <span class="na">run</span><span class="pi">:</span> <span class="pi">|</span>
+        <span class="s">pkg &lt;- unlist(read.dcf('DESCRIPTION')[, 'Package'])</span>
+        <span class="s">if (pkg %in% rownames(installed.packages())) {</span>
+          <span class="s">remove.packages(pkg)</span>
+          <span class="s">cat('removed package ', pkg, '.', sep = "")</span>
+        <span class="s">}</span>
+      <span class="na">shell</span><span class="pi">:</span> <span class="s">Rscript {0}</span>
+    <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">Run benchmarks</span>
+      <span class="na">run</span><span class="pi">:</span> <span class="s">Rperform::run_script("rperform/script.R")</span>
+      <span class="na">shell</span><span class="pi">:</span> <span class="s">Rscript {0}</span>
+    <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">Uploading Results</span>
+      <span class="na">run</span><span class="pi">:</span> <span class="pi">|</span>
+        <span class="s">echo "Uploading results..."</span>
+      <span class="na">shell</span><span class="pi">:</span> <span class="s">bash</span>
 
-<span class="cp">{%</span><span class="w"> </span><span class="nt">tab</span><span class="w"> </span><span class="nv">group-name</span><span class="w"> </span><span class="nv">tab-name-2</span><span class="w"> </span><span class="cp">%}</span>
+    <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s">Saves the PR number in an artifact</span>
+      <span class="na">shell</span><span class="pi">:</span> <span class="s">bash</span>
+      <span class="na">env</span><span class="pi">:</span>
+        <span class="na">PULL_REQUEST_NUMBER</span><span class="pi">:</span> <span class="s">$</span>
+      <span class="na">run</span><span class="pi">:</span> <span class="s">echo $PULL_REQUEST_NUMBER &gt; ./rperform/pr-comment/PR_NO</span>
 
-Content 2
+    <span class="pi">-</span> <span class="na">uses</span><span class="pi">:</span> <span class="s">actions/upload-artifact@v2</span>
+      <span class="na">with</span><span class="pi">:</span>
+        <span class="na">name</span><span class="pi">:</span> <span class="s">pr</span>
+        <span class="na">path</span><span class="pi">:</span> <span class="s">rperform/pr-comment/</span>
+</code></pre></div></div> <h3 id="the-comment-action"><a href="https://github.com/EngineerDanny/Rperform/tree/main/actions/comment">The Comment Action</a></h3> <ul> <li>This action is represented by <a href="https://github.com/EngineerDanny/Rperform/tree/main/actions/comment">EngineerDanny/Rperform/actions/comment</a> <ul> <li>Comments the results on the PR that originated the workflow run.</li> <li>Starts right after the <code class="language-plaintext highlighter-rouge">receive</code> job finishes.</li> <li>Will create an additional commit status to the PR check suite.</li> <li>Has read &amp; write access.</li> </ul> </li> <li>Below is the script inside comment.yaml file</li> </ul> <div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">name</span><span class="pi">:</span> <span class="s2">"</span><span class="s">comment"</span>
+<span class="na">description</span><span class="pi">:</span> <span class="s2">"</span><span class="s">Action</span><span class="nv"> </span><span class="s">to</span><span class="nv"> </span><span class="s">comment</span><span class="nv"> </span><span class="s">Rperform</span><span class="nv"> </span><span class="s">results</span><span class="nv"> </span><span class="s">on</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">appropriate</span><span class="nv"> </span><span class="s">PR.</span><span class="nv"> </span><span class="s">Needs</span><span class="nv"> </span><span class="s">read/write</span><span class="nv"> </span><span class="s">access."</span>
+<span class="na">inputs</span><span class="pi">:</span>
+  <span class="na">GITHUB_TOKEN</span><span class="pi">:</span>
+    <span class="na">description</span><span class="pi">:</span> <span class="s2">"</span><span class="s">The</span><span class="nv"> </span><span class="s">GITHUB_TOKEN</span><span class="nv"> </span><span class="s">secret."</span>
+    <span class="na">required</span><span class="pi">:</span> <span class="kc">true</span>
 
-<span class="cp">{%</span><span class="w"> </span><span class="nt">endtab</span><span class="w"> </span><span class="cp">%}</span>
+<span class="na">runs</span><span class="pi">:</span>
+  <span class="na">using</span><span class="pi">:</span> <span class="s2">"</span><span class="s">composite"</span>
+  <span class="na">steps</span><span class="pi">:</span>
+    <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s2">"</span><span class="s">Download</span><span class="nv"> </span><span class="s">artifact"</span>
+      <span class="na">id</span><span class="pi">:</span> <span class="s2">"</span><span class="s">download"</span>
+      <span class="na">uses</span><span class="pi">:</span> <span class="s">actions/github-script@v3.1.0</span>
+      <span class="na">with</span><span class="pi">:</span>
+        <span class="na">script</span><span class="pi">:</span> <span class="pi">|</span>
+          <span class="s">var artifacts = await github.actions.listWorkflowRunArtifacts({</span>
+             <span class="s">owner: context.repo.owner,</span>
+             <span class="s">repo: context.repo.repo,</span>
+             <span class="s">run_id: $,</span>
+          <span class="s">});</span>
+          <span class="s">var matchArtifact = artifacts.data.artifacts.filter((artifact) =&gt; {</span>
+            <span class="s">return artifact.name == "pr"</span>
+          <span class="s">})[0];</span>
+          <span class="s">var download = await github.actions.downloadArtifact({</span>
+             <span class="s">owner: context.repo.owner,</span>
+             <span class="s">repo: context.repo.repo,</span>
+             <span class="s">artifact_id: matchArtifact.id,</span>
+             <span class="s">archive_format: 'zip',</span>
+          <span class="s">});</span>
+          <span class="s">var fs = require('fs');</span>
+          <span class="s">fs.writeFileSync('$/pr.zip', Buffer.from(download.data));</span>
+    <span class="pi">-</span> <span class="na">run</span><span class="pi">:</span> <span class="s">unzip pr.zip</span>
+      <span class="na">shell</span><span class="pi">:</span> <span class="s">bash</span>
+    <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s2">"</span><span class="s">Comment</span><span class="nv"> </span><span class="s">on</span><span class="nv"> </span><span class="s">PR"</span>
+      <span class="na">id</span><span class="pi">:</span> <span class="s2">"</span><span class="s">comment"</span>
+      <span class="na">uses</span><span class="pi">:</span> <span class="s">actions/github-script@v6</span>
+      <span class="na">with</span><span class="pi">:</span>
+        <span class="na">script</span><span class="pi">:</span> <span class="pi">|</span>
+          <span class="s">var fs = require('fs');</span>
+          <span class="s">var pr_number = Number(fs.readFileSync('./PR_NO'));</span>
+          <span class="s">var body = fs.readFileSync('./results.txt').toString();</span>
+          <span class="s">await github.rest.issues.createComment({</span>
+            <span class="s">owner: context.repo.owner,</span>
+            <span class="s">repo: context.repo.repo,</span>
+            <span class="s">issue_number: pr_number,</span>
+            <span class="s">body: body</span>
+          <span class="s">});</span>
+          
+    <span class="pi">-</span> <span class="na">uses</span><span class="pi">:</span> <span class="s">actions/github-script@v5</span>
+      <span class="na">if</span><span class="pi">:</span> <span class="s">always()</span>
+      <span class="na">with</span><span class="pi">:</span>
+        <span class="na">script</span><span class="pi">:</span> <span class="pi">|</span>
+          <span class="s">let url = '$'</span>
+          <span class="s">let any_failed = $</span>
+          <span class="s">let state = 'success'</span>
+          <span class="s">let description = 'Commenting succeeded!'</span>
 
-<span class="cp">{%</span><span class="w"> </span><span class="nt">endtabs</span><span class="w"> </span><span class="cp">%}</span>
-</code></pre></div></div> <p>With this you can generate visualizations like:</p> <ul id="log" class="tab" data-tab="e741e812-9f71-427e-b04c-240be9436ce6" data-name="log"> <li class="active" id="log-php"> <a href="#">php </a> </li> <li id="log-js"> <a href="#">js </a> </li> <li id="log-ruby"> <a href="#">ruby </a> </li> </ul> <ul class="tab-content" id="e741e812-9f71-427e-b04c-240be9436ce6" data-name="log"> <li class="active"> <div class="language-php highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">var_dump</span><span class="p">(</span><span class="s1">'hello'</span><span class="p">);</span>
-</code></pre></div></div> </li> <li> <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">console</span><span class="p">.</span><span class="nf">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">hello</span><span class="dl">"</span><span class="p">);</span>
-</code></pre></div></div> </li> <li> <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nx">pputs</span> <span class="dl">'</span><span class="s1">hello</span><span class="dl">'</span>
-</code></pre></div></div> </li> </ul> <h2 id="another-example">Another example</h2> <ul id="data-struct" class="tab" data-tab="75ab4b53-1442-43e1-bcfd-6ca70b729e5a" data-name="data-struct"> <li class="active" id="data-struct-yaml"> <a href="#">yaml </a> </li> <li id="data-struct-json"> <a href="#">json </a> </li> </ul> <ul class="tab-content" id="75ab4b53-1442-43e1-bcfd-6ca70b729e5a" data-name="data-struct"> <li class="active"> <div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="na">hello</span><span class="pi">:</span>
-  <span class="pi">-</span> <span class="s2">"</span><span class="s">whatsup"</span>
-  <span class="pi">-</span> <span class="s2">"</span><span class="s">hi"</span>
-</code></pre></div></div> </li> <li> <div class="language-json highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"hello"</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="s2">"whatsup"</span><span class="p">,</span><span class="w"> </span><span class="s2">"hi"</span><span class="p">]</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div></div> </li> </ul> <h2 id="tabs-for-something-else">Tabs for something else</h2> <ul id="something-else" class="tab" data-tab="06789907-224e-4130-b61f-822c56430e75" data-name="something-else"> <li class="active" id="something-else-text"> <a href="#">text </a> </li> <li id="something-else-quote"> <a href="#">quote </a> </li> <li id="something-else-list"> <a href="#">list </a> </li> </ul> <ul class="tab-content" id="06789907-224e-4130-b61f-822c56430e75" data-name="something-else"> <li class="active"> <p>Regular text</p> </li> <li> <blockquote> <p>A quote</p> </blockquote> </li> <li> <p>Hipster list</p> <ul> <li>brunch</li> <li>fixie</li> <li>raybans</li> <li>messenger bag</li> </ul> </li> </ul>]]></content><author><name></name></author><category term="sample-posts"/><category term="formatting"/><category term="code"/><summary type="html"><![CDATA[this is what included tabs in a post could look like]]></summary></entry><entry><title type="html">a post with typograms</title><link href="https://engineerdanny.github.io/blog/2024/typograms/" rel="alternate" type="text/html" title="a post with typograms"/><published>2024-04-29T23:36:10+00:00</published><updated>2024-04-29T23:36:10+00:00</updated><id>https://engineerdanny.github.io/blog/2024/typograms</id><content type="html" xml:base="https://engineerdanny.github.io/blog/2024/typograms/"><![CDATA[<p>This is an example post with some <a href="https://github.com/google/typograms/">typograms</a> code.</p> <div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">```</span><span class="nl">typograms
-</span><span class="sb">+----+
-|    |---&gt; My first diagram!
-+----+</span>
-<span class="p">```</span>
-</code></pre></div></div> <p>Which generates:</p> <pre><code class="language-typograms">+----+
-|    |---&gt; My first diagram!
-+----+
-</code></pre> <p>Another example:</p> <div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">```</span><span class="nl">typograms
-</span><span class="sb">.------------------------.
-|.----------------------.|
-||"https://example.com" ||
-|'----------------------'|
-| ______________________ |
-||                      ||
-||   Welcome!           ||
-||                      ||
-||                      ||
-||  .----------------.  ||
-||  | username       |  ||
-||  '----------------'  ||
-||  .----------------.  ||
-||  |"*******"       |  ||
-||  '----------------'  ||
-||                      ||
-||  .----------------.  ||
-||  |   "Sign-up"    |  ||
-||  '----------------'  ||
-||                      ||
-|+----------------------+|
-.------------------------.</span>
-<span class="p">```</span>
-</code></pre></div></div> <p>which generates:</p> <pre><code class="language-typograms">.------------------------.
-|.----------------------.|
-||"https://example.com" ||
-|'----------------------'|
-| ______________________ |
-||                      ||
-||   Welcome!           ||
-||                      ||
-||                      ||
-||  .----------------.  ||
-||  | username       |  ||
-||  '----------------'  ||
-||  .----------------.  ||
-||  |"*******"       |  ||
-||  '----------------'  ||
-||                      ||
-||  .----------------.  ||
-||  |   "Sign-up"    |  ||
-||  '----------------'  ||
-||                      ||
-|+----------------------+|
-.------------------------.
-</code></pre> <p>For more examples, check out the <a href="https://google.github.io/typograms/#examples">typograms documentation</a>.</p>]]></content><author><name></name></author><category term="sample-posts"/><category term="formatting"/><category term="diagrams"/><summary type="html"><![CDATA[this is what included typograms code could look like]]></summary></entry><entry><title type="html">a post that can be cited</title><link href="https://engineerdanny.github.io/blog/2024/post-citation/" rel="alternate" type="text/html" title="a post that can be cited"/><published>2024-04-28T15:06:00+00:00</published><updated>2024-04-28T15:06:00+00:00</updated><id>https://engineerdanny.github.io/blog/2024/post-citation</id><content type="html" xml:base="https://engineerdanny.github.io/blog/2024/post-citation/"><![CDATA[<p>This is an example post that can be cited. The content of the post ends here, while the citation information is automatically provided below. The only thing needed is for you to set the <code class="language-plaintext highlighter-rouge">citation</code> key in the front matter to <code class="language-plaintext highlighter-rouge">true</code>.</p>]]></content><author><name></name></author><category term="sample-posts"/><category term="formatting"/><category term="citation"/><summary type="html"><![CDATA[this is what a post that can be cited looks like]]></summary></entry><entry><title type="html">a post with pseudo code</title><link href="https://engineerdanny.github.io/blog/2024/pseudocode/" rel="alternate" type="text/html" title="a post with pseudo code"/><published>2024-04-15T00:01:00+00:00</published><updated>2024-04-15T00:01:00+00:00</updated><id>https://engineerdanny.github.io/blog/2024/pseudocode</id><content type="html" xml:base="https://engineerdanny.github.io/blog/2024/pseudocode/"><![CDATA[<p>This is an example post with some pseudo code rendered by <a href="https://github.com/SaswatPadhi/pseudocode.js">pseudocode</a>. The example presented here is the same as the one in the <a href="https://saswat.padhi.me/pseudocode.js/">pseudocode.js</a> documentation, with only one simple but important change: everytime you would use <code class="language-plaintext highlighter-rouge">$</code>, you should use <code class="language-plaintext highlighter-rouge">$$</code> instead. Also, note that the <code class="language-plaintext highlighter-rouge">pseudocode</code> key in the front matter is set to <code class="language-plaintext highlighter-rouge">true</code> to enable the rendering of pseudo code. As an example, using this code:</p> <div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">```</span><span class="nl">pseudocode
-</span><span class="sb">% This quicksort algorithm is extracted from Chapter 7, Introduction to Algorithms (3rd edition)
-\begin{algorithm}
-\caption{Quicksort}
-\begin{algorithmic}
-\PROCEDURE{Quicksort}{$$A, p, r$$}
-    \IF{$$p &lt; r$$}
-        \STATE $$q = $$ \CALL{Partition}{$$A, p, r$$}
-        \STATE \CALL{Quicksort}{$$A, p, q - 1$$}
-        \STATE \CALL{Quicksort}{$$A, q + 1, r$$}
-    \ENDIF
-\ENDPROCEDURE
-\PROCEDURE{Partition}{$$A, p, r$$}
-    \STATE $$x = A[r]$$
-    \STATE $$i = p - 1$$
-    \FOR{$$j = p$$ \TO $$r - 1$$}
-        \IF{$$A[j] &lt; x$$}
-            \STATE $$i = i + 1$$
-            \STATE exchange
-            $$A[i]$$ with $$A[j]$$
-        \ENDIF
-        \STATE exchange $$A[i]$$ with $$A[r]$$
-    \ENDFOR
-\ENDPROCEDURE
-\end{algorithmic}
-\end{algorithm}</span>
-<span class="p">```</span>
-</code></pre></div></div> <p>Generates:</p> <pre><code class="language-pseudocode">% This quicksort algorithm is extracted from Chapter 7, Introduction to Algorithms (3rd edition)
-\begin{algorithm}
-\caption{Quicksort}
-\begin{algorithmic}
-\PROCEDURE{Quicksort}{$$A, p, r$$}
-    \IF{$$p &lt; r$$}
-        \STATE $$q = $$ \CALL{Partition}{$$A, p, r$$}
-        \STATE \CALL{Quicksort}{$$A, p, q - 1$$}
-        \STATE \CALL{Quicksort}{$$A, q + 1, r$$}
-    \ENDIF
-\ENDPROCEDURE
-\PROCEDURE{Partition}{$$A, p, r$$}
-    \STATE $$x = A[r]$$
-    \STATE $$i = p - 1$$
-    \FOR{$$j = p$$ \TO $$r - 1$$}
-        \IF{$$A[j] &lt; x$$}
-            \STATE $$i = i + 1$$
-            \STATE exchange
-            $$A[i]$$ with $$A[j]$$
-        \ENDIF
-        \STATE exchange $$A[i]$$ with $$A[r]$$
-    \ENDFOR
-\ENDPROCEDURE
-\end{algorithmic}
-\end{algorithm}
-</code></pre>]]></content><author><name></name></author><category term="sample-posts"/><category term="formatting"/><category term="code"/><summary type="html"><![CDATA[this is what included pseudo code could look like]]></summary></entry><entry><title type="html">a post with code diff</title><link href="https://engineerdanny.github.io/blog/2024/code-diff/" rel="alternate" type="text/html" title="a post with code diff"/><published>2024-01-27T19:22:00+00:00</published><updated>2024-01-27T19:22:00+00:00</updated><id>https://engineerdanny.github.io/blog/2024/code-diff</id><content type="html" xml:base="https://engineerdanny.github.io/blog/2024/code-diff/"><![CDATA[<p>You can display diff code by using the regular markdown syntax:</p> <div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">```</span><span class="nl">diff
-</span><span class="gh">diff --git a/sample.js b/sample.js
-index 0000001..0ddf2ba
-</span><span class="gd">--- a/sample.js
-</span><span class="gi">+++ b/sample.js
-</span><span class="p">@@ -1 +1 @@</span>
-<span class="gd">-console.log("Hello World!")
-</span><span class="gi">+console.log("Hello from Diff2Html!")</span>
-<span class="p">```</span>
-</code></pre></div></div> <p>Which generates:</p> <div class="language-diff highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gh">diff --git a/sample.js b/sample.js
-index 0000001..0ddf2ba
-</span><span class="gd">--- a/sample.js
-</span><span class="gi">+++ b/sample.js
-</span><span class="p">@@ -1 +1 @@</span>
-<span class="gd">-console.log("Hello World!")
-</span><span class="gi">+console.log("Hello from Diff2Html!")
-</span></code></pre></div></div> <p>But this is difficult to read, specially if you have a large diff. You can use <a href="https://diff2html.xyz/">diff2html</a> to display a more readable version of the diff. For this, just use <code class="language-plaintext highlighter-rouge">diff2html</code> instead of <code class="language-plaintext highlighter-rouge">diff</code> for the code block language:</p> <div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">```</span><span class="nl">diff2html
-</span><span class="sb">diff --git a/sample.js b/sample.js
-index 0000001..0ddf2ba
---- a/sample.js
-+++ b/sample.js
-@@ -1 +1 @@
--console.log("Hello World!")
-+console.log("Hello from Diff2Html!")</span>
-<span class="p">```</span>
-</code></pre></div></div> <p>If we use a longer example, for example <a href="https://github.com/rtfpessoa/diff2html/commit/c2c253d3e3f8b8b267f551e659f72b44ca2ac927">this commit from diff2html</a>, it will generate the following output:</p> <pre><code class="language-diff2html">From 2aaae31cc2a37bfff83430c2c914b140bee59b6a Mon Sep 17 00:00:00 2001
-From: Rodrigo Fernandes &lt;rtfrodrigo@gmail.com&gt;
-Date: Sun, 9 Oct 2016 16:41:54 +0100
-Subject: [PATCH 1/2] Initial template override support
+          <span class="s">if($ || any_failed) {</span>
+            <span class="s">state = 'failure'</span>
+            <span class="s">description = 'Commenting failed!'</span>
+            <span class="s">if(any_failed) {</span>
+              <span class="s">url = "https://github.com/$/actions/runs/" + </span>
+                    <span class="s">"$"</span>
+            <span class="s">}</span>
+          <span class="s">}</span>
+          <span class="s">github.rest.repos.createCommitStatus({</span>
+            <span class="s">owner: context.repo.owner,</span>
+            <span class="s">repo: context.repo.repo,</span>
+            <span class="s">sha: '$',</span>
+            <span class="s">state: state,</span>
+            <span class="s">target_url: url,</span>
+            <span class="s">description: description,</span>
+            <span class="s">context: 'rperform comment'</span>
+          <span class="s">})</span>
+</code></pre></div></div> <h2 id="conclusion">CONCLUSION</h2> <p>This is the prototype of the Github Actions. Initially due to separation of actions, I had an issue with the Github create comment script which was similar to <a href="https://github.com/actions/github-script/issues/77">this issue</a>. After several debugging and testing, I was able to successfully automate the creation of comments. <a href="https://github.com/EngineerDanny/stringr/pull/2#issuecomment-1172716652">(Auto Comment On PR)</a>. The actions are implemented in such a way that testing results are firstly uploaded as an artifact on Github. Then afterwards, a comment is created by Github actions bot on the PR. At this point, I only tested it with the <code class="language-plaintext highlighter-rouge">plot_metrics</code> function. More functionalities will be added to the actions in time. I am thinking about limiting the number of functions that can be run in the <code class="language-plaintext highlighter-rouge">script.R</code> file.</p>]]></content><author><name></name></author><category term="rperform"/><category term="test"/><category term="r"/><summary type="html"><![CDATA[My step-by-step approach to develop the prototype of custom Github Actions in Rperform.]]></summary></entry><entry><title type="html">R CMD Check on Rperform</title><link href="https://engineerdanny.github.io/blog/2022/RPerform-R-CMD-Check/" rel="alternate" type="text/html" title="R CMD Check on Rperform"/><published>2022-06-29T00:00:00+00:00</published><updated>2022-06-29T00:00:00+00:00</updated><id>https://engineerdanny.github.io/blog/2022/RPerform-R-CMD-Check</id><content type="html" xml:base="https://engineerdanny.github.io/blog/2022/RPerform-R-CMD-Check/"><![CDATA[<h2 id="introduction">INTRODUCTION</h2> <p>When it comes to publishing an R package, it is very prerequisite and crucial for the package to pass <code class="language-plaintext highlighter-rouge">R CMD Check</code>. <code class="language-plaintext highlighter-rouge">R CMD Check</code> is basically a test performed on an R package to check code for common problems whilst suggesting ways of fixing them. This means that it is also great tool to even utilize during the whole development process of a package. <code class="language-plaintext highlighter-rouge">R CMD Checks</code> comprises of about 50 different tests which are explained <a href="https://r-pkgs.org/r-cmd-check.html#check-checks">here</a></p> <h2 id="running-r-cmd-check-locally">RUNNING <code class="language-plaintext highlighter-rouge">R CMD CHECK</code> LOCALLY</h2> <p>Running<code class="language-plaintext highlighter-rouge"> R CMD Check</code> on <code class="language-plaintext highlighter-rouge">Rperform</code> is a simple task. During development, it can be run locally by using the famous devtools package.</p> <div class="language-R highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">devtools</span><span class="o">::</span><span class="n">check</span><span class="p">()</span><span class="w">
+</span></code></pre></div></div> <p>Also, the R Studio IDE has in-built features which makes it easy to run R CMD Checks right inside the IDE. Under Build section, there is a check button which does that. Using various methods above is synonymous to running the following command on the R console:</p> <div class="language-R highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">R</span><span class="w"> </span><span class="n">CMD</span><span class="w"> </span><span class="n">check</span><span class="w"> </span><span class="n">Rperform</span><span class="w">
+</span></code></pre></div></div> <p>However, when developers need to share or collaborate on a project, the check comes in handy if it can be run online in a container for everyone to see the results. It is more challenging to set-up the checks to run online. Mostly, this approach is used when the need arises to run <code class="language-plaintext highlighter-rouge">R CMD check</code> every time changes are made in code. Since we use GitHub, it is recommended that we do that with <a href="https://github.com/features/actions">Github Actions</a>. There are others such as <a href="https://www.travis-ci.com">Travis CI</a> and <a href="https://www.appveyor.com/">Appveyor</a> but we will stick with Github Actions due to its simplicity and power. In addition to that, it implements modern technologies with vast functionalities and growing community.</p> <p>It must be taken note that running <code class="language-plaintext highlighter-rouge">R CMD Check</code> on any package will return only three types of notices:</p> <blockquote> <p><strong>ERRORS</strong> : These are issues which are very fatal and likely to cause the package or its dependencies to fail to install.</p> </blockquote> <blockquote> <p><strong>WARNINGS</strong> : Warnings are statements that are made to caution the developer to take note of certain vital issues. These issues are unlikely to be detrimental to the package but it is very crucial to not ignore them.</p> </blockquote> <blockquote> <p><strong>NOTES</strong> : Notes are not crucial issues. They are just mild problems which are meant for developers to take note of.</p> </blockquote> <p><em>R CMD Check passes successfully when none of the above notices are returned</em></p> <h2 id="r-cmd-check-using-github-actions"><code class="language-plaintext highlighter-rouge">R CMD CHECK</code> USING GITHUB ACTIONS</h2> <p><a href="https://github.com/features/actions"><code class="language-plaintext highlighter-rouge">GitHub Actions</code></a> is an open-source technology that makes it easy for automation of software workflows. It has exceptional Continuous Integration/ Continuous Deployment (CI/CD) tools which enables developers to build, test and deploy code right from their GitHub repositories.</p> <p>It is very exciting that the R community has a number of repositories of Github Actions which can be used to perform any variety of CI tasks for R projects with example workflows. In Rperform, we use the following actions sequencially :</p> <ol> <li><a href="https://github.com/actions/checkout">actions/checkout</a> - Checks out your repository to the <code class="language-plaintext highlighter-rouge">$GITHUB_WORKSPACE</code> so that repository’s workflow can utilize it.</li> <li><a href="https://github.com/r-lib/actions/tree/v2/setup-r">r-lib/actions/setup-r</a> - Sets up an <a href="https://r-project.org">R</a> environment for use in GitHub Actions by basically downloading and caching a version of R.</li> <li><a href="https://github.com/r-lib/actions/tree/v2/setup-r-dependencies">r-lib/actions/setup-r-dependencies</a> - Downloads and installs all the packages declared in the <code class="language-plaintext highlighter-rouge">DESCRIPTION</code> file.</li> <li><a href="https://github.com/r-lib/actions/tree/v2/check-r-package">r-lib/actions/check-r-package</a> - Runs <code class="language-plaintext highlighter-rouge">R CMD check</code> on an R package.</li> </ol> <p>If every check passes without any discrepancies, it implies that the package is stable. However, if any of the check fails, detailed logs will be shown at the end of every action for you to rectify this issue. It can be very confusing at first when some of the checks fail but with a little bit of debugging and testing, you can get the package to pass. When you check my workflow history on my Rperform repository <a href="https://github.com/EngineerDanny/Rperform/actions">here</a>, you would notice that I have about 50% failed workflow runs. I wrote an <a href="https://engineerdanny.github.io/GSOC22-RPerform-Blog/rperform/performance/test/r/git/github/2022/06/20/Updating-dependencies-In-Rperform.html">article</a> describing a total review of how I went about fixing the issues with Rperform’s initial dependencies. At that time, I had successive workflow failures (From<code class="language-plaintext highlighter-rouge"> R-CMD-check #17</code> to<code class="language-plaintext highlighter-rouge"> R-CMD-check #21</code> ). After fixing the various issues that popped up, I submitted a <a href="https://github.com/EngineerDanny/Rperform/pull/1">Pull Request</a> explaining the series of failures and the steps I took to fix them.</p> <p>I will be diving deep into the <a href="https://github.com/EngineerDanny/Rperform/pull/1">PR</a> to explain some of the issues encountered.</p> <p><img alt="Screenshot 2022-06-22 at 11 44 48 AM" src="https://user-images.githubusercontent.com/47421661/175021313-4fcd05ff-fc67-45d1-8935-8e1ccf99feec.png"/></p> <p>From the <a href="https://github.com/EngineerDanny/Rperform/actions/runs/2536152401">Check-RPerform #3</a>, Github showed a visual evidence that points to <code class="language-plaintext highlighter-rouge">r-lib/actions/check-r-package</code> as the specific action that failed.</p> <p>Initially, the issue was invalid link in the <code class="language-plaintext highlighter-rouge">test-repo-metrics.R </code>file. I found out that the <a href="https://github.com/hadley/stringr">hadley/stringr</a> link does not exist. Even though, when you open the link you will be redirected to the actual repository which is the <a href="https://github.com/tidyverse/stringr">tidyverse/stringr</a>.</p> <p>My test results were inconsistent (Failing more times and occassionally passing) due to this issue. Therefore, I changed the github link to <a href="https://github.com/tidyverse/stringr">tidyverse/stringr</a> After running Rperform check locally, even though the test didn’t explicitly give me an error, it failed. The only warning was :</p> <blockquote> <p>checking Rd cross-references … WARNING Missing link or links in documentation object ‘Rperform-package.Rd’: ‘[git2r:git2r-package]{git2r}’</p> <p>See section ‘Cross-references’ in the ‘Writing R Extensions’ manual.</p> </blockquote> <p>I fixed the warning by inserting the <a href="https://github.com/ropensci/git2r">git2r</a> official github link.</p> <p>Although the issue with the link was fixed and <strong>R CMD Check</strong> on my local machine passed, the GitHub CI action still failed. So I started to dig into the <a href="https://github.com/tidyverse/stringr">tidyverse/stringr</a> package tests.</p> <p>Inside the https://github.com/tidyverse/stringr/blob/main/tests/testthat/test-dup.r file, there are three tests which are ran internally.</p> <p><img width="642" alt="Screenshot 2022-06-22 at 2 30 21 PM" src="https://user-images.githubusercontent.com/47421661/175054951-9392a05a-0ef8-4443-84f4-f06fa950b562.png"/></p> <p>As shown above, all the other tests passed except the <code class="language-plaintext highlighter-rouge">uses tidyverse recycling rules</code> test. This led to my conclusion that, this may be an internal issue with the <code class="language-plaintext highlighter-rouge">tidyverse/stringr</code> package.</p> <p>The first two tests however, could be used in checking Rperform.</p> <h2 id="final-fix">FINAL FIX</h2> <p>After several debugging and testing, I finally found the final error that was causing the <strong>Rperform R CMD Check</strong> test to fail on GitHub CI. It turns out that during my adventures and explorations, I mistakenly created a file( [tests/testthat/test-plot-metrics.R]) on the <code class="language-plaintext highlighter-rouge">master</code> branch.</p> <p><img width="696" alt="Screenshot 2022-06-22 at 8 14 21 PM" src="https://user-images.githubusercontent.com/47421661/175130169-1d1dd3f7-2f9e-43ec-b7cc-b88de65599ec.png"/></p> <p>As recorded from the logs above, in the file, there is an issue with the <code class="language-plaintext highlighter-rouge">str_c</code> function because it does not exist. Therefore, I removed this file since it’s not needed. It was created for experimental purposes.</p> <p>After fixing all the issues, all the checks passed ✅ with<a href="https://github.com/EngineerDanny/Rperform/actions/runs/2544889102"><code class="language-plaintext highlighter-rouge">Check-RPerform #11</code></a> workflow run.</p> <h2 id="conclusion">CONCLUSION</h2> <p>During my tests, I realized the cause of the inconsistencies in my workflow results. When running <code class="language-plaintext highlighter-rouge">R CMD Check</code> locally, I noticed that if your internet network is slow, because the dependencies and other stuffs can not be downloaded, the test will pass with no warnings or errors. This may be a flaw in the <code class="language-plaintext highlighter-rouge">R CMD Check</code> tool. It can lead to false positives. The main reason why I didn’t notice the mistakenly created file locally was because I was on another branch (<code class="language-plaintext highlighter-rouge">test-pkg</code>) instead of the main branch (<code class="language-plaintext highlighter-rouge">master</code>). The file was rather created on the <code class="language-plaintext highlighter-rouge">master</code> branch.</p> <p><code class="language-plaintext highlighter-rouge">R CMD Checks</code> are very crucial to the success of a package especially when the package is to be published on <a href="https://cran.r-project.org">CRAN</a>. When a package passes the checks with no errors, warnings and notes, there would be no need for human intervention before the package is published on <a href="https://cran.r-project.org">CRAN</a>.</p>]]></content><author><name></name></author><category term="rperform"/><category term="test"/><category term="r"/><summary type="html"><![CDATA[Testing and Debugging Rperform to ensure that R CMD Check runs successfully]]></summary></entry><entry><title type="html">Updating the dependencies in Rperform.</title><link href="https://engineerdanny.github.io/blog/2022/Updating-dependencies-In-Rperform/" rel="alternate" type="text/html" title="Updating the dependencies in Rperform."/><published>2022-06-20T00:00:00+00:00</published><updated>2022-06-20T00:00:00+00:00</updated><id>https://engineerdanny.github.io/blog/2022/Updating-dependencies-In-Rperform</id><content type="html" xml:base="https://engineerdanny.github.io/blog/2022/Updating-dependencies-In-Rperform/"><![CDATA[<h1 id="introduction">Introduction</h1> <p>In R, it is the main purpose of the <code class="language-plaintext highlighter-rouge">DESCRIPTION</code> file to convey the metadata about a package. It is also needed to list all the dependencies that the package uses. Inside the <code class="language-plaintext highlighter-rouge">DESCRIPTION</code> file, there are <code class="language-plaintext highlighter-rouge">Imports</code> and <code class="language-plaintext highlighter-rouge">Suggests</code> section under which, you can list your dependencies. There is a minor difference between the two. The packages under <code class="language-plaintext highlighter-rouge">Imports</code> are needed by your users at runtime. <code class="language-plaintext highlighter-rouge">Packages</code> under <code class="language-plaintext highlighter-rouge">Suggests</code> however, may be optional because it is either used for development or optional functionalities. There was a major issue with the major dependencies used by <code class="language-plaintext highlighter-rouge">Rperform</code>. The issue was that, the versions of the dependencies used were too old and one of the them was discontinued.</p> <h2 id="the-git2r-package">The git2r package</h2> <p>The <code class="language-plaintext highlighter-rouge">git2r</code> package is a popular R package which is mainly known for using git with R. It gives users programmatic experience with git using R. It is very fast because it implements git core methods developed with C. As the developers of the package improved and updated the package, they made a breaking transition. They made a change in support from S4 objects to S3 objects. A simple fix to this issue will be to pin the version of the package to specific versions in the <code class="language-plaintext highlighter-rouge">DESCRIPTION</code> file. However, a lot of developers have always install the latest versions of packages. As I tested <code class="language-plaintext highlighter-rouge">Rperform</code> for the first time, I had the issue. This is the error I had :</p> <div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;</span><span class="w"> </span><span class="n">plot_metrics</span><span class="p">(</span><span class="n">test_path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"tests/testthat/test-join.r"</span><span class="p">,</span><span class="w"> </span><span class="n">metric</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"time"</span><span class="p">,</span><span class="w"> </span><span class="n">num_commits</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">2</span><span class="p">,</span><span class="w"> </span><span class="n">save_data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">,</span><span class="w"> </span><span class="n">save_plots</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">)</span><span class="w">
+</span><span class="n">Error</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">base</span><span class="o">::</span><span class="n">substr</span><span class="p">(</span><span class="n">commit_val</span><span class="o">@</span><span class="n">summary</span><span class="p">,</span><span class="w"> </span><span class="n">start</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="n">stop</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">15</span><span class="p">)</span><span class="w"> </span><span class="o">:</span><span class="w"> 
+  </span><span class="n">trying</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">get</span><span class="w"> </span><span class="n">slot</span><span class="w"> </span><span class="s2">"summary"</span><span class="w"> </span><span class="n">from</span><span class="w"> </span><span class="n">an</span><span class="w"> </span><span class="n">object</span><span class="w"> </span><span class="p">(</span><span class="n">class</span><span class="w"> </span><span class="s2">"git_commit"</span><span class="p">)</span><span class="w"> </span><span class="n">that</span><span class="w"> </span><span class="n">is</span><span class="w"> </span><span class="n">not</span><span class="w"> </span><span class="n">an</span><span class="w"> </span><span class="n">S4</span><span class="w"> </span><span class="n">object</span><span class="w"> 
+</span></code></pre></div></div> <p>Analyzing the error message suggests that the program is trying to get a property from an object which is not S4 object but rather S3 object. The actual issue was that my <code class="language-plaintext highlighter-rouge">git2r</code> version was the latest version. For some reason, the package version which should have been pinned to be <code class="language-plaintext highlighter-rouge">&lt;= version 0.21.0</code> was ignored by my program. The fact is that, the latest <code class="language-plaintext highlighter-rouge">git2r</code> package has a lot of new features and fixes. The first task I had to do was updating Rperform to also support the newer versions of <code class="language-plaintext highlighter-rouge">git2r</code> so as to make it easier for other developers to use and test the package. I updated the <code class="language-plaintext highlighter-rouge">git2r</code> version to <code class="language-plaintext highlighter-rouge">(&gt;= 0.30.1)</code> in the <code class="language-plaintext highlighter-rouge">DESCRIPTION</code> file so it made some functions in the code obsolete. First of all, the names of some functions were updated. Refactoring the code was not difficult but running through the documentation of the <code class="language-plaintext highlighter-rouge">git2r</code> package and checking the newer functions proved to be a little challenging and time consuming. First major change I had to make was replace the <code class="language-plaintext highlighter-rouge">head</code> function to <code class="language-plaintext highlighter-rouge">repository_head</code> function. This function basically gets the <code class="language-plaintext highlighter-rouge">HEAD</code> of a repository.</p> <div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># From</span><span class="w">
+</span><span class="o">&gt;</span><span class="w"> </span><span class="n">repo_head</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">git2r</span><span class="o">::</span><span class="n">head</span><span class="p">(</span><span class="n">repo</span><span class="p">)</span><span class="w">
+</span></code></pre></div></div> <div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># To</span><span class="w">
+</span><span class="o">&gt;</span><span class="w"> </span><span class="n">repo_head</span><span class="w"> </span><span class="o">&lt;-</span><span class="w"> </span><span class="n">git2r</span><span class="o">::</span><span class="n">repository_head</span><span class="p">(</span><span class="n">repo</span><span class="p">)</span><span class="w">
+</span></code></pre></div></div> <p>Also, I had to check all the functions related to the issue to be compatible to S3 objects. Just to name a few, some of them are :</p> <div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># From</span><span class="w">
+</span><span class="o">&gt;</span><span class="w"> </span><span class="n">base</span><span class="o">::</span><span class="n">substr</span><span class="p">(</span><span class="n">commit_val</span><span class="o">@</span><span class="n">summary</span><span class="p">,</span><span class="w"> </span><span class="n">start</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="n">stop</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">15</span><span class="p">)</span><span class="w">
+</span><span class="o">&gt;</span><span class="w"> </span><span class="n">repo_head</span><span class="o">@</span><span class="n">name</span><span class="w">
+</span></code></pre></div></div> <div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># To</span><span class="w">
+</span><span class="o">&gt;</span><span class="w"> </span><span class="n">base</span><span class="o">::</span><span class="n">substr</span><span class="p">(</span><span class="n">commit_val</span><span class="o">$</span><span class="n">summary</span><span class="p">,</span><span class="w"> </span><span class="n">start</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1</span><span class="p">,</span><span class="w"> </span><span class="n">stop</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">15</span><span class="p">)</span><span class="w">
+</span><span class="o">&gt;</span><span class="w"> </span><span class="n">repo_head</span><span class="o">$</span><span class="n">name</span><span class="w">
+</span></code></pre></div></div> <p>Initially, I used numeric indexes to reference list members. I switched to using named reference approach to reference list members by names instead of numeric indexes because it was less error prone. With most of the changes just like above examples, I just had to replace the <code class="language-plaintext highlighter-rouge">@</code> symbol with the <code class="language-plaintext highlighter-rouge">$</code> symbol. Others were a little more complex than that.</p> <h2 id="the-animint-dependency">The Animint dependency</h2> <p>The <a href="https://github.com/tdhock/animint">animint</a> package is a forked version of the <code class="language-plaintext highlighter-rouge">ggplot2</code> with improved features. It enables developers to design multi-plot, multi-layer, interactive and animated data visualizations. Unfortunately, the original version has been discontinued. Even though, it was an optional package in the root <code class="language-plaintext highlighter-rouge">DESCRIPTION</code> file, it was worth looking into. However, my attention only drew to it when I was running a <code class="language-plaintext highlighter-rouge">CMD R Check</code> on the <code class="language-plaintext highlighter-rouge">Rperform</code> package and it failed. The Github CI test showed that it is not possible to install it because it could not recognize the package. After digging into the issue, I realized the package has been discontinued. Fast forward, there is an updated version called the <a href="https://github.com/tdhock/animint2">animint2</a> which comes with easier installation and better syntax. Therefore I updated the package to <code class="language-plaintext highlighter-rouge">animint2</code> in the <code class="language-plaintext highlighter-rouge">DESCRIPTION</code> file. Then, I checked and tested all the functions that depend on the animint2 package. Most of them had to do with just replacing <code class="language-plaintext highlighter-rouge">animint</code> with <code class="language-plaintext highlighter-rouge">animint2</code>.</p> <div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># From</span><span class="w">
+</span><span class="o">&gt;</span><span class="w"> </span><span class="n">animint</span><span class="o">::</span><span class="n">theme_animint</span><span class="p">(</span><span class="n">height</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">700</span><span class="p">)</span><span class="w">
+</span><span class="o">&gt;</span><span class="w"> </span><span class="n">animint</span><span class="o">::</span><span class="n">animint2dir</span><span class="p">(</span><span class="n">plot.list</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">viz.list</span><span class="p">,</span><span class="w"> </span><span class="n">out.dir</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">paste0</span><span class="p">(</span><span class="n">basename</span><span class="p">(</span><span class="n">getwd</span><span class="p">()),</span><span class="w"> </span><span class="s2">"_"</span><span class="p">,</span><span class="w"> </span><span class="s2">"time_animint"</span><span class="p">))</span><span class="w">
+</span></code></pre></div></div> <div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># To</span><span class="w">
+</span><span class="o">&gt;</span><span class="w"> </span><span class="n">animint2</span><span class="o">::</span><span class="n">theme_animint</span><span class="p">(</span><span class="n">height</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">700</span><span class="p">)</span><span class="w">
+</span><span class="o">&gt;</span><span class="w"> </span><span class="n">animint2</span><span class="o">::</span><span class="n">animint2dir</span><span class="p">(</span><span class="n">plot.list</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">viz.list</span><span class="p">,</span><span class="w"> </span><span class="n">out.dir</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">paste0</span><span class="p">(</span><span class="n">basename</span><span class="p">(</span><span class="n">getwd</span><span class="p">()),</span><span class="w"> </span><span class="s2">"_"</span><span class="p">,</span><span class="w"> </span><span class="s2">"time_animint"</span><span class="p">))</span><span class="w">
+</span></code></pre></div></div> <h2 id="fix-dependency-and-related-issues">Fix dependency and related issues</h2> <p>After all the changes and updates, I opened a Pull Request to address the issues. <a href="https://github.com/EngineerDanny/Rperform/pull/2">PR#2</a> and <a href="https://github.com/EngineerDanny/Rperform/pull/3">PR#3</a>. As it was a pending issue raised twice on the main repository. These combined <a href="https://github.com/analyticalmonk/Rperform/pull/47">PRs</a> close issues <a href="https://github.com/analyticalmonk/Rperform/issues/44">#44</a> and <a href="https://github.com/analyticalmonk/Rperform/issues/45">#45</a>.</p> <h1 id="conclusion">Conclusion</h1> <p>I have realized that the dependencies that our projects utilize are very crucial to the development of the package and its users. At first, I nearly gave up on the <code class="language-plaintext highlighter-rouge">Rperform</code> package because of it’s support for old dependencies which were not already installed and for some reason could not get installed on my computer. Updating dependencies ensures the package gets access to the latest features, improvements and bug fixes. Downgrading the <code class="language-plaintext highlighter-rouge">git2r</code> dependency was a temporal fix, updating and ensuring that all related issues are fixed became the permanent fix.</p>]]></content><author><name></name></author><category term="Rperform"/><category term="performance"/><category term="test"/><category term="r"/><category term="git"/><category term="github"/><summary type="html"><![CDATA[This is the total review of how I went about in fixing the issues with dependencies in Rperform package.]]></summary></entry><entry><title type="html">Fixes to some of the compilation errors of Rperform</title><link href="https://engineerdanny.github.io/blog/2022/Rperform-Compilation-Errors-And-Fixes/" rel="alternate" type="text/html" title="Fixes to some of the compilation errors of Rperform"/><published>2022-06-13T00:00:00+00:00</published><updated>2022-06-13T00:00:00+00:00</updated><id>https://engineerdanny.github.io/blog/2022/Rperform-Compilation-Errors-And-Fixes</id><content type="html" xml:base="https://engineerdanny.github.io/blog/2022/Rperform-Compilation-Errors-And-Fixes/"><![CDATA[<h2 id="abstract">ABSTRACT</h2> <p>The main goal of the RPerform library is to make performance tests on R packages easier with GitHub. However, currently, the initial version of the RPerform library is outdated in the sense that you would need to improvise before you attempt to test RPerform. This article explains all the potential errors, issues and bugs you might encounter and how to solve them before you run the package.</p> <p>The test package that is used to test the <code class="language-plaintext highlighter-rouge">Rperform</code> library is the <code class="language-plaintext highlighter-rouge">stringr</code> (https://github.com/tdhock/stringr) package. Installation of the library has been discussed in the previous articles. Use the <code class="language-plaintext highlighter-rouge">library(Rperform)</code> command to load the library. The following command initializes the library by setting the working directory.</p> <div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">setwd</span><span class="p">(</span><span class="n">dir</span><span class="o">=</span><span class="w"> </span><span class="s2">"/Users/newuser/Projects/RProjects/stringr"</span><span class="p">)</span><span class="w">
+</span></code></pre></div></div> <h2 id="directory-issues">DIRECTORY ISSUES</h2> <h3 id="--working-directory-error"><strong>- Working directory error</strong></h3> <p>The first error which might be thrown is :</p> <div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">Error</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">setwd</span><span class="p">(</span><span class="n">dir</span><span class="o">=</span><span class="w"> </span><span class="s2">"/Users/newuser/Projects/RProjects/stringe"</span><span class="p">)</span><span class="w"> </span><span class="o">:</span><span class="w">
+ </span><span class="n">cannot</span><span class="w"> </span><span class="n">change</span><span class="w"> </span><span class="n">working</span><span class="w"> </span><span class="n">directory</span><span class="w">
+</span></code></pre></div></div> <p>The <code class="language-plaintext highlighter-rouge">dir</code> argument must be set to the directory of the package or project you want to test.</p> <h3 id="--test-join-directory-error"><strong>- <code class="language-plaintext highlighter-rouge">test-join</code> directory error</strong></h3> <p>There has been an update with the <code class="language-plaintext highlighter-rouge">stringr</code> repository. <code class="language-plaintext highlighter-rouge">test-join.r</code> is not in the <code class="language-plaintext highlighter-rouge">tests/testthat</code> directory. The new directory is <code class="language-plaintext highlighter-rouge">inst/tests/test-join.r</code> . Also, all the files in <code class="language-plaintext highlighter-rouge">inst/tests/</code> directory must be taken note. Misrepresenting them will result in errors. Hence, this implies that running :</p> <div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">plot_metrics</span><span class="p">(</span><span class="n">test_path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"tests/testthat/test-join.r"</span><span class="p">,</span><span class="w"> </span><span class="n">metric</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"time"</span><span class="p">,</span><span class="w"> </span><span class="n">num_commits</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">10</span><span class="p">,</span><span class="w"> </span><span class="n">save_data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">,</span><span class="w"> </span><span class="n">save_plots</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">)</span><span class="w">
+</span></code></pre></div></div> <p>will throw the error :</p> <div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">Error</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="n">file</span><span class="p">(</span><span class="n">con</span><span class="w"> </span><span class="p">,</span><span class="w"> </span><span class="s2">"r"</span><span class="p">)</span><span class="w"> </span><span class="o">:</span><span class="w">
+    </span><span class="n">cannot</span><span class="w"> </span><span class="n">open</span><span class="w"> </span><span class="n">file</span><span class="w"> </span><span class="s2">"tests/testthat/test-join.r"</span><span class="w"> </span><span class="o">:</span><span class="w"> </span><span class="n">No</span><span class="w"> </span><span class="n">such</span><span class="w"> </span><span class="n">file</span><span class="w"> </span><span class="n">or</span><span class="w"> </span><span class="n">directory</span><span class="w">    
+</span></code></pre></div></div> <p>Instead, run :</p> <div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">plot_metrics</span><span class="p">(</span><span class="n">test_path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"inst/tests/test-join.r"</span><span class="p">,</span><span class="w"> </span><span class="n">metric</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"time"</span><span class="p">,</span><span class="w"> </span><span class="n">num_commits</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">10</span><span class="p">,</span><span class="w"> </span><span class="n">save_data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">,</span><span class="w"> </span><span class="n">save_plots</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">)</span><span class="w">
 
----
- scripts/hulk.js                    |  4 ++--
- src/diff2html.js                   |  3 +--
- src/file-list-printer.js           | 11 ++++++++---
- src/hoganjs-utils.js               | 29 +++++++++++++++++------------
- src/html-printer.js                |  6 ++++++
- src/line-by-line-printer.js        |  6 +++++-
- src/side-by-side-printer.js        |  6 +++++-
- test/file-list-printer-tests.js    |  2 +-
- test/hogan-cache-tests.js          | 18 +++++++++++++++---
- test/line-by-line-tests.js         |  3 +--
- test/side-by-side-printer-tests.js |  3 +--
- 11 files changed, 62 insertions(+), 29 deletions(-)
+</span></code></pre></div></div> <h2 id="missing-packages">MISSING PACKAGES</h2> <p>These are the packages that <code class="language-plaintext highlighter-rouge">Rperform</code> depends on. Not having it pre-installed may prevent you from running the package. We proceed by discussing the relevant dependencies and how to install them.</p> <p><code class="language-plaintext highlighter-rouge">git2r</code> : The git2r package gives developers access to Git repositories from R. The package uses the <code class="language-plaintext highlighter-rouge">libgit2</code> library which is a C implementation of the Git core methods. Therefore it allows developers to write native speed custom Git applications in any language that supports C bindings.</p> <p>To install the development version of git2r. You can use :</p> <div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">install.packages</span><span class="p">(</span><span class="s2">"git2r"</span><span class="p">)</span><span class="w">
+</span></code></pre></div></div> <p>it’s easiest to use the devtools package:</p> <div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># install.packages("devtools")</span><span class="w">
+</span><span class="n">library</span><span class="p">(</span><span class="n">devtools</span><span class="p">)</span><span class="w">
+</span><span class="n">install_github</span><span class="p">(</span><span class="s2">"ropensci/git2r"</span><span class="p">)</span><span class="w">
+</span></code></pre></div></div> <p><code class="language-plaintext highlighter-rouge">ggplot2</code> : The <code class="language-plaintext highlighter-rouge">ggplot2</code> is an R package used for plotting graphs. It provides useful commands that helps to create complex plots from data in a data frame. It enables quality plots to be created with minimal coding, tweaking and adjustments. The package is therefore necessary for <code class="language-plaintext highlighter-rouge">Rperform</code> to visualize performance metrics. It provides an interface for determining what variables to plot and how they are shown to the user. Organized data saves massive time when using the package to make figures.</p> <div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># The easiest way to get ggplot2 is to install the whole tidyverse:</span><span class="w">
+</span><span class="n">install.packages</span><span class="p">(</span><span class="s2">"tidyverse"</span><span class="p">)</span><span class="w">
 
-diff --git a/scripts/hulk.js b/scripts/hulk.js
-index 5a793c18..a4b1a4d5 100755
---- a/scripts/hulk.js
-+++ b/scripts/hulk.js
-@@ -173,11 +173,11 @@ function namespace(name) {
- // write a template foreach file that matches template extension
- templates = extractFiles(options.argv.remain)
-   .map(function(file) {
--    var openedFile = fs.readFileSync(file, 'utf-8');
-+    var openedFile = fs.readFileSync(file, 'utf-8').trim();
-     var name;
-     if (!openedFile) return;
-     name = namespace(path.basename(file).replace(/\..*$/, ''));
--    openedFile = removeByteOrderMark(openedFile.trim());
-+    openedFile = removeByteOrderMark(openedFile);
-     openedFile = wrap(file, name, openedFile);
-     if (!options.outputdir) return openedFile;
-     fs.writeFileSync(path.join(options.outputdir, name + '.js')
-diff --git a/src/diff2html.js b/src/diff2html.js
-index 21b0119e..64e138f5 100644
---- a/src/diff2html.js
-+++ b/src/diff2html.js
-@@ -7,7 +7,6 @@
+</span><span class="c1"># Alternatively, install just ggplot2:</span><span class="w">
+</span><span class="n">install.packages</span><span class="p">(</span><span class="s2">"ggplot2"</span><span class="p">)</span><span class="w">
 
- (function() {
-   var diffParser = require('./diff-parser.js').DiffParser;
--  var fileLister = require('./file-list-printer.js').FileListPrinter;
-   var htmlPrinter = require('./html-printer.js').HtmlPrinter;
+</span><span class="c1"># Or the development version from GitHub:</span><span class="w">
+</span><span class="n">install.packages</span><span class="p">(</span><span class="s2">"devtools"</span><span class="p">)</span><span class="w">
+</span><span class="n">devtools</span><span class="o">::</span><span class="n">install_github</span><span class="p">(</span><span class="s2">"tidyverse/ggplot2"</span><span class="p">)</span><span class="w">
+</span></code></pre></div></div> <h2 id="conclusion">CONCLUSION</h2> <p>It is very crucial to adequately set up the package for testing. Some of the errors have been discussed and solutions have also been proposed. It is advisable to always follow the documentation for latest the updates.</p>]]></content><author><name></name></author><category term="rperform"/><category term="test"/><category term="r"/><summary type="html"><![CDATA[Fixes to some of the compilation errors of Rperform]]></summary></entry><entry><title type="html">Testing Touchstone with a simple For Loop</title><link href="https://engineerdanny.github.io/blog/2022/Touchstone-Test-1/" rel="alternate" type="text/html" title="Testing Touchstone with a simple For Loop"/><published>2022-06-02T00:00:00+00:00</published><updated>2022-06-02T00:00:00+00:00</updated><id>https://engineerdanny.github.io/blog/2022/Touchstone-Test-1</id><content type="html" xml:base="https://engineerdanny.github.io/blog/2022/Touchstone-Test-1/"><![CDATA[<h3 id="introduction">Introduction</h3> <p>I did a minimal testing of touchstone by using a simple <code class="language-plaintext highlighter-rouge">for</code> loop. Therefore, I created a simple R package repository on GitHub called <a href="https://github.com/EngineerDanny/TouchTest">TouchTest</a> . Inside the <code class="language-plaintext highlighter-rouge">script.R</code> file, there exists a function <code class="language-plaintext highlighter-rouge">touchstone::benchmark_run</code> which helps to benchmark any function call from the package.</p> <p>To make it simple to test the minimal functionality of <code class="language-plaintext highlighter-rouge">touchstone</code>, I modified the function and wrote the <code class="language-plaintext highlighter-rouge">for</code> loop inside a <code class="language-plaintext highlighter-rouge">random_test</code> function.</p> <h3 id="test">Test</h3> <p>On the <code class="language-plaintext highlighter-rouge">main</code> branch, inside the <code class="language-plaintext highlighter-rouge">script.R</code> file, we basically loop from 1 to 10 printing the current number.</p> <div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># benchmark a function call from your package (two calls per branch)</span><span class="w">
+</span><span class="n">touchstone</span><span class="o">::</span><span class="n">benchmark_run</span><span class="p">(</span><span class="w">
+  </span><span class="c1"># expr_before_benchmark = source("dir/data.R"), #&lt;-- TODO OTPIONAL setup before benchmark</span><span class="w">
+  </span><span class="n">random_test</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">function</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="n">print</span><span class="p">(</span><span class="s2">"Hello, world!"</span><span class="p">)</span><span class="w">
+    </span><span class="c1"># Loop from 1 to 10</span><span class="w">
+    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="m">1</span><span class="o">:</span><span class="m">10</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="n">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">},</span><span class="w"> </span><span class="c1">#&lt;- TODO put the call you want to benchmark here</span><span class="w">
+  </span><span class="n">n</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">2</span><span class="w">
+</span><span class="p">)</span><span class="w">
+</span></code></pre></div></div> <p>However, onn the <code class="language-plaintext highlighter-rouge">devel</code> branch, there is a minor change in the for loop. We print from 1 to 100 instead.</p> <div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># benchmark a function call from your package (two calls per branch)</span><span class="w">
+</span><span class="n">touchstone</span><span class="o">::</span><span class="n">benchmark_run</span><span class="p">(</span><span class="w">
+  </span><span class="c1"># expr_before_benchmark = source("dir/data.R"), #&lt;-- TODO OTPIONAL setup before benchmark</span><span class="w">
+  </span><span class="n">random_test</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">function</span><span class="p">()</span><span class="w"> </span><span class="p">{</span><span class="w">
+    </span><span class="n">print</span><span class="p">(</span><span class="s2">"Hello, world!"</span><span class="p">)</span><span class="w">
+    </span><span class="c1"># Loop from 1 to 100</span><span class="w">
+    </span><span class="k">for</span><span class="w"> </span><span class="p">(</span><span class="n">i</span><span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="m">1</span><span class="o">:</span><span class="m">100</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w">
+      </span><span class="n">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span><span class="w">
+    </span><span class="p">}</span><span class="w">
+  </span><span class="p">},</span><span class="w"> </span><span class="c1">#&lt;- TODO put the call you want to benchmark here</span><span class="w">
+  </span><span class="n">n</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">2</span><span class="w">
+</span><span class="p">)</span><span class="w">
+</span></code></pre></div></div> <h3 id="results">Results</h3> <p>It is quite obvious that the <code class="language-plaintext highlighter-rouge">1 to 100 loop</code> will take longer time than the <code class="language-plaintext highlighter-rouge">1 to 10 loop</code>. Inside the <code class="language-plaintext highlighter-rouge">touchstone</code> directory, <code class="language-plaintext highlighter-rouge">plots</code> and <code class="language-plaintext highlighter-rouge">pr-comment</code> folders are created naturally containing the image of the plot and the PR comment text respectively. Below shows the results as expected.</p> <p><img src="https://raw.githubusercontent.com/EngineerDanny/GSOC22-RPerform-Blog/master/images/for-loop-touch-test.png" alt="time plot" title="Time Plot"/></p> <p>The graph above demonstrates the visualizations of the distribution of the timings for both branches. It can be inferred from the graph above that the density of the <code class="language-plaintext highlighter-rouge">devel</code> branch is greater than that of the <code class="language-plaintext highlighter-rouge">main</code> branch. This is due to the fact that the <code class="language-plaintext highlighter-rouge">devel</code> branch entails looping 100 times whereas the <code class="language-plaintext highlighter-rouge">main</code> branch entails looping just 10 times.</p> <p>Benchmark result is posted as a comment in the Pull Request. An example is shown below :</p> <hr/> <p>This is how benchmark results would change (along with a 95% confidence interval in relative change) if <code class="language-plaintext highlighter-rouge">b61b5addb59ac69eca91ee97caf7e5f5ef986aed</code> is merged into main:</p> <ul> <li>  :ballot_box_with_check:random_test: 1.24µs -&gt; 1.3µs [-5.9%, +15.17%] Further explanation regarding interpretation and methodology can be found in the <a href="https://lorenzwalthert.github.io/touchstone/articles/inference.html">documentation</a>.</li> </ul> <hr/> <p>The results can be interpreted as an increase in time by approximately 15.17% from the <code class="language-plaintext highlighter-rouge">devel</code> branch when compared to the <code class="language-plaintext highlighter-rouge">main</code> branch. To avoid any uncertainties, under the hood, the code is run <code class="language-plaintext highlighter-rouge">n</code> times based on the confidence interval. The confidence interval shows the certainties about any estimated differences. Hence, a 0.95 confidence interval tells that if the benchmarking experiment were to be repeated 100 times, the estimated change in speed would be in the interval 95 out of 100 times. The graph generally gets noisy when there is no significant speed change.</p> <p>Therefore, merging a Pull Request of such nature will mean that the code will be a little bit slower. However, checking from the speed decrease implies that it will hardly be noticed practically. There is always a trade-off between time and functionality especially when a new feature is introduced in a code. This is the reason why the Confidence Interval is very crucial with regards to code benchmarking.</p> <h3 id="conclusion">Conclusion</h3> <p>Even though, the <code class="language-plaintext highlighter-rouge">touchstone</code> package is an experimental R package, it aims on providing the means to perform accurate benchmarking tests for package developers. Due to the fact that Pull requests are natural units for measuring speed, connecting benchmarking to pull requests makes it easier and faster to use.</p>]]></content><author><name></name></author><category term="touchstone"/><category term="test"/><category term="r"/><category term="git"/><category term="github"/><summary type="html"><![CDATA[A minimal testing of touchstone by using a simple for loop]]></summary></entry><entry><title type="html">Reviewing The Touchstone R Package</title><link href="https://engineerdanny.github.io/blog/2022/Touchstone-Review/" rel="alternate" type="text/html" title="Reviewing The Touchstone R Package"/><published>2022-06-01T00:00:00+00:00</published><updated>2022-06-01T00:00:00+00:00</updated><id>https://engineerdanny.github.io/blog/2022/Touchstone-Review</id><content type="html" xml:base="https://engineerdanny.github.io/blog/2022/Touchstone-Review/"><![CDATA[<h2 id="1-introduction">1. Introduction</h2> <p><a href="https://github.com/lorenzwalthert/touchstone"><code class="language-plaintext highlighter-rouge">Touchstone</code></a> is an R tool which provides accurate benchmarking features for testing other R packages. It provides continuous benchmarking with reliable relative measurement and uncertainty reporting. <strong>It is enriched with features which are very useful especially with respect to merging a Pull Request into target branch.</strong> Therefore, it is integrated with GitHub Continuous Integration(CI) which helps to automate the whole process.</p> <h2 id="2-concept">2. Concept</h2> <p>For your PR branch and the target branch, <a href="https://github.com/lorenzwalthert/touchstone"><code class="language-plaintext highlighter-rouge">touchstone</code></a> will : <br/></p> <ul> <li>build two versions of the package in isolated libraries.</li> <li>measure the accurate relative differences between the branches. The code under experimentation will be run several times in a random order.</li> <li>comment the results of the benchmarking on the Pull Request.</li> <li>create visualizations to demonstrate the distribution of the timings for both branches.</li> </ul> <h2 id="3-installation">3. Installation</h2> <p>Installation can be done in two ways : <br/></p> <ul> <li><strong>CRAN</strong> : <div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">install.packages</span><span class="p">(</span><span class="s2">"touchstone"</span><span class="p">)</span><span class="w">
+</span></code></pre></div> </div> </li> <li><strong>GitHub</strong> : <div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="w"> </span><span class="n">devtools</span><span class="o">::</span><span class="n">install_github</span><span class="p">(</span><span class="s2">"lorenzwalthert/touchstone"</span><span class="p">)</span><span class="w">
+</span></code></pre></div> </div> </li> </ul> <h2 id="4-package-usage">4. Package Usage</h2> <p>Initialize touchstone by running <br/></p> <div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">touchstone</span><span class="o">::</span><span class="n">use_touchstone</span><span class="p">()</span><span class="w">
+</span></code></pre></div></div> <p>The above line of code will :</p> <ul> <li> <p>Create a directory known as the <code class="language-plaintext highlighter-rouge">touchstone</code> directory in the root of the repository with <code class="language-plaintext highlighter-rouge">config.json</code> and <code class="language-plaintext highlighter-rouge">script.R</code>. The <code class="language-plaintext highlighter-rouge">config.json</code> contains configurations that define how to run your benchmark. The <code class="language-plaintext highlighter-rouge">script.R</code> is the script that runs the benchmark. The <code class="language-plaintext highlighter-rouge">header.R</code> contains the default PR header whilst the <code class="language-plaintext highlighter-rouge">footer.R</code> containing the default PR comment footer.</p> </li> <li> <p>Populate the file <code class="language-plaintext highlighter-rouge">touchstone-receive.yaml</code> in <code class="language-plaintext highlighter-rouge">.github/workflows/.</code> and <code class="language-plaintext highlighter-rouge">touchstone-comment.yaml</code> in <code class="language-plaintext highlighter-rouge">.github/workflows/</code> respectively.</p> </li> <li> <p>Add the <code class="language-plaintext highlighter-rouge">touchstone</code> directory to <code class="language-plaintext highlighter-rouge">.Rbuildignore</code> file in the root directory of your repository.</p> </li> </ul> <p>Write the workflow files you need to invoke <code class="language-plaintext highlighter-rouge">touchstone</code> in new pull requests into <code class="language-plaintext highlighter-rouge">.github/workflows/</code>.</p> <p>Modify the <code class="language-plaintext highlighter-rouge">touchstone</code> script <code class="language-plaintext highlighter-rouge">touchstone/script.R</code> to run different benchmarks.</p> <h2 id="5-understanding-the-script">5. Understanding the script</h2> <p>There are three default functions inside the <code class="language-plaintext highlighter-rouge">script.R</code> file.</p> <h3 id="i-branch_install">(i) <code class="language-plaintext highlighter-rouge">branch_install</code></h3> <div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">touchstone</span><span class="o">::</span><span class="n">branch_install</span><span class="p">()</span><span class="w">
+</span></code></pre></div></div> <p><code class="language-plaintext highlighter-rouge">branch_install</code> installs each <code class="language-plaintext highlighter-rouge">branch</code> in a separate library for isolation.</p> <h4 id="usage">Usage</h4> <div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">branch_install</span><span class="p">(</span><span class="w">
+  </span><span class="n">branches</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="n">branch_get_or_fail</span><span class="p">(</span><span class="s2">"GITHUB_BASE_REF"</span><span class="p">),</span><span class="w">
+    </span><span class="n">branch_get_or_fail</span><span class="p">(</span><span class="s2">"GITHUB_HEAD_REF"</span><span class="p">)),</span><span class="w">
+  </span><span class="n">path_pkg</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"."</span><span class="p">,</span><span class="w">
+  </span><span class="n">install_dependencies</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">FALSE</span><span class="w">
+</span><span class="p">)</span><span class="w">
+</span></code></pre></div></div> <p><strong>The arguments :</strong> <br/> <code class="language-plaintext highlighter-rouge">branches</code> are names of the branches in character vector <br/> <code class="language-plaintext highlighter-rouge">path_pkg</code> represents the path to the package which has a default value of <code class="language-plaintext highlighter-rouge">"."</code> <br/> <code class="language-plaintext highlighter-rouge">install_dependencies</code> is a boolean which enables dependencies to be installed, has a default value of <code class="language-plaintext highlighter-rouge">FALSE</code> <br/></p> <h3 id="ii-benchmark_run">(ii) <code class="language-plaintext highlighter-rouge">benchmark_run</code></h3> <div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">touchstone</span><span class="o">::</span><span class="n">benchmark_run</span><span class="p">()</span><span class="w">
+</span></code></pre></div></div> <p><code class="language-plaintext highlighter-rouge">benchmark_run</code> runs benchmarks for git branches using function calls from your package.</p> <h4 id="usage-1">Usage</h4> <div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">benchmark_run</span><span class="p">(</span><span class="w">
+  </span><span class="n">expr_before_benchmark</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">},</span><span class="w">
+  </span><span class="n">...</span><span class="p">,</span><span class="w">
+  </span><span class="n">branches</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="n">branch_get_or_fail</span><span class="p">(</span><span class="s2">"GITHUB_BASE_REF"</span><span class="p">),</span><span class="w">
+    </span><span class="n">branch_get_or_fail</span><span class="p">(</span><span class="s2">"GITHUB_HEAD_REF"</span><span class="p">)),</span><span class="w">
+  </span><span class="n">n</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">100</span><span class="p">,</span><span class="w">
+  </span><span class="n">path_pkg</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"."</span><span class="w">
+</span><span class="p">)</span><span class="w">
+</span></code></pre></div></div> <p><strong>The arguments :</strong> <br/> <code class="language-plaintext highlighter-rouge">expr_before_benchmark</code> allows an expression to be executed just before benchmark is run<br/> <code class="language-plaintext highlighter-rouge">...</code> is the named expression of length one with code to benchmark<br/> <code class="language-plaintext highlighter-rouge">branches</code> are names of the branches in character vector <br/> <code class="language-plaintext highlighter-rouge">n</code> is the number of times benchmarks should be run for each of the branches. <br/> <code class="language-plaintext highlighter-rouge">path_pkg</code> represents the path to the package <br/></p> <h3 id="ii-benchmark_analyze">(ii) <code class="language-plaintext highlighter-rouge">benchmark_analyze</code></h3> <div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">touchstone</span><span class="o">::</span><span class="n">benchmark_analyze</span><span class="p">()</span><span class="w">
+</span></code></pre></div></div> <p><code class="language-plaintext highlighter-rouge">benchmark_analyze</code> creates artifacts used downstream in the GitHub Action to turn raw benchmark results into text and figures.</p> <h4 id="usage-2">Usage</h4> <div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">benchmark_analyze</span><span class="p">(</span><span class="w">
+  </span><span class="n">branches</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nf">c</span><span class="p">(</span><span class="n">branch_get_or_fail</span><span class="p">(</span><span class="s2">"GITHUB_BASE_REF"</span><span class="p">),</span><span class="w">
+    </span><span class="n">branch_get_or_fail</span><span class="p">(</span><span class="s2">"GITHUB_HEAD_REF"</span><span class="p">)),</span><span class="w">
+  </span><span class="n">names</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">NULL</span><span class="p">,</span><span class="w">
+  </span><span class="n">ci</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0.95</span><span class="w">
+</span><span class="p">)</span><span class="w">
+</span></code></pre></div></div> <p><strong>The arguments :</strong> <br/> <code class="language-plaintext highlighter-rouge">branches</code> are the names of the branches in character vector under consideration <br/> <code class="language-plaintext highlighter-rouge">names</code> are the names of the branches which is actually used for the analysis. <br/> <code class="language-plaintext highlighter-rouge">ci</code> represents the confidence level which defaults to 0.95 out of 1 <br/></p> <h2 id="6-running-the--script">6. Running the script</h2> <p>On the R Interactive console, run</p> <div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">touchstone</span><span class="o">::</span><span class="n">run_script</span><span class="p">()</span><span class="w">
+</span></code></pre></div></div> <h4 id="usage-3">Usage</h4> <div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">run_script</span><span class="p">(</span><span class="w">
+  </span><span class="n">path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"touchstone/script.R"</span><span class="p">,</span><span class="w">
+  </span><span class="n">branch</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="n">branch_get_or_fail</span><span class="p">(</span><span class="s2">"GITHUB_HEAD_REF"</span><span class="p">)</span><span class="w">
+</span><span class="p">)</span><span class="w">
 
-   function Diff2Html() {
-@@ -43,7 +42,7 @@
-
-     var fileList = '';
-     if (configOrEmpty.showFiles === true) {
--      fileList = fileLister.generateFileList(diffJson, configOrEmpty);
-+      fileList = htmlPrinter.generateFileListSummary(diffJson, configOrEmpty);
-     }
-
-     var diffOutput = '';
-diff --git a/src/file-list-printer.js b/src/file-list-printer.js
-index e408d9b2..1e0a2c61 100644
---- a/src/file-list-printer.js
-+++ b/src/file-list-printer.js
-@@ -8,11 +8,16 @@
- (function() {
-   var printerUtils = require('./printer-utils.js').PrinterUtils;
-
--  var hoganUtils = require('./hoganjs-utils.js').HoganJsUtils;
-+  var hoganUtils;
-+
-   var baseTemplatesPath = 'file-summary';
-   var iconsBaseTemplatesPath = 'icon';
-
--  function FileListPrinter() {
-+  function FileListPrinter(config) {
-+    this.config = config;
-+
-+    var HoganJsUtils = require('./hoganjs-utils.js').HoganJsUtils;
-+    hoganUtils = new HoganJsUtils(config);
-   }
-
-   FileListPrinter.prototype.generateFileList = function(diffFiles) {
-@@ -38,5 +43,5 @@
-     });
-   };
-
--  module.exports.FileListPrinter = new FileListPrinter();
-+  module.exports.FileListPrinter = FileListPrinter;
- })();
-diff --git a/src/hoganjs-utils.js b/src/hoganjs-utils.js
-index 9949e5fa..0dda08d7 100644
---- a/src/hoganjs-utils.js
-+++ b/src/hoganjs-utils.js
-@@ -8,18 +8,19 @@
- (function() {
-   var fs = require('fs');
-   var path = require('path');
--
-   var hogan = require('hogan.js');
-
-   var hoganTemplates = require('./templates/diff2html-templates.js');
-
--  var templatesPath = path.resolve(__dirname, 'templates');
-+  var extraTemplates;
-
--  function HoganJsUtils() {
-+  function HoganJsUtils(configuration) {
-+    this.config = configuration || {};
-+    extraTemplates = this.config.templates || {};
-   }
-
--  HoganJsUtils.prototype.render = function(namespace, view, params, configuration) {
--    var template = this.template(namespace, view, configuration);
-+  HoganJsUtils.prototype.render = function(namespace, view, params) {
-+    var template = this.template(namespace, view);
-     if (template) {
-       return template.render(params);
-     }
-@@ -27,17 +28,16 @@
-     return null;
-   };
-
--  HoganJsUtils.prototype.template = function(namespace, view, configuration) {
--    var config = configuration || {};
-+  HoganJsUtils.prototype.template = function(namespace, view) {
-     var templateKey = this._templateKey(namespace, view);
-
--    return this._getTemplate(templateKey, config);
-+    return this._getTemplate(templateKey);
-   };
-
--  HoganJsUtils.prototype._getTemplate = function(templateKey, config) {
-+  HoganJsUtils.prototype._getTemplate = function(templateKey) {
-     var template;
-
--    if (!config.noCache) {
-+    if (!this.config.noCache) {
-       template = this._readFromCache(templateKey);
-     }
-
-@@ -53,6 +53,7 @@
-
-     try {
-       if (fs.readFileSync) {
-+        var templatesPath = path.resolve(__dirname, 'templates');
-         var templatePath = path.join(templatesPath, templateKey);
-         var templateContent = fs.readFileSync(templatePath + '.mustache', 'utf8');
-         template = hogan.compile(templateContent);
-@@ -66,12 +67,16 @@
-   };
-
-   HoganJsUtils.prototype._readFromCache = function(templateKey) {
--    return hoganTemplates[templateKey];
-+    return extraTemplates[templateKey] || hoganTemplates[templateKey];
-   };
-
-   HoganJsUtils.prototype._templateKey = function(namespace, view) {
-     return namespace + '-' + view;
-   };
-
--  module.exports.HoganJsUtils = new HoganJsUtils();
-+  HoganJsUtils.prototype.compile = function(templateStr) {
-+    return hogan.compile(templateStr);
-+  };
-+
-+  module.exports.HoganJsUtils = HoganJsUtils;
- })();
-diff --git a/src/html-printer.js b/src/html-printer.js
-index 585d5b66..13f83047 100644
---- a/src/html-printer.js
-+++ b/src/html-printer.js
-@@ -8,6 +8,7 @@
- (function() {
-   var LineByLinePrinter = require('./line-by-line-printer.js').LineByLinePrinter;
-   var SideBySidePrinter = require('./side-by-side-printer.js').SideBySidePrinter;
-+  var FileListPrinter = require('./file-list-printer.js').FileListPrinter;
-
-   function HtmlPrinter() {
-   }
-@@ -22,5 +23,10 @@
-     return sideBySidePrinter.generateSideBySideJsonHtml(diffFiles);
-   };
-
-+  HtmlPrinter.prototype.generateFileListSummary = function(diffJson, config) {
-+    var fileListPrinter = new FileListPrinter(config);
-+    return fileListPrinter.generateFileList(diffJson);
-+  };
-+
-   module.exports.HtmlPrinter = new HtmlPrinter();
- })();
-diff --git a/src/line-by-line-printer.js b/src/line-by-line-printer.js
-index b07eb53c..d230bedd 100644
---- a/src/line-by-line-printer.js
-+++ b/src/line-by-line-printer.js
-@@ -11,7 +11,8 @@
-   var utils = require('./utils.js').Utils;
-   var Rematch = require('./rematch.js').Rematch;
-
--  var hoganUtils = require('./hoganjs-utils.js').HoganJsUtils;
-+  var hoganUtils;
-+
-   var genericTemplatesPath = 'generic';
-   var baseTemplatesPath = 'line-by-line';
-   var iconsBaseTemplatesPath = 'icon';
-@@ -19,6 +20,9 @@
-
-   function LineByLinePrinter(config) {
-     this.config = config;
-+
-+    var HoganJsUtils = require('./hoganjs-utils.js').HoganJsUtils;
-+    hoganUtils = new HoganJsUtils(config);
-   }
-
-   LineByLinePrinter.prototype.makeFileDiffHtml = function(file, diffs) {
-diff --git a/src/side-by-side-printer.js b/src/side-by-side-printer.js
-index bbf1dc8d..5e3033b3 100644
---- a/src/side-by-side-printer.js
-+++ b/src/side-by-side-printer.js
-@@ -11,7 +11,8 @@
-   var utils = require('./utils.js').Utils;
-   var Rematch = require('./rematch.js').Rematch;
-
--  var hoganUtils = require('./hoganjs-utils.js').HoganJsUtils;
-+  var hoganUtils;
-+
-   var genericTemplatesPath = 'generic';
-   var baseTemplatesPath = 'side-by-side';
-   var iconsBaseTemplatesPath = 'icon';
-@@ -26,6 +27,9 @@
-
-   function SideBySidePrinter(config) {
-     this.config = config;
-+
-+    var HoganJsUtils = require('./hoganjs-utils.js').HoganJsUtils;
-+    hoganUtils = new HoganJsUtils(config);
-   }
-
-   SideBySidePrinter.prototype.makeDiffHtml = function(file, diffs) {
-diff --git a/test/file-list-printer-tests.js b/test/file-list-printer-tests.js
-index a502a46f..60ea3208 100644
---- a/test/file-list-printer-tests.js
-+++ b/test/file-list-printer-tests.js
-@@ -1,6 +1,6 @@
- var assert = require('assert');
-
--var fileListPrinter = require('../src/file-list-printer.js').FileListPrinter;
-+var fileListPrinter = new (require('../src/file-list-printer.js').FileListPrinter)();
-
- describe('FileListPrinter', function() {
-   describe('generateFileList', function() {
-diff --git a/test/hogan-cache-tests.js b/test/hogan-cache-tests.js
-index 190bf6f8..3bb754ac 100644
---- a/test/hogan-cache-tests.js
-+++ b/test/hogan-cache-tests.js
-@@ -1,6 +1,6 @@
- var assert = require('assert');
-
--var HoganJsUtils = require('../src/hoganjs-utils.js').HoganJsUtils;
-+var HoganJsUtils = new (require('../src/hoganjs-utils.js').HoganJsUtils)();
- var diffParser = require('../src/diff-parser.js').DiffParser;
-
- describe('HoganJsUtils', function() {
-@@ -21,16 +21,28 @@ describe('HoganJsUtils', function() {
-       });
-       assert.equal(emptyDiffHtml, result);
-     });
-+
-     it('should render view without cache', function() {
-       var result = HoganJsUtils.render('generic', 'empty-diff', {
-         contentClass: 'd2h-code-line',
-         diffParser: diffParser
-       }, {noCache: true});
--      assert.equal(emptyDiffHtml + '\n', result);
-+      assert.equal(emptyDiffHtml, result);
-     });
-+
-     it('should return null if template is missing', function() {
--      var result = HoganJsUtils.render('generic', 'missing-template', {}, {noCache: true});
-+      var hoganUtils = new (require('../src/hoganjs-utils.js').HoganJsUtils)({noCache: true});
-+      var result = hoganUtils.render('generic', 'missing-template', {});
-       assert.equal(null, result);
-     });
-+
-+    it('should allow templates to be overridden', function() {
-+      var emptyDiffTemplate = HoganJsUtils.compile('&lt;p&gt;&lt;/p&gt;');
-+
-+      var config = {templates: {'generic-empty-diff': emptyDiffTemplate}};
-+      var hoganUtils = new (require('../src/hoganjs-utils.js').HoganJsUtils)(config);
-+      var result = hoganUtils.render('generic', 'empty-diff', {myName: 'Rodrigo Fernandes'});
-+      assert.equal('&lt;p&gt;Rodrigo Fernandes&lt;/p&gt;', result);
-+    });
-   });
- });
-diff --git a/test/line-by-line-tests.js b/test/line-by-line-tests.js
-index 1cd92073..8869b3df 100644
---- a/test/line-by-line-tests.js
-+++ b/test/line-by-line-tests.js
-@@ -14,7 +14,7 @@ describe('LineByLinePrinter', function() {
-         '            File without changes\n' +
-         '        &lt;/div&gt;\n' +
-         '    &lt;/td&gt;\n' +
--        '&lt;/tr&gt;\n';
-+        '&lt;/tr&gt;';
-
-       assert.equal(expected, fileHtml);
-     });
-@@ -422,7 +422,6 @@ describe('LineByLinePrinter', function() {
-         '        &lt;/div&gt;\n' +
-         '    &lt;/td&gt;\n' +
-         '&lt;/tr&gt;\n' +
--        '\n' +
-         '                &lt;/tbody&gt;\n' +
-         '            &lt;/table&gt;\n' +
-         '        &lt;/div&gt;\n' +
-diff --git a/test/side-by-side-printer-tests.js b/test/side-by-side-printer-tests.js
-index 76625f8e..771daaa5 100644
---- a/test/side-by-side-printer-tests.js
-+++ b/test/side-by-side-printer-tests.js
-@@ -14,7 +14,7 @@ describe('SideBySidePrinter', function() {
-         '            File without changes\n' +
-         '        &lt;/div&gt;\n' +
-         '    &lt;/td&gt;\n' +
--        '&lt;/tr&gt;\n';
-+        '&lt;/tr&gt;';
-
-       assert.equal(expectedRight, fileHtml.right);
-       assert.equal(expectedLeft, fileHtml.left);
-@@ -324,7 +324,6 @@ describe('SideBySidePrinter', function() {
-         '        &lt;/div&gt;\n' +
-         '    &lt;/td&gt;\n' +
-         '&lt;/tr&gt;\n' +
--        '\n' +
-         '                    &lt;/tbody&gt;\n' +
-         '                &lt;/table&gt;\n' +
-         '            &lt;/div&gt;\n' +
-
-From f3cadb96677d0eb82fc2752dc3ffbf35ca9b5bdb Mon Sep 17 00:00:00 2001
-From: Rodrigo Fernandes &lt;rtfrodrigo@gmail.com&gt;
-Date: Sat, 15 Oct 2016 13:21:22 +0100
-Subject: [PATCH 2/2] Allow uncompiled templates
-
----
- README.md                 |  3 +++
- src/hoganjs-utils.js      |  7 +++++++
- test/hogan-cache-tests.js | 24 +++++++++++++++++++++++-
- 3 files changed, 33 insertions(+), 1 deletion(-)
-
-diff --git a/README.md b/README.md
-index 132c8a28..46909f25 100644
---- a/README.md
-+++ b/README.md
-@@ -98,6 +98,9 @@ The HTML output accepts a Javascript object with configuration. Possible options
-   - `synchronisedScroll`: scroll both panes in side-by-side mode: `true` or `false`, default is `false`
-   - `matchWordsThreshold`: similarity threshold for word matching, default is 0.25
-   - `matchingMaxComparisons`: perform at most this much comparisons for line matching a block of changes, default is `2500`
-+  - `templates`: object with previously compiled templates to replace parts of the html
-+  - `rawTemplates`: object with raw not compiled templates to replace parts of the html
-+  &gt; For more information regarding the possible templates look into [src/templates](https://github.com/rtfpessoa/diff2html/tree/master/src/templates)
-
- ## Diff2HtmlUI Helper
-
-diff --git a/src/hoganjs-utils.js b/src/hoganjs-utils.js
-index 0dda08d7..b2e9c275 100644
---- a/src/hoganjs-utils.js
-+++ b/src/hoganjs-utils.js
-@@ -17,6 +17,13 @@
-   function HoganJsUtils(configuration) {
-     this.config = configuration || {};
-     extraTemplates = this.config.templates || {};
-+
-+    var rawTemplates = this.config.rawTemplates || {};
-+    for (var templateName in rawTemplates) {
-+      if (rawTemplates.hasOwnProperty(templateName)) {
-+        if (!extraTemplates[templateName]) extraTemplates[templateName] = this.compile(rawTemplates[templateName]);
-+      }
-+    }
-   }
-
-   HoganJsUtils.prototype.render = function(namespace, view, params) {
-diff --git a/test/hogan-cache-tests.js b/test/hogan-cache-tests.js
-index 3bb754ac..a34839c0 100644
---- a/test/hogan-cache-tests.js
-+++ b/test/hogan-cache-tests.js
-@@ -36,7 +36,7 @@ describe('HoganJsUtils', function() {
-       assert.equal(null, result);
-     });
-
--    it('should allow templates to be overridden', function() {
-+    it('should allow templates to be overridden with compiled templates', function() {
-       var emptyDiffTemplate = HoganJsUtils.compile('&lt;p&gt;&lt;/p&gt;');
-
-       var config = {templates: {'generic-empty-diff': emptyDiffTemplate}};
-@@ -44,5 +44,27 @@ describe('HoganJsUtils', function() {
-       var result = hoganUtils.render('generic', 'empty-diff', {myName: 'Rodrigo Fernandes'});
-       assert.equal('&lt;p&gt;Rodrigo Fernandes&lt;/p&gt;', result);
-     });
-+
-+    it('should allow templates to be overridden with uncompiled templates', function() {
-+      var emptyDiffTemplate = '&lt;p&gt;&lt;/p&gt;';
-+
-+      var config = {rawTemplates: {'generic-empty-diff': emptyDiffTemplate}};
-+      var hoganUtils = new (require('../src/hoganjs-utils.js').HoganJsUtils)(config);
-+      var result = hoganUtils.render('generic', 'empty-diff', {myName: 'Rodrigo Fernandes'});
-+      assert.equal('&lt;p&gt;Rodrigo Fernandes&lt;/p&gt;', result);
-+    });
-+
-+    it('should allow templates to be overridden giving priority to compiled templates', function() {
-+      var emptyDiffTemplate = HoganJsUtils.compile('&lt;p&gt;&lt;/p&gt;');
-+      var emptyDiffTemplateUncompiled = '&lt;p&gt;Not used!&lt;/p&gt;';
-+
-+      var config = {
-+        templates: {'generic-empty-diff': emptyDiffTemplate},
-+        rawTemplates: {'generic-empty-diff': emptyDiffTemplateUncompiled}
-+      };
-+      var hoganUtils = new (require('../src/hoganjs-utils.js').HoganJsUtils)(config);
-+      var result = hoganUtils.render('generic', 'empty-diff', {myName: 'Rodrigo Fernandes'});
-+      assert.equal('&lt;p&gt;Rodrigo Fernandes&lt;/p&gt;', result);
-+    });
-   });
- });
-</code></pre>]]></content><author><name></name></author><category term="sample-posts"/><category term="formatting"/><category term="code"/><summary type="html"><![CDATA[this is how you can display code diffs]]></summary></entry><entry><title type="html">a post with advanced image components</title><link href="https://engineerdanny.github.io/blog/2024/advanced-images/" rel="alternate" type="text/html" title="a post with advanced image components"/><published>2024-01-27T11:46:00+00:00</published><updated>2024-01-27T11:46:00+00:00</updated><id>https://engineerdanny.github.io/blog/2024/advanced-images</id><content type="html" xml:base="https://engineerdanny.github.io/blog/2024/advanced-images/"><![CDATA[<p>This is an example post with advanced image components.</p> <h2 id="image-slider">Image Slider</h2> <p>This is a simple image slider. It uses the <a href="https://swiperjs.com/">Swiper</a> library. Check the <a href="https://swiperjs.com/demos">examples page</a> for more information of what you can achieve with it.</p> <swiper-container keyboard="true" navigation="true" pagination="true" pagination-clickable="true" pagination-dynamic-bullets="true" rewind="true"> <swiper-slide> <figure> <picture> <source class="responsive-img-srcset" srcset="/assets/img/9-480.webp 480w,/assets/img/9-800.webp 800w,/assets/img/9-1400.webp 1400w," sizes="95vw" type="image/webp"/> <img src="/assets/img/9.jpg" class="img-fluid rounded z-depth-1" width="100%" height="auto" loading="eager" onerror="this.onerror=null; $('.responsive-img-srcset').remove();"/> </picture> </figure> </swiper-slide> <swiper-slide> <figure> <picture> <source class="responsive-img-srcset" srcset="/assets/img/7-480.webp 480w,/assets/img/7-800.webp 800w,/assets/img/7-1400.webp 1400w," sizes="95vw" type="image/webp"/> <img src="/assets/img/7.jpg" class="img-fluid rounded z-depth-1" width="100%" height="auto" loading="eager" onerror="this.onerror=null; $('.responsive-img-srcset').remove();"/> </picture> </figure> </swiper-slide> <swiper-slide> <figure> <picture> <source class="responsive-img-srcset" srcset="/assets/img/8-480.webp 480w,/assets/img/8-800.webp 800w,/assets/img/8-1400.webp 1400w," sizes="95vw" type="image/webp"/> <img src="/assets/img/8.jpg" class="img-fluid rounded z-depth-1" width="100%" height="auto" loading="eager" onerror="this.onerror=null; $('.responsive-img-srcset').remove();"/> </picture> </figure> </swiper-slide> <swiper-slide> <figure> <picture> <source class="responsive-img-srcset" srcset="/assets/img/10-480.webp 480w,/assets/img/10-800.webp 800w,/assets/img/10-1400.webp 1400w," sizes="95vw" type="image/webp"/> <img src="/assets/img/10.jpg" class="img-fluid rounded z-depth-1" width="100%" height="auto" loading="eager" onerror="this.onerror=null; $('.responsive-img-srcset').remove();"/> </picture> </figure> </swiper-slide> <swiper-slide> <figure> <picture> <source class="responsive-img-srcset" srcset="/assets/img/12-480.webp 480w,/assets/img/12-800.webp 800w,/assets/img/12-1400.webp 1400w," sizes="95vw" type="image/webp"/> <img src="/assets/img/12.jpg" class="img-fluid rounded z-depth-1" width="100%" height="auto" loading="eager" onerror="this.onerror=null; $('.responsive-img-srcset').remove();"/> </picture> </figure> </swiper-slide> </swiper-container> <h2 id="image-comparison-slider">Image Comparison Slider</h2> <p>This is a simple image comparison slider. It uses the <a href="https://img-comparison-slider.sneas.io/">img-comparison-slider</a> library. Check the <a href="https://img-comparison-slider.sneas.io/examples.html">examples page</a> for more information of what you can achieve with it.</p> <img-comparison-slider> <figure slot="first"> <picture> <source class="responsive-img-srcset" srcset="/assets/img/prof_pic-480.webp 480w,/assets/img/prof_pic-800.webp 800w,/assets/img/prof_pic-1400.webp 1400w," sizes="95vw" type="image/webp"/> <img src="/assets/img/prof_pic.jpg" class="img-fluid rounded z-depth-1" width="100%" height="auto" loading="lazy" onerror="this.onerror=null; $('.responsive-img-srcset').remove();"/> </picture> </figure> <figure slot="second"> <picture> <source class="responsive-img-srcset" srcset="/assets/img/prof_pic_color-480.webp 480w,/assets/img/prof_pic_color-800.webp 800w,/assets/img/prof_pic_color-1400.webp 1400w," sizes="95vw" type="image/webp"/> <img src="/assets/img/prof_pic_color.png" class="img-fluid rounded z-depth-1" width="100%" height="auto" loading="lazy" onerror="this.onerror=null; $('.responsive-img-srcset').remove();"/> </picture> </figure> </img-comparison-slider>]]></content><author><name></name></author><category term="sample-posts"/><category term="formatting"/><category term="images"/><summary type="html"><![CDATA[this is what advanced image components could look like]]></summary></entry><entry><title type="html">a post with vega lite</title><link href="https://engineerdanny.github.io/blog/2024/vega-lite/" rel="alternate" type="text/html" title="a post with vega lite"/><published>2024-01-27T00:20:00+00:00</published><updated>2024-01-27T00:20:00+00:00</updated><id>https://engineerdanny.github.io/blog/2024/vega-lite</id><content type="html" xml:base="https://engineerdanny.github.io/blog/2024/vega-lite/"><![CDATA[<p>This is an example post with some <a href="https://vega.github.io/vega-lite/">vega lite</a> code.</p> <div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">```</span><span class="nl">vega_lite
-</span><span class="sb">{
-  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "description": "A dot plot showing each movie in the database, and the difference from the average movie rating. The display is sorted by year to visualize everything in sequential order. The graph is for all Movies before 2019.",
-  "data": {
-    "url": "https://raw.githubusercontent.com/vega/vega/main/docs/data/movies.json"
-  },
-  "transform": [
-    {"filter": "datum['IMDB Rating'] != null"},
-    {"filter": {"timeUnit": "year", "field": "Release Date", "range": [null, 2019]}},
-    {
-      "joinaggregate": [{
-        "op": "mean",
-        "field": "IMDB Rating",
-        "as": "AverageRating"
-      }]
-    },
-    {
-      "calculate": "datum['IMDB Rating'] - datum.AverageRating",
-      "as": "RatingDelta"
-    }
-  ],
-  "mark": "point",
-  "encoding": {
-    "x": {
-      "field": "Release Date",
-      "type": "temporal"
-    },
-    "y": {
-      "field": "RatingDelta",
-      "type": "quantitative",
-      "title": "Rating Delta"
-    },
-    "color": {
-      "field": "RatingDelta",
-      "type": "quantitative",
-      "scale": {"domainMid": 0},
-      "title": "Rating Delta"
-    }
-  }
-}</span>
-<span class="p">```</span>
-</code></pre></div></div> <p>Which generates:</p> <pre><code class="language-vega_lite">{
-  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "description": "A dot plot showing each movie in the database, and the difference from the average movie rating. The display is sorted by year to visualize everything in sequential order. The graph is for all Movies before 2019.",
-  "data": {
-    "url": "https://raw.githubusercontent.com/vega/vega/main/docs/data/movies.json"
-  },
-  "transform": [
-    {"filter": "datum['IMDB Rating'] != null"},
-    {"filter": {"timeUnit": "year", "field": "Release Date", "range": [null, 2019]}},
-    {
-      "joinaggregate": [{
-        "op": "mean",
-        "field": "IMDB Rating",
-        "as": "AverageRating"
-      }]
-    },
-    {
-      "calculate": "datum['IMDB Rating'] - datum.AverageRating",
-      "as": "RatingDelta"
-    }
-  ],
-  "mark": "point",
-  "encoding": {
-    "x": {
-      "field": "Release Date",
-      "type": "temporal"
-    },
-    "y": {
-      "field": "RatingDelta",
-      "type": "quantitative",
-      "title": "Rating Delta"
-    },
-    "color": {
-      "field": "RatingDelta",
-      "type": "quantitative",
-      "scale": {"domainMid": 0},
-      "title": "Rating Delta"
-    }
-  }
-}
-</code></pre> <p>This plot supports both light and dark themes.</p>]]></content><author><name></name></author><category term="sample-posts"/><category term="formatting"/><category term="charts"/><summary type="html"><![CDATA[this is what included vega lite code could look like]]></summary></entry><entry><title type="html">a post with geojson</title><link href="https://engineerdanny.github.io/blog/2024/geojson-map/" rel="alternate" type="text/html" title="a post with geojson"/><published>2024-01-26T17:57:00+00:00</published><updated>2024-01-26T17:57:00+00:00</updated><id>https://engineerdanny.github.io/blog/2024/geojson-map</id><content type="html" xml:base="https://engineerdanny.github.io/blog/2024/geojson-map/"><![CDATA[<p>This is an example post with some <a href="https://geojson.org/">geojson</a> code. The support is provided thanks to <a href="https://leafletjs.com/">Leaflet</a>. To create your own visualization, go to <a href="https://geojson.io/">geojson.io</a>.</p> <div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">```</span><span class="nl">geojson
-</span><span class="sb">{
-  "type": "FeatureCollection",
-  "features": [
-    {
-      "type": "Feature",
-      "properties": {},
-      "geometry": {
-        "coordinates": [
-          [
-            [
-              -60.11363029935569,
-              -2.904625022183211
-            ],
-            [
-              -60.11363029935569,
-              -3.162613728707967
-            ],
-            [
-              -59.820894493858034,
-              -3.162613728707967
-            ],
-            [
-              -59.820894493858034,
-              -2.904625022183211
-            ],
-            [
-              -60.11363029935569,
-              -2.904625022183211
-            ]
-          ]
-        ],
-        "type": "Polygon"
-      }
-    }
-  ]
-}</span>
-<span class="p">```</span>
-</code></pre></div></div> <p>Which generates:</p> <pre><code class="language-geojson">{
-  "type": "FeatureCollection",
-  "features": [
-    {
-      "type": "Feature",
-      "properties": {},
-      "geometry": {
-        "coordinates": [
-          [
-            [
-              -60.11363029935569,
-              -2.904625022183211
-            ],
-            [
-              -60.11363029935569,
-              -3.162613728707967
-            ],
-            [
-              -59.820894493858034,
-              -3.162613728707967
-            ],
-            [
-              -59.820894493858034,
-              -2.904625022183211
-            ],
-            [
-              -60.11363029935569,
-              -2.904625022183211
-            ]
-          ]
-        ],
-        "type": "Polygon"
-      }
-    }
-  ]
-}
-</code></pre>]]></content><author><name></name></author><category term="sample-posts"/><category term="formatting"/><category term="charts"/><category term="maps"/><summary type="html"><![CDATA[this is what included geojson code could look like]]></summary></entry><entry><title type="html">a post with echarts</title><link href="https://engineerdanny.github.io/blog/2024/echarts/" rel="alternate" type="text/html" title="a post with echarts"/><published>2024-01-26T16:03:00+00:00</published><updated>2024-01-26T16:03:00+00:00</updated><id>https://engineerdanny.github.io/blog/2024/echarts</id><content type="html" xml:base="https://engineerdanny.github.io/blog/2024/echarts/"><![CDATA[<p>This is an example post with some <a href="https://echarts.apache.org/">echarts</a> code.</p> <div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">```</span><span class="nl">echarts
-</span><span class="sb">{
-  "title": {
-    "text": "ECharts Getting Started Example"
-  },
-  "responsive": true,
-  "tooltip": {},
-  "legend": {
-    "top": "30px",
-    "data": ["sales"]
-  },
-  "xAxis": {
-    "data": ["Shirts", "Cardigans", "Chiffons", "Pants", "Heels", "Socks"]
-  },
-  "yAxis": {},
-  "series": [
-    {
-      "name": "sales",
-      "type": "bar",
-      "data": [5, 20, 36, 10, 10, 20]
-    }
-  ]
-}</span>
-<span class="p">```</span>
-</code></pre></div></div> <p>Which generates:</p> <pre><code class="language-echarts">{
-  "title": {
-    "text": "ECharts Getting Started Example"
-  },
-  "responsive": true,
-  "tooltip": {},
-  "legend": {
-    "top": "30px",
-    "data": ["sales"]
-  },
-  "xAxis": {
-    "data": ["Shirts", "Cardigans", "Chiffons", "Pants", "Heels", "Socks"]
-  },
-  "yAxis": {},
-  "series": [
-    {
-      "name": "sales",
-      "type": "bar",
-      "data": [5, 20, 36, 10, 10, 20]
-    }
-  ]
-}
-</code></pre> <p>Note that this library offer support for both light and dark themes. You can switch between them using the theme switcher in the top right corner of the page.</p>]]></content><author><name></name></author><category term="sample-posts"/><category term="formatting"/><category term="charts"/><summary type="html"><![CDATA[this is what included echarts code could look like]]></summary></entry><entry><title type="html">a post with chart.js</title><link href="https://engineerdanny.github.io/blog/2024/chartjs/" rel="alternate" type="text/html" title="a post with chart.js"/><published>2024-01-26T01:04:00+00:00</published><updated>2024-01-26T01:04:00+00:00</updated><id>https://engineerdanny.github.io/blog/2024/chartjs</id><content type="html" xml:base="https://engineerdanny.github.io/blog/2024/chartjs/"><![CDATA[<p>This is an example post with some <a href="https://www.chartjs.org/">chart.js</a> code.</p> <div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">```</span><span class="nl">chartjs
-</span><span class="sb">{
-  "type": "line",
-  "data": {
-    "labels": [
-      "January",
-      "February",
-      "March",
-      "April",
-      "May",
-      "June",
-      "July"
-    ],
-    "datasets": [
-      {
-        "label": "# of bugs",
-        "fill": false,
-        "lineTension": 0.1,
-        "backgroundColor": "rgba(75,192,192,0.4)",
-        "borderColor": "rgba(75,192,192,1)",
-        "borderCapStyle": "butt",
-        "borderDash": [],
-        "borderDashOffset": 0,
-        "borderJoinStyle": "miter",
-        "pointBorderColor": "rgba(75,192,192,1)",
-        "pointBackgroundColor": "#fff",
-        "pointBorderWidth": 1,
-        "pointHoverRadius": 5,
-        "pointHoverBackgroundColor": "rgba(75,192,192,1)",
-        "pointHoverBorderColor": "rgba(220,220,220,1)",
-        "pointHoverBorderWidth": 2,
-        "pointRadius": 1,
-        "pointHitRadius": 10,
-        "data": [
-          65,
-          59,
-          80,
-          81,
-          56,
-          55,
-          40
-        ],
-        "spanGaps": false
-      }
-    ]
-  },
-  "options": {}
-}</span>
-<span class="p">```</span>
-</code></pre></div></div> <p>This is how it looks like:</p> <pre><code class="language-chartjs">{
-  "type": "line",
-  "data": {
-    "labels": [
-      "January",
-      "February",
-      "March",
-      "April",
-      "May",
-      "June",
-      "July"
-    ],
-    "datasets": [
-      {
-        "label": "# of bugs",
-        "fill": false,
-        "lineTension": 0.1,
-        "backgroundColor": "rgba(75,192,192,0.4)",
-        "borderColor": "rgba(75,192,192,1)",
-        "borderCapStyle": "butt",
-        "borderDash": [],
-        "borderDashOffset": 0,
-        "borderJoinStyle": "miter",
-        "pointBorderColor": "rgba(75,192,192,1)",
-        "pointBackgroundColor": "#fff",
-        "pointBorderWidth": 1,
-        "pointHoverRadius": 5,
-        "pointHoverBackgroundColor": "rgba(75,192,192,1)",
-        "pointHoverBorderColor": "rgba(220,220,220,1)",
-        "pointHoverBorderWidth": 2,
-        "pointRadius": 1,
-        "pointHitRadius": 10,
-        "data": [
-          65,
-          59,
-          80,
-          81,
-          56,
-          55,
-          40
-        ],
-        "spanGaps": false
-      }
-    ]
-  },
-  "options": {}
-}
-</code></pre> <p>Also another example chart.</p> <div class="language-markdown highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="p">```</span><span class="nl">chartjs
-</span><span class="sb">{
-  "type": "doughnut",
-  "data": {
-    "labels": [
-      "Red",
-      "Blue",
-      "Yellow"
-    ],
-    "datasets": [
-      {
-        "data": [
-          300,
-          50,
-          100
-        ],
-        "backgroundColor": [
-          "#FF6384",
-          "#36A2EB",
-          "#FFCE56"
-        ],
-        "hoverBackgroundColor": [
-          "#FF6384",
-          "#36A2EB",
-          "#FFCE56"
-        ]
-      }
-    ]
-  },
-  "options": {}
-}</span>
-<span class="p">```</span>
-</code></pre></div></div> <p>Which generates:</p> <pre><code class="language-chartjs">{
-  "type": "doughnut",
-  "data": {
-    "labels": [
-      "Red",
-      "Blue",
-      "Yellow"
-    ],
-    "datasets": [
-      {
-        "data": [
-          300,
-          50,
-          100
-        ],
-        "backgroundColor": [
-          "#FF6384",
-          "#36A2EB",
-          "#FFCE56"
-        ],
-        "hoverBackgroundColor": [
-          "#FF6384",
-          "#36A2EB",
-          "#FFCE56"
-        ]
-      }
-    ]
-  },
-  "options": {}
-}
-</code></pre>]]></content><author><name></name></author><category term="sample-posts"/><category term="formatting"/><category term="charts"/><summary type="html"><![CDATA[this is what included chart.js code could look like]]></summary></entry></feed>
+</span></code></pre></div></div> <p><strong>The arguments :</strong> <br/> <code class="language-plaintext highlighter-rouge">path</code> is the path to the script to run <br/> <code class="language-plaintext highlighter-rouge">branch</code> is the name of the branch corresponding to the library <br/> <br/></p> <p>After committing and pushing the workflow files to default branch, <code class="language-plaintext highlighter-rouge">Github CI</code> will run the benchmarks on every pull request and on each commit while that pull request is open.</p>]]></content><author><name></name></author><category term="touchstone"/><category term="test"/><category term="r"/><category term="git"/><category term="github"/><summary type="html"><![CDATA[An in-depth review of touchstone, an R tool for benchmarking performance of code]]></summary></entry><entry><title type="html">Sample RPerform package usage</title><link href="https://engineerdanny.github.io/blog/2022/RPerform/" rel="alternate" type="text/html" title="Sample RPerform package usage"/><published>2022-05-24T00:00:00+00:00</published><updated>2022-05-24T00:00:00+00:00</updated><id>https://engineerdanny.github.io/blog/2022/RPerform</id><content type="html" xml:base="https://engineerdanny.github.io/blog/2022/RPerform/"><![CDATA[<h1 id="introduction">Introduction</h1> <p><code class="language-plaintext highlighter-rouge">Rperform</code> is a package that allows R developers to track quantitative performance metrics of their code. It helps to provide changes in a package’s performance metrics related to runtime and memory. It is used to access performance metrics over different git versions and across git branches. It can also be integrated with <code class="language-plaintext highlighter-rouge">Travis-CI</code> for performance testing during Travis builds by making changes to the repo’s <code class="language-plaintext highlighter-rouge">.travis.yml</code> file. It can prove to be particularly useful while measuring the possible changes which can be introduced by a pull request (PR).</p> <p><em>The project was initiated as a part of the <a href="https://github.com/rstats-gsoc/gsoc2015/wiki/Test-timings-on-Travis">Google Summer of Code 2015</a> program and was accepted into the <a href="https://github.com/rstats-gsoc/gsoc2016/wiki/Rperform:-Performance-analysis-of-R-package-code">Google Summer of Code 2016</a> program.</em></p> <h1 id="installation">Installation</h1> <ul> <li>You can install the package from github using :</li> </ul> <div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">library</span><span class="p">(</span><span class="n">devtools</span><span class="p">)</span><span class="w">
+</span><span class="n">install_github</span><span class="p">(</span><span class="s2">"analyticalmonk/Rperform"</span><span class="p">)</span><span class="w">
+</span></code></pre></div></div> <p>or</p> <div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">devtools</span><span class="o">::</span><span class="n">install_github</span><span class="p">(</span><span class="s2">"analyticalmonk/Rperform"</span><span class="p">)</span><span class="w">
+</span></code></pre></div></div> <h1 id="basic-examples">Basic examples</h1> <p><strong>NOTE</strong>: The Rperform package requires you to set the current directory to the concerned git repository before using the functions.</p> <div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;</span><span class="w"> </span><span class="n">setwd</span><span class="p">(</span><span class="n">dir</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"Path/to/repo"</span><span class="p">)</span><span class="w">
+</span></code></pre></div></div> <ul> <li>The following example illustrates the use of the <code class="language-plaintext highlighter-rouge">Rperform::plot_metrics()</code> function on the git repository of the package <a href="https://github.com/tdhock/stringr">stringr</a>.</li> </ul> <div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;</span><span class="w"> </span><span class="n">setwd</span><span class="p">(</span><span class="s2">"./stringr"</span><span class="p">)</span><span class="w">
+</span><span class="o">&gt;</span><span class="w"> </span><span class="n">library</span><span class="p">(</span><span class="n">Rperform</span><span class="p">)</span><span class="w">
+</span><span class="o">&gt;</span><span class="w"> </span><span class="n">plot_metrics</span><span class="p">(</span><span class="n">test_path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"tests/testthat/test-join.r"</span><span class="p">,</span><span class="w"> </span><span class="n">metric</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"time"</span><span class="p">,</span><span class="w"> </span><span class="n">num_commits</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">10</span><span class="p">,</span><span class="w"> </span><span class="n">save_data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">,</span><span class="w"> </span><span class="n">save_plots</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="kc">FALSE</span><span class="p">)</span><span class="w">
+</span></code></pre></div></div> <p><img src="https://raw.githubusercontent.com/EngineerDanny/GSOC22-RPerform-Blog/master/images/Rplot_time.jpeg" alt="time plot" title="Time Plot"/></p> <ul> <li>The following example illustrates the use of the <code class="language-plaintext highlighter-rouge">Rperform::plot_branchmetrics()</code> function on the git repository of the package <a href="https://github.com/tdhock/stringr">stringr</a>.</li> </ul> <div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;</span><span class="w"> </span><span class="n">setwd</span><span class="p">(</span><span class="s2">"./stringr"</span><span class="p">)</span><span class="w">
+</span><span class="o">&gt;</span><span class="w"> </span><span class="n">library</span><span class="p">(</span><span class="n">Rperform</span><span class="p">)</span><span class="w">
+</span><span class="o">&gt;</span><span class="w"> </span><span class="n">plot_branchmetrics</span><span class="p">(</span><span class="n">test_path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"tests/testthat/test-interp.r"</span><span class="p">,</span><span class="w"> </span><span class="n">metric</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"memory"</span><span class="p">,</span><span class="w"> </span><span class="n">branch1</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"rperform_test"</span><span class="p">,</span><span class="w"> </span><span class="n">branch2</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"master"</span><span class="p">,</span><span class="w"> </span><span class="n">save_data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">F</span><span class="p">,</span><span class="w"> </span><span class="n">save_plots</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">F</span><span class="p">)</span><span class="w">
+</span></code></pre></div></div> <p><img src="https://raw.githubusercontent.com/EngineerDanny/GSOC22-RPerform-Blog/master/images/Rplot_branchmem.jpeg" alt="memory plot" title="Memory Plot"/></p> <ul> <li>The following example illustrates the use of the <code class="language-plaintext highlighter-rouge">Rperform::time_compare()</code> and <code class="language-plaintext highlighter-rouge">Rperform::mem_compare()</code> functions on the git repository of the package <a href="https://github.com/tdhock/stringr">stringr</a>.</li> </ul> <div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;</span><span class="w"> </span><span class="n">setwd</span><span class="p">(</span><span class="s2">"./stringr"</span><span class="p">)</span><span class="w">
+</span><span class="o">&gt;</span><span class="w"> </span><span class="n">library</span><span class="p">(</span><span class="n">Rperform</span><span class="p">)</span><span class="w">
+</span><span class="o">&gt;</span><span class="w"> </span><span class="n">time_compare</span><span class="p">(</span><span class="n">test_path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"./tests/testthat/test-dup.r"</span><span class="p">,</span><span class="w"> </span><span class="n">num_commits</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">2</span><span class="p">)</span><span class="w">
+                          </span><span class="n">test_name</span><span class="w"> </span><span class="n">metric_name</span><span class="w"> </span><span class="n">status</span><span class="w">  </span><span class="n">metric_val</span><span class="w">         </span><span class="n">msg_val</span><span class="w">           </span><span class="n">date_time</span><span class="w">
+</span><span class="m">1</span><span class="w">           </span><span class="n">basic</span><span class="w"> </span><span class="n">duplication</span><span class="w"> </span><span class="n">works</span><span class="w">        </span><span class="n">time</span><span class="w">   </span><span class="n">pass</span><span class="w"> </span><span class="m">0.001797014</span><span class="w"> </span><span class="n">Can</span><span class="w"> </span><span class="n">now</span><span class="w"> </span><span class="n">use</span><span class="w"> </span><span class="n">CRA</span><span class="w"> </span><span class="m">2015-01-08</span><span class="w"> </span><span class="m">14</span><span class="o">:</span><span class="m">09</span><span class="o">:</span><span class="m">43</span><span class="w">
+</span><span class="m">2</span><span class="w">           </span><span class="n">basic</span><span class="w"> </span><span class="n">duplication</span><span class="w"> </span><span class="n">works</span><span class="w">        </span><span class="n">time</span><span class="w">   </span><span class="n">pass</span><span class="w"> </span><span class="m">0.001539050</span><span class="w"> </span><span class="n">Can</span><span class="w"> </span><span class="n">now</span><span class="w"> </span><span class="n">use</span><span class="w"> </span><span class="n">CRA</span><span class="w"> </span><span class="m">2015-01-08</span><span class="w"> </span><span class="m">14</span><span class="o">:</span><span class="m">09</span><span class="o">:</span><span class="m">43</span><span class="w">
+</span><span class="m">3</span><span class="w">           </span><span class="n">basic</span><span class="w"> </span><span class="n">duplication</span><span class="w"> </span><span class="n">works</span><span class="w">        </span><span class="n">time</span><span class="w">   </span><span class="n">pass</span><span class="w"> </span><span class="m">0.001545034</span><span class="w"> </span><span class="n">Can</span><span class="w"> </span><span class="n">now</span><span class="w"> </span><span class="n">use</span><span class="w"> </span><span class="n">CRA</span><span class="w"> </span><span class="m">2015-01-08</span><span class="w"> </span><span class="m">14</span><span class="o">:</span><span class="m">09</span><span class="o">:</span><span class="m">43</span><span class="w">
+</span><span class="m">4</span><span class="w">  </span><span class="m">0</span><span class="w"> </span><span class="n">duplicates</span><span class="w"> </span><span class="n">equals</span><span class="w"> </span><span class="n">empty</span><span class="w"> </span><span class="n">string</span><span class="w">        </span><span class="n">time</span><span class="w">   </span><span class="n">pass</span><span class="w"> </span><span class="m">0.001019430</span><span class="w"> </span><span class="n">Can</span><span class="w"> </span><span class="n">now</span><span class="w"> </span><span class="n">use</span><span class="w"> </span><span class="n">CRA</span><span class="w"> </span><span class="m">2015-01-08</span><span class="w"> </span><span class="m">14</span><span class="o">:</span><span class="m">09</span><span class="o">:</span><span class="m">43</span><span class="w">
+</span><span class="m">5</span><span class="w">  </span><span class="m">0</span><span class="w"> </span><span class="n">duplicates</span><span class="w"> </span><span class="n">equals</span><span class="w"> </span><span class="n">empty</span><span class="w"> </span><span class="n">string</span><span class="w">        </span><span class="n">time</span><span class="w">   </span><span class="n">pass</span><span class="w"> </span><span class="m">0.000784386</span><span class="w"> </span><span class="n">Can</span><span class="w"> </span><span class="n">now</span><span class="w"> </span><span class="n">use</span><span class="w"> </span><span class="n">CRA</span><span class="w"> </span><span class="m">2015-01-08</span><span class="w"> </span><span class="m">14</span><span class="o">:</span><span class="m">09</span><span class="o">:</span><span class="m">43</span><span class="w">
+</span><span class="m">6</span><span class="w">  </span><span class="m">0</span><span class="w"> </span><span class="n">duplicates</span><span class="w"> </span><span class="n">equals</span><span class="w"> </span><span class="n">empty</span><span class="w"> </span><span class="n">string</span><span class="w">        </span><span class="n">time</span><span class="w">   </span><span class="n">pass</span><span class="w"> </span><span class="m">0.000766279</span><span class="w"> </span><span class="n">Can</span><span class="w"> </span><span class="n">now</span><span class="w"> </span><span class="n">use</span><span class="w"> </span><span class="n">CRA</span><span class="w"> </span><span class="m">2015-01-08</span><span class="w"> </span><span class="m">14</span><span class="o">:</span><span class="m">09</span><span class="o">:</span><span class="m">43</span><span class="w">
+</span><span class="m">7</span><span class="w">                        </span><span class="n">test</span><span class="o">-</span><span class="n">dup.r</span><span class="w">        </span><span class="n">time</span><span class="w">   </span><span class="n">pass</span><span class="w"> </span><span class="m">0.003555478</span><span class="w"> </span><span class="n">Can</span><span class="w"> </span><span class="n">now</span><span class="w"> </span><span class="n">use</span><span class="w"> </span><span class="n">CRA</span><span class="w"> </span><span class="m">2015-01-08</span><span class="w"> </span><span class="m">14</span><span class="o">:</span><span class="m">09</span><span class="o">:</span><span class="m">43</span><span class="w">
+</span><span class="m">8</span><span class="w">                        </span><span class="n">test</span><span class="o">-</span><span class="n">dup.r</span><span class="w">        </span><span class="n">time</span><span class="w">   </span><span class="n">pass</span><span class="w"> </span><span class="m">0.003118946</span><span class="w"> </span><span class="n">Can</span><span class="w"> </span><span class="n">now</span><span class="w"> </span><span class="n">use</span><span class="w"> </span><span class="n">CRA</span><span class="w"> </span><span class="m">2015-01-08</span><span class="w"> </span><span class="m">14</span><span class="o">:</span><span class="m">09</span><span class="o">:</span><span class="m">43</span><span class="w">
+</span><span class="m">9</span><span class="w">                        </span><span class="n">test</span><span class="o">-</span><span class="n">dup.r</span><span class="w">        </span><span class="n">time</span><span class="w">   </span><span class="n">pass</span><span class="w"> </span><span class="m">0.003106017</span><span class="w"> </span><span class="n">Can</span><span class="w"> </span><span class="n">now</span><span class="w"> </span><span class="n">use</span><span class="w"> </span><span class="n">CRA</span><span class="w"> </span><span class="m">2015-01-08</span><span class="w"> </span><span class="m">14</span><span class="o">:</span><span class="m">09</span><span class="o">:</span><span class="m">43</span><span class="w">
+</span><span class="m">10</span><span class="w">          </span><span class="n">basic</span><span class="w"> </span><span class="n">duplication</span><span class="w"> </span><span class="n">works</span><span class="w">        </span><span class="n">time</span><span class="w">   </span><span class="n">pass</span><span class="w"> </span><span class="m">0.001780849</span><span class="w"> </span><span class="n">Require</span><span class="w"> </span><span class="n">latest</span><span class="w">  </span><span class="m">2015-01-08</span><span class="w"> </span><span class="m">14</span><span class="o">:</span><span class="m">03</span><span class="o">:</span><span class="m">37</span><span class="w">
+</span><span class="m">11</span><span class="w">          </span><span class="n">basic</span><span class="w"> </span><span class="n">duplication</span><span class="w"> </span><span class="n">works</span><span class="w">        </span><span class="n">time</span><span class="w">   </span><span class="n">pass</span><span class="w"> </span><span class="m">0.001545568</span><span class="w"> </span><span class="n">Require</span><span class="w"> </span><span class="n">latest</span><span class="w">  </span><span class="m">2015-01-08</span><span class="w"> </span><span class="m">14</span><span class="o">:</span><span class="m">03</span><span class="o">:</span><span class="m">37</span><span class="w">
+</span><span class="m">12</span><span class="w">          </span><span class="n">basic</span><span class="w"> </span><span class="n">duplication</span><span class="w"> </span><span class="n">works</span><span class="w">        </span><span class="n">time</span><span class="w">   </span><span class="n">pass</span><span class="w"> </span><span class="m">0.001517300</span><span class="w"> </span><span class="n">Require</span><span class="w"> </span><span class="n">latest</span><span class="w">  </span><span class="m">2015-01-08</span><span class="w"> </span><span class="m">14</span><span class="o">:</span><span class="m">03</span><span class="o">:</span><span class="m">37</span><span class="w">
+</span><span class="m">13</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="n">duplicates</span><span class="w"> </span><span class="n">equals</span><span class="w"> </span><span class="n">empty</span><span class="w"> </span><span class="n">string</span><span class="w">        </span><span class="n">time</span><span class="w">   </span><span class="n">pass</span><span class="w"> </span><span class="m">0.001028882</span><span class="w"> </span><span class="n">Require</span><span class="w"> </span><span class="n">latest</span><span class="w">  </span><span class="m">2015-01-08</span><span class="w"> </span><span class="m">14</span><span class="o">:</span><span class="m">03</span><span class="o">:</span><span class="m">37</span><span class="w">
+</span><span class="m">14</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="n">duplicates</span><span class="w"> </span><span class="n">equals</span><span class="w"> </span><span class="n">empty</span><span class="w"> </span><span class="n">string</span><span class="w">        </span><span class="n">time</span><span class="w">   </span><span class="n">pass</span><span class="w"> </span><span class="m">0.000783847</span><span class="w"> </span><span class="n">Require</span><span class="w"> </span><span class="n">latest</span><span class="w">  </span><span class="m">2015-01-08</span><span class="w"> </span><span class="m">14</span><span class="o">:</span><span class="m">03</span><span class="o">:</span><span class="m">37</span><span class="w">
+</span><span class="m">15</span><span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="n">duplicates</span><span class="w"> </span><span class="n">equals</span><span class="w"> </span><span class="n">empty</span><span class="w"> </span><span class="n">string</span><span class="w">        </span><span class="n">time</span><span class="w">   </span><span class="n">pass</span><span class="w"> </span><span class="m">0.000771520</span><span class="w"> </span><span class="n">Require</span><span class="w"> </span><span class="n">latest</span><span class="w">  </span><span class="m">2015-01-08</span><span class="w"> </span><span class="m">14</span><span class="o">:</span><span class="m">03</span><span class="o">:</span><span class="m">37</span><span class="w">
+</span><span class="m">16</span><span class="w">                       </span><span class="n">test</span><span class="o">-</span><span class="n">dup.r</span><span class="w">        </span><span class="n">time</span><span class="w">   </span><span class="n">pass</span><span class="w"> </span><span class="m">0.003436051</span><span class="w"> </span><span class="n">Require</span><span class="w"> </span><span class="n">latest</span><span class="w">  </span><span class="m">2015-01-08</span><span class="w"> </span><span class="m">14</span><span class="o">:</span><span class="m">03</span><span class="o">:</span><span class="m">37</span><span class="w">
+</span><span class="m">17</span><span class="w">                       </span><span class="n">test</span><span class="o">-</span><span class="n">dup.r</span><span class="w">        </span><span class="n">time</span><span class="w">   </span><span class="n">pass</span><span class="w"> </span><span class="m">0.003130397</span><span class="w"> </span><span class="n">Require</span><span class="w"> </span><span class="n">latest</span><span class="w">  </span><span class="m">2015-01-08</span><span class="w"> </span><span class="m">14</span><span class="o">:</span><span class="m">03</span><span class="o">:</span><span class="m">37</span><span class="w">
+</span><span class="m">18</span><span class="w">                       </span><span class="n">test</span><span class="o">-</span><span class="n">dup.r</span><span class="w">        </span><span class="n">time</span><span class="w">   </span><span class="n">pass</span><span class="w"> </span><span class="m">0.003082713</span><span class="w"> </span><span class="n">Require</span><span class="w"> </span><span class="n">latest</span><span class="w">  </span><span class="m">2015-01-08</span><span class="w"> </span><span class="m">14</span><span class="o">:</span><span class="m">03</span><span class="o">:</span><span class="m">37</span><span class="w">
+</span><span class="o">&gt;</span><span class="w"> 
+</span></code></pre></div></div> <div class="language-r highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">&gt;</span><span class="w"> </span><span class="n">Rperform</span><span class="o">::</span><span class="n">mem_compare</span><span class="p">(</span><span class="n">test_path</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">"./tests/testthat/test-join.r"</span><span class="p">,</span><span class="w"> </span><span class="n">num_commits</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1</span><span class="p">)</span><span class="w">
+             </span><span class="n">test_name</span><span class="w"> </span><span class="n">metric_name</span><span class="w"> </span><span class="n">status</span><span class="w"> </span><span class="n">metric_val</span><span class="w">         </span><span class="n">msg_val</span><span class="w">           </span><span class="n">date_time</span><span class="w">
+</span><span class="m">11.1</span><span class="w">  </span><span class="n">basic</span><span class="w"> </span><span class="n">case</span><span class="w"> </span><span class="n">works</span><span class="w">     </span><span class="n">max_mem_mb</span><span class="w">   </span><span class="n">pass</span><span class="w">      </span><span class="m">0.040</span><span class="w"> </span><span class="n">Can</span><span class="w"> </span><span class="n">now</span><span class="w"> </span><span class="n">use</span><span class="w"> </span><span class="n">CRA</span><span class="w"> </span><span class="m">2015-01-08</span><span class="w"> </span><span class="m">14</span><span class="o">:</span><span class="m">09</span><span class="o">:</span><span class="m">43</span><span class="w">
+</span><span class="m">11.2</span><span class="w">  </span><span class="n">basic</span><span class="w"> </span><span class="n">case</span><span class="w"> </span><span class="n">works</span><span class="w">     </span><span class="n">leak_mb</span><span class="w">      </span><span class="n">pass</span><span class="w">      </span><span class="m">0.040</span><span class="w"> </span><span class="n">Can</span><span class="w"> </span><span class="n">now</span><span class="w"> </span><span class="n">use</span><span class="w"> </span><span class="n">CRA</span><span class="w"> </span><span class="m">2015-01-08</span><span class="w"> </span><span class="m">14</span><span class="o">:</span><span class="m">09</span><span class="o">:</span><span class="m">43</span><span class="w">
+</span><span class="m">11.3</span><span class="w"> </span><span class="n">NULLs</span><span class="w"> </span><span class="n">are</span><span class="w"> </span><span class="n">dropped</span><span class="w">     </span><span class="n">max_mem_mb</span><span class="w">   </span><span class="n">pass</span><span class="w">      </span><span class="m">0.044</span><span class="w"> </span><span class="n">Can</span><span class="w"> </span><span class="n">now</span><span class="w"> </span><span class="n">use</span><span class="w"> </span><span class="n">CRA</span><span class="w"> </span><span class="m">2015-01-08</span><span class="w"> </span><span class="m">14</span><span class="o">:</span><span class="m">09</span><span class="o">:</span><span class="m">43</span><span class="w">
+</span><span class="m">11.4</span><span class="w"> </span><span class="n">NULLs</span><span class="w"> </span><span class="n">are</span><span class="w"> </span><span class="n">dropped</span><span class="w">     </span><span class="n">leak_mb</span><span class="w">      </span><span class="n">pass</span><span class="w">      </span><span class="m">0.044</span><span class="w"> </span><span class="n">Can</span><span class="w"> </span><span class="n">now</span><span class="w"> </span><span class="n">use</span><span class="w"> </span><span class="n">CRA</span><span class="w"> </span><span class="m">2015-01-08</span><span class="w"> </span><span class="m">14</span><span class="o">:</span><span class="m">09</span><span class="o">:</span><span class="m">43</span><span class="w">
+</span><span class="m">11.5</span><span class="w">       </span><span class="n">test</span><span class="o">-</span><span class="n">join.r</span><span class="w">     </span><span class="n">max_mem_mb</span><span class="w">   </span><span class="n">pass</span><span class="w">      </span><span class="m">0.148</span><span class="w"> </span><span class="n">Can</span><span class="w"> </span><span class="n">now</span><span class="w"> </span><span class="n">use</span><span class="w"> </span><span class="n">CRA</span><span class="w"> </span><span class="m">2015-01-08</span><span class="w"> </span><span class="m">14</span><span class="o">:</span><span class="m">09</span><span class="o">:</span><span class="m">43</span><span class="w">
+</span><span class="m">11.6</span><span class="w">       </span><span class="n">test</span><span class="o">-</span><span class="n">join.r</span><span class="w">     </span><span class="n">leak_mb</span><span class="w">      </span><span class="n">pass</span><span class="w">      </span><span class="m">0.148</span><span class="w"> </span><span class="n">Can</span><span class="w"> </span><span class="n">now</span><span class="w"> </span><span class="n">use</span><span class="w"> </span><span class="n">CRA</span><span class="w"> </span><span class="m">2015-01-08</span><span class="w"> </span><span class="m">14</span><span class="o">:</span><span class="m">09</span><span class="o">:</span><span class="m">43</span><span class="w">
+</span><span class="m">12.1</span><span class="w">  </span><span class="n">basic</span><span class="w"> </span><span class="n">case</span><span class="w"> </span><span class="n">works</span><span class="w">     </span><span class="n">max_mem_mb</span><span class="w">   </span><span class="n">pass</span><span class="w">      </span><span class="m">0.040</span><span class="w"> </span><span class="n">Can</span><span class="w"> </span><span class="n">now</span><span class="w"> </span><span class="n">use</span><span class="w"> </span><span class="n">CRA</span><span class="w"> </span><span class="m">2015-01-08</span><span class="w"> </span><span class="m">14</span><span class="o">:</span><span class="m">09</span><span class="o">:</span><span class="m">43</span><span class="w">
+</span><span class="m">12.2</span><span class="w">  </span><span class="n">basic</span><span class="w"> </span><span class="n">case</span><span class="w"> </span><span class="n">works</span><span class="w">     </span><span class="n">leak_mb</span><span class="w">      </span><span class="n">pass</span><span class="w">      </span><span class="m">0.040</span><span class="w"> </span><span class="n">Can</span><span class="w"> </span><span class="n">now</span><span class="w"> </span><span class="n">use</span><span class="w"> </span><span class="n">CRA</span><span class="w"> </span><span class="m">2015-01-08</span><span class="w"> </span><span class="m">14</span><span class="o">:</span><span class="m">09</span><span class="o">:</span><span class="m">43</span><span class="w">
+</span><span class="m">12.3</span><span class="w"> </span><span class="n">NULLs</span><span class="w"> </span><span class="n">are</span><span class="w"> </span><span class="n">dropped</span><span class="w">     </span><span class="n">max_mem_mb</span><span class="w">   </span><span class="n">pass</span><span class="w">      </span><span class="m">0.044</span><span class="w"> </span><span class="n">Can</span><span class="w"> </span><span class="n">now</span><span class="w"> </span><span class="n">use</span><span class="w"> </span><span class="n">CRA</span><span class="w"> </span><span class="m">2015-01-08</span><span class="w"> </span><span class="m">14</span><span class="o">:</span><span class="m">09</span><span class="o">:</span><span class="m">43</span><span class="w">
+</span><span class="m">12.4</span><span class="w"> </span><span class="n">NULLs</span><span class="w"> </span><span class="n">are</span><span class="w"> </span><span class="n">dropped</span><span class="w">     </span><span class="n">leak_mb</span><span class="w">      </span><span class="n">pass</span><span class="w">      </span><span class="m">0.044</span><span class="w"> </span><span class="n">Can</span><span class="w"> </span><span class="n">now</span><span class="w"> </span><span class="n">use</span><span class="w"> </span><span class="n">CRA</span><span class="w"> </span><span class="m">2015-01-08</span><span class="w"> </span><span class="m">14</span><span class="o">:</span><span class="m">09</span><span class="o">:</span><span class="m">43</span><span class="w">
+</span><span class="m">12.5</span><span class="w">       </span><span class="n">test</span><span class="o">-</span><span class="n">join.r</span><span class="w">     </span><span class="n">max_mem_mb</span><span class="w">   </span><span class="n">pass</span><span class="w">      </span><span class="m">0.144</span><span class="w"> </span><span class="n">Can</span><span class="w"> </span><span class="n">now</span><span class="w"> </span><span class="n">use</span><span class="w"> </span><span class="n">CRA</span><span class="w"> </span><span class="m">2015-01-08</span><span class="w"> </span><span class="m">14</span><span class="o">:</span><span class="m">09</span><span class="o">:</span><span class="m">43</span><span class="w">
+</span><span class="m">12.6</span><span class="w">       </span><span class="n">test</span><span class="o">-</span><span class="n">join.r</span><span class="w">     </span><span class="n">leak_mb</span><span class="w">      </span><span class="n">pass</span><span class="w">      </span><span class="m">0.144</span><span class="w"> </span><span class="n">Can</span><span class="w"> </span><span class="n">now</span><span class="w"> </span><span class="n">use</span><span class="w"> </span><span class="n">CRA</span><span class="w"> </span><span class="m">2015-01-08</span><span class="w"> </span><span class="m">14</span><span class="o">:</span><span class="m">09</span><span class="o">:</span><span class="m">43</span><span class="w">
+</span><span class="m">13.1</span><span class="w">  </span><span class="n">basic</span><span class="w"> </span><span class="n">case</span><span class="w"> </span><span class="n">works</span><span class="w">     </span><span class="n">max_mem_mb</span><span class="w">   </span><span class="n">pass</span><span class="w">      </span><span class="m">0.040</span><span class="w"> </span><span class="n">Can</span><span class="w"> </span><span class="n">now</span><span class="w"> </span><span class="n">use</span><span class="w"> </span><span class="n">CRA</span><span class="w"> </span><span class="m">2015-01-08</span><span class="w"> </span><span class="m">14</span><span class="o">:</span><span class="m">09</span><span class="o">:</span><span class="m">43</span><span class="w">
+</span><span class="m">13.2</span><span class="w">  </span><span class="n">basic</span><span class="w"> </span><span class="n">case</span><span class="w"> </span><span class="n">works</span><span class="w">     </span><span class="n">leak_mb</span><span class="w">      </span><span class="n">pass</span><span class="w">      </span><span class="m">0.040</span><span class="w"> </span><span class="n">Can</span><span class="w"> </span><span class="n">now</span><span class="w"> </span><span class="n">use</span><span class="w"> </span><span class="n">CRA</span><span class="w"> </span><span class="m">2015-01-08</span><span class="w"> </span><span class="m">14</span><span class="o">:</span><span class="m">09</span><span class="o">:</span><span class="m">43</span><span class="w">
+</span><span class="m">13.3</span><span class="w"> </span><span class="n">NULLs</span><span class="w"> </span><span class="n">are</span><span class="w"> </span><span class="n">dropped</span><span class="w">     </span><span class="n">max_mem_mb</span><span class="w">   </span><span class="n">pass</span><span class="w">      </span><span class="m">0.048</span><span class="w"> </span><span class="n">Can</span><span class="w"> </span><span class="n">now</span><span class="w"> </span><span class="n">use</span><span class="w"> </span><span class="n">CRA</span><span class="w"> </span><span class="m">2015-01-08</span><span class="w"> </span><span class="m">14</span><span class="o">:</span><span class="m">09</span><span class="o">:</span><span class="m">43</span><span class="w">
+</span><span class="m">13.4</span><span class="w"> </span><span class="n">NULLs</span><span class="w"> </span><span class="n">are</span><span class="w"> </span><span class="n">dropped</span><span class="w">     </span><span class="n">leak_mb</span><span class="w">      </span><span class="n">pass</span><span class="w">      </span><span class="m">0.048</span><span class="w"> </span><span class="n">Can</span><span class="w"> </span><span class="n">now</span><span class="w"> </span><span class="n">use</span><span class="w"> </span><span class="n">CRA</span><span class="w"> </span><span class="m">2015-01-08</span><span class="w"> </span><span class="m">14</span><span class="o">:</span><span class="m">09</span><span class="o">:</span><span class="m">43</span><span class="w">
+</span><span class="m">13.5</span><span class="w">       </span><span class="n">test</span><span class="o">-</span><span class="n">join.r</span><span class="w">     </span><span class="n">max_mem_mb</span><span class="w">   </span><span class="n">pass</span><span class="w">      </span><span class="m">0.148</span><span class="w"> </span><span class="n">Can</span><span class="w"> </span><span class="n">now</span><span class="w"> </span><span class="n">use</span><span class="w"> </span><span class="n">CRA</span><span class="w"> </span><span class="m">2015-01-08</span><span class="w"> </span><span class="m">14</span><span class="o">:</span><span class="m">09</span><span class="o">:</span><span class="m">43</span><span class="w">
+</span><span class="m">13.6</span><span class="w">       </span><span class="n">test</span><span class="o">-</span><span class="n">join.r</span><span class="w">     </span><span class="n">leak_mb</span><span class="w">      </span><span class="n">pass</span><span class="w">      </span><span class="m">0.148</span><span class="w"> </span><span class="n">Can</span><span class="w"> </span><span class="n">now</span><span class="w"> </span><span class="n">use</span><span class="w"> </span><span class="n">CRA</span><span class="w"> </span><span class="m">2015-01-08</span><span class="w"> </span><span class="m">14</span><span class="o">:</span><span class="m">09</span><span class="o">:</span><span class="m">43</span><span class="w">
+</span></code></pre></div></div>]]></content><author><name></name></author><category term="rperform"/><category term="test"/><category term="r"/><summary type="html"><![CDATA[A minimal example of using Rperform to track quantitative performance metrics of code]]></summary></entry><entry><title type="html">Displaying External Posts on Your al-folio Blog</title><link href="https://engineerdanny.github.io/blog/2022/displaying-external-posts-on-your-al-folio-blog/" rel="alternate" type="text/html" title="Displaying External Posts on Your al-folio Blog"/><published>2022-04-23T23:20:09+00:00</published><updated>2022-04-23T23:20:09+00:00</updated><id>https://engineerdanny.github.io/blog/2022/displaying-external-posts-on-your-al-folio-blog</id><content type="html" xml:base="https://engineerdanny.github.io/blog/2022/displaying-external-posts-on-your-al-folio-blog/"><![CDATA[]]></content><author><name></name></author></entry></feed>
