@@ -25,7 +25,7 @@
       "name": "Northern Arizona University",
       "position": "Graduate Research Assistant",
       "url": "https://nau.edu/",
-      "startDate": "2022-08-22",
+      "startDate": "2022-08",
       "endDate": "current",
       "summary": "Training and testing new machine learning algorithms and developing optimisation algorithms for microbiome sparse data sets."
     },
@@ -35,11 +35,11 @@
       "url": "https://summerofcode.withgoogle.com/",
       "startDate": "2022-05",
       "endDate": "2022-09",
-      "summary": "Modified the tool, Rperform, to track quantitative performance metrics (runtime and memory usage) of R packages. Developed a custom GitHub Action to make it easier for package developers to use Rperform to test their code."
+      "summary": "Modified the tool, Rperform, to track quantitative performance metrics of R packages. Developed a custom GitHub Action to make it easier for package developers to use Rperform to test their code."
     },
     {
       "name": "Kwame Nkrumah University of Science and Technology",
-      "position": "Teaching Assistant",
+      "position": "Research and Teaching Assistant",
       "url": "https://www.knust.edu.gh/",
       "startDate": "2021-08",
       "endDate": "2021-05",
@@ -53,23 +53,22 @@
       "summary": "Developed and maintained cross-platform applications using Flutter and PhP Laravel. Worked closely with clients to understand their requirements and deliver high-quality software solutions."
     },
     {
-      "name": "Godlives Delivery",
-      "position": "Full Stack Engineer",
+      "name": "Godlives Delivery (Sweden)",
+      "position": "Full Stack Engineer (Remote)",
       "startDate": "2020-04",
       "endDate": "2021-03",
-      "summary": "Built and maintained cross-platform mobile app with Flutter and the backend with Node.js and Express frameworks utilizing technologies like MongoDB for the database management, OneSignal for notifications and MailGun for email API service."
+      "summary": "Built and maintained cross-platform mobile app with Flutter and backend with Node.js utilizing technologies like MongoDB for the database management, OneSignal for notifications and MailGun for email API service."
     }
-
   ],
   "volunteer": [
     {
-      "organization": "Upbound",
+      "organization": "NAU Upbound",
       "location": "Flagstaff, Arizona",
       "position": "Supervisor",
       "url": "https://nau.edu/upward-bound/",
-      "startDate": "2023-06-01",
-      "endDate": "2023-08-01",
-      "summary": "Supervised a team of volunteers and organized educational programs for high school students."
+      "startDate": "2023-06",
+      "endDate": "2023-08",
+      "summary": "Supervised and organized educational programs for high school students."
     }
   ],
   "education": [
@@ -79,8 +78,8 @@
       "url": "https://nau.edu/",
       "area": "Computer Science",
       "studyType": "PhD",
-      "startDate": "2022-08-01",
-      "endDate": "current",
+      "startDate": "2022-08",
+      "endDate": "2026-05",
       "score": "4.0",
       "courses": ["Deep Learning", "Data Mining and Machine Learning", "Modern Regression"]
     },
@@ -90,29 +89,19 @@
       "url": "https://www.knust.edu.gh/",
       "area": "Electrical/Electronics Engineering",
       "studyType": "Bachelor's Degree",
-      "startDate": "2017-08-01",
-      "endDate": "2021-05-01",
+      "startDate": "2017-08",
+      "endDate": "2021-05",
       "score": "3.76",
-      "courses": ["Linear Algebra", "Differential Equations", "Control Systems", "Power Systems"]
+      "courses": ["Differential Equations", "Digital Systems", "Control Systems", "Power Systems"]
     }
   ],
   "publications": [
     {
       "name": "Cross-Validation for Training and Testing Co-occurrence Network Inference Algorithms",
       "publisher": "Arxiv",
-      "releaseDate": "2022-01-01",
-      "url": "https://arxiv.org/abs/2201.00001",
+      "releaseDate": "2023-09",
+      "url": "https://arxiv.org/abs/2309.15225",
       "summary": "This paper presents a novel cross-validation method for training and testing co-occurrence network inference algorithms."
-    }
-  ],
-  "projects": [
-    {
-      "name": "Quantum Computing",
-      "summary": "Quantum computing is the use of quantum-mechanical phenomena such as superposition and entanglement to perform computation. Computers that perform quantum computations are known as quantum computers.",
-      "highlights": ["Quantum Teleportation", "Quantum Cryptography"],
-      "startDate": "2018-01-01",
-      "endDate": "2018-01-01",
-      "url": "https://example.com"
     }
   ]
 }
