@@ -1,6 +1,6 @@
 ---
 layout: page
-title: ML with Monsoon (NAUs Supercomputer)
+title: ML with Monsoon
 description: This project shows the code to explain some of the basic concepts you will need in your machine learning workflow using monsoon.
 img: assets/img/12.jpg
 importance: 1
