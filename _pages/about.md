@@ -1,17 +1,19 @@
 ---
 layout: about
-title: about
+title: Daniel Agyapong, PhD Student
 permalink: /
-subtitle: <a href='#'>Affiliations</a>. Address. Contacts. Moto. Etc.
-
+description: Machine learning and Artificial Intelligence(AI) researcher, with a focus on deep learning, reinforcement learning, and computer vision.
 profile:
   align: right
   image: prof_pic.jpg
   image_circular: false # crops the image to make it circular
   more_info: >
-    <p>555 your office number</p>
-    <p>123 your address street</p>
-    <p>Your City, State 12345</p>
+    <p>da2343@nau.edu</p>
+    <p>(520) 491-0072</p> 
+    <p>SICCS building 2nd floor, Cube 201G-11</p>
+    <p>School of Informatics, Computing, and Cyber Systems</p>
+    <p>Northern Arizona University</p>
+    <p>Flagstaff, Arizona, 86011, US</p>
 
 news: true # includes a list of news items
 selected_papers: true # includes a list of papers marked as "selected={true}"
