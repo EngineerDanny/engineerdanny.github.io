@@ -25,6 +25,3 @@ I work on developing new statistical models, optimization algorithms, interactiv
 My research interests are focused on fast, accurate, and interpretable algorithms for learning from large data, using continuous optimization (clustering, regression, ranking, classification). The main application domains for these algorithms are genomics, medicine and microbiome data analysis.
 
 I am currently working on training and testing ML models for predicting associations between bacteria (Positive and Negative Association).
-
-
-
