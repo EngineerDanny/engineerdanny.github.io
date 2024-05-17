@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Machine Learning with Monsoon (NAUs Supercomputer)
+title: ML with Monsoon (NAUs Supercomputer)
 description: This project shows the code to explain some of the basic concepts you will need in your machine learning workflow using monsoon.
 img: assets/img/12.jpg
 importance: 1
@@ -8,8 +8,6 @@ category: work
 related_publications: true
 ---
 
-# Machine Learning with Monsoon (NAUs Supercomputer)
-This project shows the code to explain some of the basic concepts you will need in your machine learning workflow using monsoon. 
 
 ## Connecting to Monsoon
 - Access through the monsoon [dashboard](https://ondemand.hpc.nau.edu/pun/sys/dashboard/)
@@ -17,6 +15,7 @@ This project shows the code to explain some of the basic concepts you will need 
 ```bash
 ssh -Y <username>@monsoon.hpc.nau.edu
 ```
+
 ## Interactive/Debug Work
 - Request a compute node with 4GB of RAM and 1 cpu for 24 hours
 ```bash
