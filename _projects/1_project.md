@@ -16,6 +16,7 @@ related_publications: true
 ssh -Y <username>@monsoon.hpc.nau.edu
 ```
 
+
 ## Interactive/Debug Work
 - Request a compute node with 4GB of RAM and 1 cpu for 24 hours
 ```bash
@@ -61,3 +62,21 @@ sbatch jobscript.sh
 <img src="https://github.com/EngineerDanny/ml_with_monsoon/blob/main/code/optimization/loss_df_01.png" 
   alt="loss_df_01" 
   title="loss_df_01">
+
+<div class="row">
+    <div class="col-sm mt-3 mt-md-0">
+        {% include figure.liquid loading="eager" path="https://github.com/EngineerDanny/ml_with_monsoon/blob/main/code/job_arrays_intermediate/time_graph.png" title="time_graph" class="img-fluid rounded z-depth-1" width="700px" height="500px" %}
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-sm mt-3 mt-md-0">
+        {% include figure.liquid loading="eager" path="https://github.com/EngineerDanny/ml_with_monsoon/blob/main/code/job_arrays_advanced/parallel_algo_acc.png" title="parallel_algo_acc" class="img-fluid rounded z-depth-1" width="700px" height="500px" %}
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-sm mt-3 mt-md-0">
+        {% include figure.liquid loading="eager" path="https://github.com/EngineerDanny/ml_with_monsoon/blob/main/code/optimization/loss_df_01.png" title="loss_df_01" class="img-fluid rounded z-depth-1" %}
+    </div>
+</div>
