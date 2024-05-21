@@ -74,7 +74,11 @@ getwd()
 > plot_metrics(test_path = "inst/tests/test-join.r", metric = "time", num_commits = 10, save_data = FALSE, save_plots = FALSE)
 ```
 
-![time plot](images/Rplot_time_updated.png)
+<div class="row">
+    <div class="col-sm mt-3 mt-md-0">
+        {% include figure.liquid loading="eager" path="assets/img/Rplot_time_updated.png" title="Rplot_time_updated" class="img-fluid rounded z-depth-1" width="700px" height="500px" %}
+    </div>
+</div>
 
 -   The following example illustrates the use of the `Rperform::plot_branchmetrics()` function on the git repository of the package [stringr](https://github.com/EngineerDanny/stringr).
 
@@ -86,9 +90,13 @@ getwd()
 > plot_branchmetrics(test_path = "inst/tests/test-interp.r", metric = "memory", branch1 = "rperform_test", branch2 = "master", save_data = F, save_plots = F)
 ```
 
-![memory plot](images/Rplot_branchmem.jpeg)
+<div class="row">
+    <div class="col-sm mt-3 mt-md-0">
+        {% include figure.liquid loading="eager" path="assets/img/Rplot_branchmem.jpeg" title="Rplot_branchmem" class="img-fluid rounded z-depth-1" width="700px" height="500px" %}
+    </div>
+</div>
 
--   The following example illustrates the use of the `Rperform::time_compare()` and `Rperform::mem_compare()` functions on the git repository of the package [stringr](https://github.com/EngineerDanny/stringr).
+-   The following example illustrates the use of the `Rperform::time_compare()` and `Rperform::mem_compare()` functions on the git repository of the package [stringr](https://github.com/EngineerDanny/stringr). 
 
 <!-- end list -->
 
