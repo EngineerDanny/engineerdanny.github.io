@@ -1,80 +1,35 @@
 ---
 layout: page
-title: project 4
+title: Microbiome Network Analysis
 description: another without an image
 img: assets/img/threshold_network.png
 importance: 3
 category: work
 ---
 
-Every project has a beautiful feature showcase page.
-It's easy to include images in a flexible 3-column grid format.
-Make your photos 1/3, 2/3, or full width.
+# Microbiome Network Analysis
 
-To give your project a background in the portfolio page, just add the img tag to the front matter like so:
+## Overview
+This project involves the creation of a series of plots and graphs that represent complex data from a scientific study or data analysis. 
+The visualizations are designed to identify correlations, distributions, and patterns within a dataset.
 
-    ---
-    layout: page
-    title: project
-    description: a project with a background image
-    img: /assets/img/12.jpg
-    ---
+## Plots Description
+1. **Select Absolute Correlation Threshold**: This plot shows the relationship between different correlation thresholds and the number of edges, helping to determine the strength of the connections in the data.
+2. **Click Edge to Select Pair**: An interactive network diagram that allows users to explore the connections between different entities.
+3. **Normalized Abundance for Selected Pair**: A scatter plot that displays the abundance of two variables over time, providing insights into their behavior and relationship.
+4. **Select Sparsity or Observed Load**: This scatter plot visualizes the relationship between load and sparsity, which can be crucial for understanding the distribution of data points.
+5. **Select Sparsity on Observed Load**: Similar to the third plot but with more data points, offering a detailed view of the sparsity in relation to the observed load.
+6. **Select Sparsity per Load**: A line graph that represents various categories over time or another variable, highlighting the changes in sparsity with respect to the load.
 
-<div class="row">
-    <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/1.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-    </div>
-    <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/3.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-    </div>
-    <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/5.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-    </div>
-</div>
-<div class="caption">
-    Caption photos easily. On the left, a road goes through a tunnel. Middle, leaves artistically fall in a hipster photoshoot. Right, in another hipster photoshoot, a lumberjack grasps a handful of pine needles.
-</div>
-<div class="row">
-    <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/5.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-    </div>
-</div>
-<div class="caption">
-    This image can also have a caption. It's like magic.
-</div>
+## Methodology
+The data was analyzed using statistical and computational techniques to extract meaningful patterns. The plots were generated using data visualization tools and libraries that support the rendering of scientific data.
 
-You can also put regular text between your rows of images.
-Say you wanted to write a little bit about your project before you posted the rest of the images.
-You describe how you toiled, sweated, _bled_ for your project, and then... you reveal its glory in the next row of images.
+## Importance
+The visualizations provide a clear and concise way to present complex data, making it accessible to a broader audience. They are essential for:
+- Communicating findings effectively in scientific research.
+- Assisting in decision-making processes by revealing hidden trends.
+- Facilitating peer review and collaborative efforts by providing a common visual language.
 
-<div class="row justify-content-sm-center">
-    <div class="col-sm-8 mt-3 mt-md-0">
-        {% include figure.liquid path="assets/img/6.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-    </div>
-    <div class="col-sm-4 mt-3 mt-md-0">
-        {% include figure.liquid path="assets/img/11.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-    </div>
-</div>
-<div class="caption">
-    You can also have artistically styled 2/3 + 1/3 images, like these.
-</div>
+## Conclusion
+The project showcases the power of data visualization in interpreting large datasets and emphasizes the need for effective communication in the field of data science.
 
-The code is simple.
-Just wrap your images with `<div class="col-sm">` and place them inside `<div class="row">` (read more about the <a href="https://getbootstrap.com/docs/4.4/layout/grid/">Bootstrap Grid</a> system).
-To make images responsive, add `img-fluid` class to each; for rounded corners and shadows use `rounded` and `z-depth-1` classes.
-Here's the code for the last row of images above:
-
-{% raw %}
-
-```html
-<div class="row justify-content-sm-center">
-  <div class="col-sm-8 mt-3 mt-md-0">
-    {% include figure.liquid path="assets/img/6.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-  </div>
-  <div class="col-sm-4 mt-3 mt-md-0">
-    {% include figure.liquid path="assets/img/11.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-  </div>
-</div>
-```
-
-{% endraw %}
