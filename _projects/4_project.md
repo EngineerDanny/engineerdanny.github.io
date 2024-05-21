@@ -4,7 +4,7 @@ title: project 4
 description: another without an image
 img: assets/img/threshold_network.png
 importance: 3
-category: fun
+category: work
 ---
 
 Every project has a beautiful feature showcase page.
