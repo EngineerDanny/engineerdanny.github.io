@@ -31,6 +31,26 @@ For developers, it's a window into the competition's soul, understanding what te
 For security experts, it's a way to check for potential vulnerabilities associated with certain frameworks. 
 And for the curious, it's just plain cool to see the inner workings of your favorite apps.
 
+
+## :rainbow: Frameworks/Technologies
+1. Native
+   - Java
+   - Kotlin
+
+2. Hybrid (Cross-Platform)
+   - Flutter
+   - React Native
+   - Xamarin
+   - Ionic
+   - NativeScript
+   - Cordova
+
+
+## :white_check_mark: Requirements
+
+Before starting :checkered_flag:, you need to have [Git](https://git-scm.com) and [Python🐍](https://www.python.org) installed.
+
+
 ## How to Use It 📖
 
 ```bash
@@ -43,8 +63,19 @@ $ cd apk-framework-detector
 # Install the necessary dependencies
 $ pip install -r requirements.txt
 
-# Run the detector with the APK file
-$ python main.py your_app.apk
+```
+
+
+## :rocket: Running
+
+### NOTE: Place your apks in the input folder directory
+
+```bash
+# Command
+ $`python main.py {app_name.apk}` or `python3 main.py {app_name.apk}`
+
+# Example
+ $`python main.py fb.apk` or `python3 main.py fb.apk`
 ```
 
 ## View the results
