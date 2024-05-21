@@ -7,8 +7,6 @@ importance: 3
 category: work
 ---
 
-# ML on benchmark datasets
-
 ## Introduction
 This project involves evaluating different machine learning models using the K-Nearest Neighbors (KNN) and Logistic Regression algorithms. The evaluation is performed on two datasets: handwritten digits (ZIP) and email spam classification (SPAM).
 
@@ -55,7 +53,6 @@ A dictionary `data_dict` is created to store the input matrices and output vecto
 For each dataset:
 - A `GridSearchCV` object is instantiated with a KNN classifier to find the best number of neighbors (`n_neighbors`) from 1 to 20.
 - A pipeline is created with `StandardScaler` and `LogisticRegression` to standardize the data and apply logistic regression.
-- Cross-validation results are stored in a dataframe `cv_df`.
 - Plots are generated using `plotnine` (p9) to visualize the mean test scores as a function of `n_neighbors`.
 - ROC curves are plotted for both models to evaluate their performance.
 
