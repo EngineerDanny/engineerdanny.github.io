@@ -3,7 +3,7 @@ layout: page
 title: Microbiome Network Analysis
 description: Graphs that represent the complex microbiome association network.
 img: assets/img/threshold_network.png
-importance: 3
+importance: 1
 category: work
 ---
 

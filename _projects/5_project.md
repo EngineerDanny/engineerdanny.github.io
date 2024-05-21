@@ -1,80 +1,123 @@
 ---
 layout: page
-title: project 5
-description: a project with a background image
-img: assets/img/1.jpg
+title: ML on benchmark datasets
+description: Evaluating Simple ML models on spam and zip datasets.
+img:
 importance: 3
-category: fun
+category: work
 ---
 
-Every project has a beautiful feature showcase page.
-It's easy to include images in a flexible 3-column grid format.
-Make your photos 1/3, 2/3, or full width.
+# ML on benchmark datasets
 
-To give your project a background in the portfolio page, just add the img tag to the front matter like so:
+## Introduction
+This project involves evaluating different machine learning models using the K-Nearest Neighbors (KNN) and Logistic Regression algorithms. The evaluation is performed on two datasets: handwritten digits (ZIP) and email spam classification (SPAM).
 
-    ---
-    layout: page
-    title: project
-    description: a project with a background image
-    img: /assets/img/12.jpg
-    ---
+## Data Preparation
+Two datasets are loaded into pandas dataframes from compressed files. The ZIP dataset is filtered to include only the digits 0 and 1, while the SPAM dataset is used as is.
 
-<div class="row">
-    <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/1.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-    </div>
-    <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/3.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-    </div>
-    <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/5.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-    </div>
-</div>
-<div class="caption">
-    Caption photos easily. On the left, a road goes through a tunnel. Middle, leaves artistically fall in a hipster photoshoot. Right, in another hipster photoshoot, a lumberjack grasps a handful of pine needles.
-</div>
-<div class="row">
-    <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/5.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-    </div>
-</div>
-<div class="caption">
-    This image can also have a caption. It's like magic.
-</div>
+```python
+import pandas as pd
+from sklearn.model_selection import KFold
+from sklearn.model_selection import GridSearchCV
+from sklearn.neighbors import KNeighborsClassifier
+from sklearn.linear_model import LogisticRegression
+from sklearn.preprocessing import StandardScaler
+from sklearn.pipeline import make_pipeline
+from sklearn.metrics import plot_roc_curve
+import matplotlib.pyplot as plt
+import plotnine as p9
 
-You can also put regular text between your rows of images.
-Say you wanted to write a little bit about your project before you posted the rest of the images.
-You describe how you toiled, sweated, _bled_ for your project, and then... you reveal its glory in the next row of images.
+# Read the zip file into a pandas dataframe
+zip_df = pd.read_csv(
+    "./data/zip.test.gz",
+    header=None,
+    sep=" ")
 
-<div class="row justify-content-sm-center">
-    <div class="col-sm-8 mt-3 mt-md-0">
-        {% include figure.liquid path="assets/img/6.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-    </div>
-    <div class="col-sm-4 mt-3 mt-md-0">
-        {% include figure.liquid path="assets/img/11.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-    </div>
-</div>
-<div class="caption">
-    You can also have artistically styled 2/3 + 1/3 images, like these.
-</div>
+print(zip_df.shape)
 
-The code is simple.
-Just wrap your images with `<div class="col-sm">` and place them inside `<div class="row">` (read more about the <a href="https://getbootstrap.com/docs/4.4/layout/grid/">Bootstrap Grid</a> system).
-To make images responsive, add `img-fluid` class to each; for rounded corners and shadows use `rounded` and `z-depth-1` classes.
-Here's the code for the last row of images above:
+is01 = zip_df[0].isin([0, 1])
+zip01_df = zip_df.loc[is01, :]
 
-{% raw %}
+# Read the spam.csv data into a pandas dataframe
+spam_df = pd.read_csv(
+    "./data/spam.data",
+    sep=" ",
+    header=None)
 
-```html
-<div class="row justify-content-sm-center">
-  <div class="col-sm-8 mt-3 mt-md-0">
-    {% include figure.liquid path="assets/img/6.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-  </div>
-  <div class="col-sm-4 mt-3 mt-md-0">
-    {% include figure.liquid path="assets/img/11.jpg" title="example image" class="img-fluid rounded z-depth-1" %}
-  </div>
-</div>
+data_dict = {
+    "zip": (zip01_df.loc[:, 1:].to_numpy(), zip01_df[0]),
+    "spam": (spam_df.iloc[:, :-1].to_numpy(), spam_df.iloc[:, -1])
+}
 ```
 
-{% endraw %}
+## Model Training and Evaluation
+A dictionary `data_dict` is created to store the input matrices and output vectors for both datasets. A K-Fold cross-validation approach is used to split the data into training and testing sets.
+
+For each dataset:
+- A `GridSearchCV` object is instantiated with a KNN classifier to find the best number of neighbors (`n_neighbors`) from 1 to 20.
+- A pipeline is created with `StandardScaler` and `LogisticRegression` to standardize the data and apply logistic regression.
+- Cross-validation results are stored in a dataframe `cv_df`.
+- Plots are generated using `plotnine` (p9) to visualize the mean test scores as a function of `n_neighbors`.
+- ROC curves are plotted for both models to evaluate their performance.
+
+```python
+test_acc_df_list = []
+for data_set, (input_mat, output_vec) in data_dict.items():
+    kf = KFold(n_splits=3, shuffle=True, random_state=1)
+    for fold_id, indices in enumerate(kf.split(input_mat)):
+        print("fold_id = " + str(fold_id))
+        index_dict = dict(zip(["train", "test"], indices))
+        param_dicts = [{'n_neighbors': [x]} for x in range(1, 21)]
+
+        clf = GridSearchCV(estimator=KNeighborsClassifier(),
+                           param_grid=param_dicts, cv=5)
+        set_data_dict = {}
+        for set_name, index_vec in index_dict.items():
+            set_data_dict[set_name] = {
+                "X": input_mat[index_vec],
+                "y": output_vec.iloc[index_vec]
+            }
+        clf.fit(**set_data_dict["train"])
+
+        print("best params = " + str(clf.best_params_))
+
+        pipe = make_pipeline(
+            StandardScaler(), LogisticRegression(max_iter=1000))
+        pipe.fit(**set_data_dict["train"])
+
+        pred_dict = {
+            "nearest_neighbors": clf.predict(set_data_dict["test"]["X"]),
+            "linear_model": pipe.predict(set_data_dict["test"]["X"]),
+            "featureless": set_data_dict["train"]["y"].value_counts().idxmax()
+        }
+        for algorithm, pred_vec in pred_dict.items():
+            test_acc_dict = {
+                "test_accuracy_percent": (
+                    pred_vec == set_data_dict["test"]["y"]).mean()*100,
+                "data_set": data_set,
+                "fold_id": fold_id,
+                "algorithm": algorithm
+            }
+            test_acc_df_list.append(pd.DataFrame(test_acc_dict, index=[0]))
+
+test_acc_df = pd.concat(test_acc_df_list)
+print(test_acc_df)
+```
+
+## Visualization
+A ggplot is created to visually examine which learning algorithm performs best for each dataset. The plot uses `geom_point` with `test_accuracy_percent` on the x-axis, `algorithm` on the y-axis, and `facet_grid` to create a panel for each dataset.
+
+```python
+gg = p9.ggplot() +\
+    p9.geom_point(
+        p9.aes(
+            x="test_accuracy_percent",
+            y="algorithm"
+        ),
+        data=test_acc_df) +\
+    p9.facet_wrap("data_set")
+gg.save("ml_on_bm_facetted.png")
+```
+
+## Conclusion
+The project concludes with the generation of facetted plots saved as images, providing a clear comparison of the model performances across different datasets.
