@@ -119,5 +119,28 @@ gg = p9.ggplot() +\
 gg.save("ml_on_bm_facetted.png")
 ```
 
+<div class="row">
+    <div class="col-sm mt-3 mt-md-0">
+        {% include figure.liquid loading="eager" path="assets/img/ml_on_bm_facetted.png" title="threshold_network_full" class="img-fluid rounded z-depth-1" width="600px" height="600px" %}
+    </div>
+</div>
+
+## Interpretation
+The figure above is a scatter plot that visualizes the test accuracy percentages of three different algorithms—nearest neighbors, linear model, and a featureless model—applied to two datasets: spam and zip. Each data point represents the accuracy achieved by an algorithm on a specific dataset.
+
+- **Horizontal Axis (test_accuracy_percent)**: Ranges from 50 to 100, representing the accuracy percentage of the algorithms in predicting the correct outcomes on the test datasets.
+- **Vertical Axis (algorithm)**: Lists the three algorithms used in the evaluation: nearest neighbors, linear model, and featureless.
+- **Data Points**: Each algorithm has a corresponding data point for each dataset (spam and zip), indicating the accuracy achieved.
+- **Spam Dataset**: The data points under the 'spam' label show the performance of the algorithms on the spam dataset.
+- **Zip Dataset**: Similarly, the data points under the 'zip' label show the performance on the zip dataset.
+
+We can deduce the following:
+- The **nearest neighbors** algorithm has varying performance on both datasets, with higher accuracy on one of them.
+- The **linear model** shows a consistent accuracy level across both datasets.
+- The **featureless** model, which likely predicts the most frequent class, has the lowest accuracy, indicating that the other two models have learned patterns from the data.
+
+
 ## Conclusion
-The project concludes with the generation of facetted plots saved as images, providing a clear comparison of the model performances across different datasets.
+This type of visualization is crucial for comparing the effectiveness of different machine learning algorithms on various datasets. It helps in identifying which algorithm performs best for a particular type of data and can guide the selection of models for further development or deployment. The clear separation of data points by dataset also allows for a quick assessment of how each algorithm might generalize to different types of data.
+
+The project provides a clear comparison of the model performances across different datasets.
