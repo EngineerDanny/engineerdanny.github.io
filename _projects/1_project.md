@@ -2,6 +2,7 @@
 layout: page
 title: Apk Framework Detector
 description: A sophisticated tool designed to demystify the construction of Android applications.
+img:
 importance: 1
 category: Tools
 related_publications: true
