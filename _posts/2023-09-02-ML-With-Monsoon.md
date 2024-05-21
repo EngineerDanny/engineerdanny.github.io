@@ -5,6 +5,7 @@ description: This post explains some of the basic concepts you will need in your
 badges: true
 categories: [python, git, github, ml, monsoon]
 title: ML with Monsoon
+featured: true
 ---
 
 
