@@ -29,6 +29,11 @@ The visualizations provide a clear and concise way to present complex data, maki
 ## Plots Description
 1. **Select Absolute Correlation Threshold**: This plot shows the relationship between different correlation thresholds and the number of edges, helping to determine the strength of the connections in the data.
 It has the subtrain and validation error and the number of edges in the network against the absolute correlation threshold.
+In ML, subtrain error is the error on the training data and validation error is the error on the validation data.
+The number of edges in the network is the number of connections between the entities in the data.
+To filter out the spurious correlations, we can set a threshold on the absolute value of the correlation coefficient.
+This plot helps in selecting the optimal threshold for the network.
+This corresponds to the number of edges where the validation error is minimum.
 
 
 2. **Click Edge to Select Pair**: An interactive network diagram that allows users to explore the connections between different entities.
