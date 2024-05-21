@@ -8,11 +8,47 @@ category: fun
 giscus_comments: true
 ---
 
+
 ## :dart: About
 
 This package helps you to directly download an APK from Google Play by providing the package id of the app. 
 It also verifies the package ID of an app.
 What the code does is to scrape a third party website to get the download link of the APK file.
+Below is a detailed explanation of its functionality:
+
+### Libraries and Modules
+- `sys`: System-specific parameters and functions.
+- `requests`: HTTP library for making requests.
+- `BeautifulSoup` (from `bs4`): Library for parsing HTML and XML documents.
+- `colored`: Module for coloring terminal text.
+- `re`: Module for working with regular expressions.
+- `progressbar`: Module for displaying progress bars.
+- `itertools`: Module for creating iterators for efficient looping.
+- `os`: Module for OS-dependent functionality.
+
+### Base URLs
+- `base_url`, `version_url`, `search_url`, `dl_url`, `g_play_url`: URLs for various actions like searching or downloading APKs.
+
+## Headers
+- Simulates a browser request to avoid being blocked by the server.
+
+### Error Handling Functions
+- `show_internet_error`: Checks internet connection.
+- `show_arg_error`: Validates command-line argument format.
+- `show_invalid_id_err`: Validates the package ID.
+
+### Utility Functions
+- `make_spinner`: Creates a spinner for the command line.
+- `make_progress_bar`: Creates a progress bar for the download process.
+
+### Main Function
+- Validates command-line arguments.
+- Greets the user and requests the package ID.
+- Verifies the app's existence on the Google Play Store.
+- Searches for the app on the APK website and finds download links.
+- Requests a token for the download process.
+- Downloads the APK file with a progress bar.
+
 
 ## :sparkles: Features
 
