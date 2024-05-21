@@ -1,12 +1,12 @@
 ---
-layout: page
+toc: true
+layout: post
+description: This post explains some of the basic concepts you will need in your machine learning workflow using monsoon.
+badges: true
+categories: [python, git, github, ml, monsoon]
 title: ML with Monsoon
-description: This project shows the code to explain some of the basic concepts you will need in your machine learning workflow using monsoon.
-img: assets/img/12.jpg
-importance: 1
-category: work
-related_publications: true
 ---
+
 
 ## Introduction
 Welcome to the ML with Monsoon project! 
