@@ -16,7 +16,7 @@ category: work
 </div>
 
 ## Overview
-This project involves the creation of a series of plots and graphs that represent the complex microbiome data from a scientific study.
+This project involves the creation of a series of interactive plots and graphs (https://engineerdanny.github.io/EngineerDanny-necromass-figure-one-network/) that represent the complex microbiome data from a scientific study.
 This analysis is done on necromass data from a study in University of Minnesota.
 Necromass basically refers to the dead organic matter in the soil.
 The data consists of samples from different conditions (AllSoilM1M3, HighMelanM1, HighMelanM3, LowMelanM1, LowMelanM3), and the visualizations are designed to identify correlations, distributions, and patterns within a dataset.
