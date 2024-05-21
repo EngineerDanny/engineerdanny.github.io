@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Microbiome Network Analysis
-description: another without an image
+description: This project involves the creation of a series of plots and graphs that represent the complex microbiome data from a scientific study.
 img: assets/img/threshold_network.png
 importance: 3
 category: work
@@ -9,8 +9,20 @@ category: work
 
 # Microbiome Network Analysis
 
+<div class="row">
+    <div class="col-sm mt-3 mt-md-0">
+        {% include figure.liquid loading="eager" path="assets/img/threshold_network_full.png" title="threshold_network_full" class="img-fluid rounded z-depth-1" width="700px" height="500px" %}
+    </div>
+</div>
+
 ## Overview
-This project involves the creation of a series of plots and graphs that represent complex data from a scientific study or data analysis. 
+This project involves the creation of a series of plots and graphs that represent the complex microbiome data from a scientific study.
+This analysis is done on necromass data from a study in University of Minnesota.
+Necromass basically refers to the dead organic matter in the soil.
+The data consists of samples from different conditions (AllSoilM1M3, HighMelanM1, HighMelanM3, LowMelanM1, LowMelanM3), and the visualizations are designed to identify correlations, distributions, and patterns within a dataset.
+The visualizations provide a clear and concise way to present complex data, making it accessible to a broader audience.
+
+
 The visualizations are designed to identify correlations, distributions, and patterns within a dataset.
 
 ## Plots Description
