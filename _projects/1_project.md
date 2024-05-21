@@ -65,18 +65,18 @@ sbatch jobscript.sh
 
 <div class="row">
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="https://github.com/EngineerDanny/ml_with_monsoon/blob/main/code/job_arrays_intermediate/time_graph.png" title="time_graph" class="img-fluid rounded z-depth-1" width="700px" height="500px" %}
+        {% include figure.liquid loading="eager" path="assets/img/time_graph.png" title="time_graph" class="img-fluid rounded z-depth-1" width="700px" height="500px" %}
     </div>
 </div>
 
 <div class="row">
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="https://github.com/EngineerDanny/ml_with_monsoon/blob/main/code/job_arrays_advanced/parallel_algo_acc.png" title="parallel_algo_acc" class="img-fluid rounded z-depth-1" width="700px" height="500px" %}
+        {% include figure.liquid loading="eager" path="assets/img/parallel_algo_acc.png" title="parallel_algo_acc" class="img-fluid rounded z-depth-1" width="700px" height="500px" %}
     </div>
 </div>
 
 <div class="row">
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="https://github.com/EngineerDanny/ml_with_monsoon/blob/main/code/optimization/loss_df_01.png" title="loss_df_01" class="img-fluid rounded z-depth-1" %}
+        {% include figure.liquid loading="eager" path="assets/img/loss_df_01.png" title="loss_df_01" class="img-fluid rounded z-depth-1" %}
     </div>
 </div>
