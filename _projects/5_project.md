@@ -1,6 +1,6 @@
 ---
 layout: page
-title: ML on benchmark datasets
+title: Simple ML Algorithms on benchmark datasets
 description: Evaluating Simple ML models on spam and zip datasets.
 img:
 importance: 3
