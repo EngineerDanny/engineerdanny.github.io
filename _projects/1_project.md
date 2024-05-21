@@ -33,7 +33,9 @@ An example job script (jobscript.sh) is:
 ```bash
 #!/bin/bash
 #SBATCH --job-name=test
-#SBATCH --output=/scratch/da2343/output.txt #SBATCH --error=/scratch/da2343/error.txt #SBATCH --time=20:00
+#SBATCH --output=/scratch/da2343/output.txt 
+#SBATCH --error=/scratch/da2343/error.txt 
+#SBATCH --time=20:00
 #SBATCH --mem=1GB
 #SBATCH --cpus-per-task=1
 python analysis.py
