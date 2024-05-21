@@ -43,38 +43,22 @@ Submit the job script using:
 sbatch jobscript.sh
 ```
 
-
 ## [Time Graph](https://github.com/EngineerDanny/ml_with_monsoon/tree/main/code/job_arrays_intermediate)
-<img src="https://github.com/EngineerDanny/ml_with_monsoon/blob/main/code/job_arrays_intermediate/time_graph.png" 
-  alt="time_graph" 
-  title="time_graph"
-  width="700px"
-  height="500px">
-
-## [Algorithm Selection](https://github.com/EngineerDanny/ml_with_monsoon/tree/main/code/job_arrays_advanced)
-<img src="https://github.com/EngineerDanny/ml_with_monsoon/blob/main/code/job_arrays_advanced/parallel_algo_acc.png" 
-  alt="parallel_algo_acc" 
-  title="parallel_algo_acc"
-  width="700px"
-  height="500px">
-
-## [Hyper-Parameter Tuning](https://github.com/EngineerDanny/ml_with_monsoon/tree/main/code/optimization)
-<img src="https://github.com/EngineerDanny/ml_with_monsoon/blob/main/code/optimization/loss_df_01.png" 
-  alt="loss_df_01" 
-  title="loss_df_01">
-
 <div class="row">
     <div class="col-sm mt-3 mt-md-0">
         {% include figure.liquid loading="eager" path="assets/img/time_graph.png" title="time_graph" class="img-fluid rounded z-depth-1" width="700px" height="500px" %}
     </div>
 </div>
 
+
+## [Algorithm Selection](https://github.com/EngineerDanny/ml_with_monsoon/tree/main/code/job_arrays_advanced)
 <div class="row">
     <div class="col-sm mt-3 mt-md-0">
         {% include figure.liquid loading="eager" path="assets/img/parallel_algo_acc.png" title="parallel_algo_acc" class="img-fluid rounded z-depth-1" width="700px" height="500px" %}
     </div>
 </div>
 
+## [Hyper-Parameter Tuning](https://github.com/EngineerDanny/ml_with_monsoon/tree/main/code/optimization)
 <div class="row">
     <div class="col-sm mt-3 mt-md-0">
         {% include figure.liquid loading="eager" path="assets/img/loss_df_01.png" title="loss_df_01" class="img-fluid rounded z-depth-1" %}
