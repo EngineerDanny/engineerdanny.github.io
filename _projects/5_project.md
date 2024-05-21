@@ -17,8 +17,7 @@ Two datasets are loaded into pandas dataframes from compressed files. The ZIP da
 
 ```python
 import pandas as pd
-from sklearn.model_selection import KFold
-from sklearn.model_selection import GridSearchCV
+from sklearn.model_selection import GridSearchCV, KFold
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.linear_model import LogisticRegression
 from sklearn.preprocessing import StandardScaler
@@ -141,6 +140,7 @@ We can deduce the following:
 
 
 ## Conclusion
-This type of visualization is crucial for comparing the effectiveness of different machine learning algorithms on various datasets. It helps in identifying which algorithm performs best for a particular type of data and can guide the selection of models for further development or deployment. The clear separation of data points by dataset also allows for a quick assessment of how each algorithm might generalize to different types of data.
-
+This type of visualization is crucial for comparing the effectiveness of different machine learning algorithms on various datasets. 
+It helps in identifying which algorithm performs best for a particular type of data and can guide the selection of models for further development or deployment. 
+The clear separation of data points by dataset also allows for a quick assessment of how each algorithm might generalize to different types of data.
 The project provides a clear comparison of the model performances across different datasets.
