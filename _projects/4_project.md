@@ -7,8 +7,6 @@ importance: 3
 category: work
 ---
 
-# Microbiome Network Analysis
-
 <div class="row">
     <div class="col-sm mt-3 mt-md-0">
         {% include figure.liquid loading="eager" path="assets/img/threshold_network_full.png" title="threshold_network_full" class="img-fluid rounded z-depth-1" width="700px" height="500px" %}
@@ -16,17 +14,23 @@ category: work
 </div>
 
 ## Overview
+Microbiome are the microorganisms that live in a particular environment, such as the soil, gut, or water. 
+These organisms form associations or interactions with each other, creating complex networks that can be challenging to analyze.
+Some of the algorithms which are used to infer the network structure are Correlation-based (Pearson/Spearman), LASSO and Gaussian Graphical Models.
+In this project, we were interested in analyzing the pairwise relationships between different entities in the microbiome data.
+Using Pearson correlation as the main algorithm was a logical choice as it fits in this use case and it is widely used in the field of microbiome analysis.
+
 This project involves the creation of a series of interactive plots and graphs (https://engineerdanny.github.io/EngineerDanny-necromass-figure-one-network/) that represent the complex microbiome data from a scientific study.
-This analysis is done on necromass data from a study in University of Minnesota.
+This analysis is done on **necromass** data from a study in University of Minnesota.
 Necromass basically refers to the dead organic matter in the soil.
-The data consists of samples from different conditions (AllSoilM1M3, HighMelanM1, HighMelanM3, LowMelanM1, LowMelanM3), and the visualizations are designed to identify correlations, distributions, and patterns within a dataset.
+The data consists of samples from different conditions (AllSoilM1M3, HighMelanM1, HighMelanM3, LowMelanM1, LowMelanM3), and the visualizations are designed to identify correlations, distributions, and patterns within the dataset.
 The visualizations provide a clear and concise way to present complex data, making it accessible to a broader audience.
-
-
-The visualizations are designed to identify correlations, distributions, and patterns within a dataset.
 
 ## Plots Description
 1. **Select Absolute Correlation Threshold**: This plot shows the relationship between different correlation thresholds and the number of edges, helping to determine the strength of the connections in the data.
+It has the subtrain and validation error and the number of edges in the network against the absolute correlation threshold.
+
+
 2. **Click Edge to Select Pair**: An interactive network diagram that allows users to explore the connections between different entities.
 3. **Normalized Abundance for Selected Pair**: A scatter plot that displays the abundance of two variables over time, providing insights into their behavior and relationship.
 4. **Select Sparsity or Observed Load**: This scatter plot visualizes the relationship between load and sparsity, which can be crucial for understanding the distribution of data points.
