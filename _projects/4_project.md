@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Microbiome Network Analysis
-description: This project involves the creation of a series of plots and graphs that represent the complex microbiome data from a scientific study.
+description: Graphs that represent the complex microbiome association network.
 img: assets/img/threshold_network.png
 importance: 3
 category: work
@@ -23,13 +23,14 @@ Using Pearson correlation as the main algorithm was a logical choice as it fits 
 This project involves the creation of a series of interactive plots and graphs (https://engineerdanny.github.io/EngineerDanny-necromass-figure-one-network/) that represent the complex microbiome data from a scientific study.
 This analysis is done on **necromass** data from a study in University of Minnesota.
 Necromass basically refers to the dead organic matter in the soil.
-The data consists of samples from different conditions (AllSoilM1M3, HighMelanM1, HighMelanM3, LowMelanM1, LowMelanM3), and the visualizations are designed to identify correlations, distributions, and patterns within the dataset.
+The data consists of samples from different conditions (*AllSoilM1M3*, *HighMelanM1*, *HighMelanM3*, *LowMelanM1*, *LowMelanM3*), and the visualizations are designed to identify correlations, distributions, and patterns within the dataset.
 The visualizations provide a clear and concise way to present complex data, making it accessible to a broader audience.
 
 ## Plots Description
+All the five plots are linked to each other and provide a comprehensive view of the data.
 1. **Select Absolute Correlation Threshold**: This plot shows the relationship between different correlation thresholds and the number of edges, helping to determine the strength of the connections in the data.
 It has the subtrain and validation error and the number of edges in the network against the absolute correlation threshold.
-In ML, subtrain error is the error on the training data and validation error is the error on the validation data.
+In ML, subtrain error is the error on the subtrain data and validation error is the error on the validation data.
 The number of edges in the network is the number of connections between the entities in the data.
 To filter out the spurious correlations, we can set a threshold on the absolute value of the correlation coefficient.
 This plot helps in selecting the optimal threshold for the network.
@@ -37,13 +38,31 @@ This corresponds to the number of edges where the validation error is minimum.
 
 
 2. **Click Edge to Select Pair**: An interactive network diagram that allows users to explore the connections between different entities.
+When an edge is clicked, the corresponding pair of entities is selected, and the data for that pair is displayed in the other plots.
+This plot helps in understanding the relationship between different entities in the data.
+
+
 3. **Normalized Abundance for Selected Pair**: A scatter plot that displays the abundance of two variables over time, providing insights into their behavior and relationship.
-4. **Select Sparsity or Observed Load**: This scatter plot visualizes the relationship between load and sparsity, which can be crucial for understanding the distribution of data points.
-5. **Select Sparsity on Observed Load**: Similar to the third plot but with more data points, offering a detailed view of the sparsity in relation to the observed load.
-6. **Select Sparsity per Load**: A line graph that represents various categories over time or another variable, highlighting the changes in sparsity with respect to the load.
+This plot helps in understanding the distribution of data points for the selected pair of entities.
+The x-axis represents the abundance of the first entity, and the y-axis represents the abundance of the second entity.
+I use log transformation and min-max scaling to normalize the data.
+
+
+4. **Select Sparsity or Pearson Correlation Level**: This plot shows the sparsity of the network at different correlation levels, helping to identify the optimal level for analysis.
+You can select the sparsity level or the Pearson correlation level to see the corresponding network.
+This plot helps in understanding the sparsity of the network at different correlation levels.
+
+
+
+5. **Select Sparsity Difference Level or Pearson Correlation Difference Level**: Similar to the third plot but with more data points, offering a detailed view of the sparsity in relation to the correlation difference.
+This plot helps in understanding the relationship between the sparsity of the network and the difference in the correlation levels.
+The x-axis represents the difference in the correlation levels, and the y-axis represents the difference in sparsity levels of the network.
+
+
 
 ## Methodology
-The data was analyzed using statistical and computational techniques to extract meaningful patterns. The plots were generated using data visualization tools and libraries that support the rendering of scientific data.
+The data was analyzed using statistical and computational techniques to extract meaningful patterns. 
+The plots were generated using data visualization tools and libraries that support the rendering of scientific data.
 
 ## Importance
 The visualizations provide a clear and concise way to present complex data, making it accessible to a broader audience. They are essential for:
