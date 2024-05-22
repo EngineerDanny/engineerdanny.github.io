@@ -284,6 +284,25 @@ def hyperparameter_training_and_diagnostic_plot():
             gg.save(f"./06_torch_mlp/{data_set}_{model_name}.png")
 ```
 
+<div class="row justify-content-sm-center">
+  <div class="col-sm-8 mt-3 mt-md-0">
+    {% include figure.liquid path="assets/img/p7_spam_linear.png" title="p7_spam_linear" class="img-fluid rounded z-depth-1" %}
+  </div>
+  <div class="col-sm-4 mt-3 mt-md-0">
+    {% include figure.liquid path="assets/img/p7_spam_nnet.png" title="p7_spam_nnet" class="img-fluid rounded z-depth-1" %}
+  </div>
+</div>
+
+
+
+<div class="row justify-content-sm-center">
+  <div class="col-sm-8 mt-3 mt-md-0">
+    {% include figure.liquid path="assets/img/p7_zip_linear.png" title="p7_zip_linear" class="img-fluid rounded z-depth-1" %}
+  </div>
+  <div class="col-sm-4 mt-3 mt-md-0">
+    {% include figure.liquid path="assets/img/p7_zip_nnet.png" title="p7_zip_nnet" class="img-fluid rounded z-depth-1" %}
+  </div>
+
 ## Experiments and Application
 Run experiments and evaluate model performance.
     
@@ -362,14 +381,34 @@ def experiments_and_application():
     gg.save("./accuracy_facetted.png")
 ```
 
-## Main Function
-Execute the main function to run all experiments and generate plots.
+<div class="row">
+    <div class="col-sm mt-3 mt-md-0">
+        {% include figure.liquid loading="eager" path="assets/img/p7_accuracy_facetted.png" title="threshold_network_full" class="img-fluid rounded z-depth-1" width="600px" height="600px" %}
+    </div>
+</div>
 
-```python
-def main(): 
-    hyperparameter_training_and_diagnostic_plot()
-    experiments_and_application()    
+# Interpretation of Test Accuracy Results
 
-## Run main function
-main()
-```
+The graph above shows the test accuracy percentages for different algorithms applied to two datasets: `spam` and `zip`. Each point represents the accuracy of a particular algorithm for a specific fold of cross-validation. The algorithms compared include a featureless model, linear and deep neural networks trained with cross-validation, logistic regression with cross-validation, and k-nearest neighbors with hyperparameter tuning using grid search.
+
+## Key Observations
+
+### Spam Dataset
+- **Featureless Model**: The accuracy is consistently around 60%, indicating that the most frequent class constitutes 60% of the dataset. This serves as a baseline.
+- **TorchLearnerCV+Linear**: The accuracy is significantly higher, around 90%, demonstrating that a simple neural network with a linear configuration performs well on the spam dataset.
+- **TorchLearnerCV+Deep**: Similar to the linear model, the deep neural network achieves around 90% accuracy, suggesting that additional complexity does not significantly improve performance for this dataset.
+- **LogisticRegressionCV**: Achieves close to 90% accuracy, indicating that logistic regression is quite effective for the spam dataset.
+- **GridSearchCV+KNNC**: Also achieves close to 90% accuracy, showing that k-nearest neighbors with optimal hyperparameters can perform well on this dataset.
+
+### Zip Dataset
+- **Featureless Model**: The accuracy is around 65%, indicating the baseline performance for the zip dataset.
+- **TorchLearnerCV+Linear**: The accuracy is around 85%, showing that a simple linear neural network configuration is effective but leaves room for improvement.
+- **TorchLearnerCV+Deep**: Achieves nearly 100% accuracy, indicating that a deep neural network is highly effective for the zip dataset, likely capturing complex patterns in the data.
+- **LogisticRegressionCV**: Accuracy is around 90%, showing that logistic regression is also quite effective for the zip dataset but slightly less so than the deep neural network.
+- **GridSearchCV+KNNC**: The accuracy is around 95%, indicating that k-nearest neighbors with optimal hyperparameters perform very well on this dataset.
+
+## Conclusion
+- For the **spam dataset**, both simple and complex models (linear and deep neural networks, logistic regression, and k-nearest neighbors) perform similarly well, with accuracies around 90%.
+- For the **zip dataset**, the deep neural network outperforms all other models, achieving near-perfect accuracy. Other models, including logistic regression and k-nearest neighbors, also perform well but slightly less so.
+
+This analysis highlights the importance of model selection and hyperparameter tuning tailored to the specific characteristics of each dataset. Complex models like deep neural networks can capture more intricate patterns, leading to better performance in datasets with higher complexity.
