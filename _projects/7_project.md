@@ -285,27 +285,28 @@ def hyperparameter_training_and_diagnostic_plot():
 ```
 
 <div class="row justify-content-sm-center">
-  <div class="col-sm-8 mt-3 mt-md-0">
+  <div class="col-sm-6 mt-3 mt-md-0">
     {% include figure.liquid path="assets/img/p7_spam_linear.png" title="p7_spam_linear" class="img-fluid rounded z-depth-1" %}
   </div>
-  <div class="col-sm-4 mt-3 mt-md-0">
+  <div class="col-sm-6 mt-3 mt-md-0">
     {% include figure.liquid path="assets/img/p7_spam_nnet.png" title="p7_spam_nnet" class="img-fluid rounded z-depth-1" %}
   </div>
 </div>
 
 
-
 <div class="row justify-content-sm-center">
-  <div class="col-sm-8 mt-3 mt-md-0">
+  <div class="col-sm-6 mt-3 mt-md-0">
     {% include figure.liquid path="assets/img/p7_zip_linear.png" title="p7_zip_linear" class="img-fluid rounded z-depth-1" %}
   </div>
-  <div class="col-sm-4 mt-3 mt-md-0">
+  <div class="col-sm-6 mt-3 mt-md-0">
     {% include figure.liquid path="assets/img/p7_zip_nnet.png" title="p7_zip_nnet" class="img-fluid rounded z-depth-1" %}
-  </div>
+</div>
+
+
 
 ## Experiments and Application
 Run experiments and evaluate model performance.
-    
+
 ```python
 def experiments_and_application():
     test_acc_df_list = [] 
@@ -380,6 +381,7 @@ def experiments_and_application():
         p9.facet_wrap("data_set")
     gg.save("./accuracy_facetted.png")
 ```
+
 
 <div class="row">
     <div class="col-sm mt-3 mt-md-0">
