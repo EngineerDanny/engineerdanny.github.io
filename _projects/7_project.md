@@ -281,7 +281,7 @@ def hyperparameter_training_and_diagnostic_plot():
                 p9.geom_line() +\
                 p9.scale_color_discrete(name="set_name") +\
                 p9.labs(title=f"Loss for {data_set} dataset, {model_name} model")
-            gg.save(f"./06_torch_mlp/{data_set}_{model_name}.png")
+            gg.save(f"./{data_set}_{model_name}.png")
 ```
 
 <div class="row justify-content-sm-center">
