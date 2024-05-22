@@ -187,7 +187,7 @@ Different models are trained and evaluated using cross-validation. Models includ
 Hyperparameter tuning is performed for KNN using MyCV and GridSearchCV.
     
 ```python
-    test_acc_df_list = []
+test_acc_df_list = []
 
 for data_set, (input_mat, output_vec) in data_dict.items():
     k_fold = KFold(n_splits=3, shuffle=True, random_state=1)
@@ -208,10 +208,12 @@ for data_set, (input_mat, output_vec) in data_dict.items():
         my_cv = MyCV(estimator=MyKNN(), param_grid=param_dicts, cv=5)
         my_cv.fit(**set_data_dict["train"])
 
-        my_cv_scaled = make_my_pipeline(MyStandardScaler(), MyCV(estimator=MyKNN(), param_grid=param_dicts, cv=5))
+        my_cv_scaled = make_my_pipeline(MyStandardScaler(), 
+        MyCV(estimator=MyKNN(), param_grid=param_dicts, cv=5))
         my_cv_scaled.fit(**set_data_dict["train"])
 
-        grid_search_cv_scaled = make_pipeline(StandardScaler(), GridSearchCV(estimator=KNeighborsClassifier(), param_grid=param_dicts, cv=5))
+        grid_search_cv_scaled = make_pipeline(StandardScaler(), 
+        GridSearchCV(estimator=KNeighborsClassifier(), param_grid=param_dicts, cv=5))
         grid_search_cv_scaled.fit(**set_data_dict["train"])
 
         featureless = Featureless()
@@ -264,7 +266,7 @@ gg.save("./custom_ml_on_bm_facetted.png")
 
 ## Interpretation
 
-The scatter plot provides a comparative analysis of the test accuracy percentages achieved by three different algorithms on three datasets. The algorithms are "GridSearchCV+KNNC+Scaled," "MyCV+MyKNN+Scaled," and "MyCV+MyKNN," and the datasets are labeled as "spam," "spam_scaled," and "zip."
+The scatter plot provides a comparative analysis of the test accuracy percentages achieved by three different algorithms on three datasets. The algorithms are `GridSearchCV+KNNC+Scaled`, `MyCV+MyKNN+Scaled`, and `MyCV+MyKNN` and the datasets are labeled as `spam`, `spam_scaled` and `zip`.
 
 ### Axes Description
 - **X-Axis (test_accuracy_percent)**: Represents the accuracy percentage achieved by the algorithms, ranging from 60 to 100.
@@ -272,12 +274,12 @@ The scatter plot provides a comparative analysis of the test accuracy percentage
 
 ### Data Points
 - Each algorithm has one data point per dataset category, indicating the performance of that particular algorithm on the given dataset.
-- The categories "spam" and "spam_scaled" likely represent the original and scaled versions of the spam dataset, while "zip" represents a separate dataset.
+- The categories `spam` and `spam_scaled` likely represent the original and scaled versions of the spam dataset, while `zip` represents a separate dataset.
 
 ### Observations
-- The "GridSearchCV+KNNC+Scaled" algorithm shows high accuracy across all datasets, with particularly notable performance on the "spam_scaled" dataset.
-- The "MyCV+MyKNN+Scaled" algorithm also performs well, especially on the scaled datasets, suggesting that scaling improves its accuracy.
-- The "MyCV+MyKNN" algorithm without scaling shows lower accuracy compared to its scaled counterpart, highlighting the impact of feature scaling on model performance.
+- The `GridSearchCV+KNNC+Scaled` algorithm shows high accuracy across all datasets, with particularly notable performance on the `spam_scaled` dataset.
+- The `MyCV+MyKNN+Scaled` algorithm also performs well, especially on the scaled datasets, suggesting that scaling improves its accuracy.
+- The `MyCV+MyKNN` algorithm without scaling shows lower accuracy compared to its scaled counterpart, highlighting the impact of feature scaling on model performance.
 
 ### Conclusion
 The scatter plot effectively demonstrates the importance of data preprocessing, such as scaling, and its impact on the performance of machine learning algorithms. It also allows for a quick visual comparison between different modeling approaches and their effectiveness across various types of data.

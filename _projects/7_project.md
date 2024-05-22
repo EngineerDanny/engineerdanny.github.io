@@ -2,20 +2,22 @@
 layout: page
 title: Advanced Machine Learning Techniques with PyTorch
 description: Implementing advanced machine learning algorithms.
-img: assets/img/zip_nnet.png
+img: assets/img/p7_zip_nnet.png
 importance: 4
 category: work
 ---
 
 ## Introduction
 
-In the rapidly evolving field of machine learning, staying abreast of the latest techniques and tools is crucial for developing effective and efficient models. This project showcases a comprehensive approach to implementing and evaluating advanced machine learning models using a combination of PyTorch, Scikit-Learn, and Plotnine. The primary goals of this project are to:
+In the rapidly evolving field of machine learning, staying abreast of the latest techniques and tools is crucial for developing effective and efficient models. 
+This project showcases a comprehensive approach to implementing and evaluating advanced machine learning models using a combination of `PyTorch`, `Scikit-Learn`, and `Plotnine`. 
+The primary goals of this project are to:
 
-1. **Implement Custom Models**: Develop custom machine learning models, including a basic featureless model, and more sophisticated neural networks using PyTorch.
+1. **Implement Custom Models**: Develop custom machine learning models, including a basic featureless model, and more sophisticated neural networks using `PyTorch`.
 2. **Cross-Validation and Hyperparameter Tuning**: Utilize cross-validation techniques to optimize model performance and fine-tune hyperparameters for the best results.
 3. **Data Preprocessing and Feature Scaling**: Prepare datasets with appropriate preprocessing steps, including feature scaling, to ensure model accuracy and robustness.
 4. **Comparative Analysis**: Compare the performance of different models using a standardized evaluation framework.
-5. **Visualization of Results**: Generate insightful visualizations using Plotnine to interpret the performance and behavior of models across different datasets and configurations.
+5. **Visualization of Results**: Generate insightful visualizations using `Plotnine` to interpret the performance and behavior of models across different datasets and configurations.
 
 The project is structured to cover various aspects of machine learning model development and evaluation. 
 We start with data preparation, including loading and scaling datasets. 
@@ -32,7 +34,8 @@ By the end of this project, you'll have a solid understanding of how to build, t
 
 
 ## Imports
-To begin, we need to import several essential libraries for our machine learning tasks. These include pandas, numpy, plotnine for visualization, PyTorch for deep learning, and several modules from scikit-learn for data processing and modeling.
+To begin, we need to import several essential libraries for our machine learning tasks. 
+These include pandas, numpy, plotnine for visualization, `PyTorch` for deep learning, and several modules from `scikit-learn` for data processing and modeling.
 
 ```python
 import pandas as pd
@@ -308,6 +311,7 @@ def hyperparameter_training_and_diagnostic_plot():
 
 
 ## Experiments and Application
+
 Run experiments and evaluate model performance.
 
 ```python
@@ -394,7 +398,9 @@ def experiments_and_application():
 
 # Interpretation of Test Accuracy Results
 
-The graph above shows the test accuracy percentages for different algorithms applied to two datasets: `spam` and `zip`. Each point represents the accuracy of a particular algorithm for a specific fold of cross-validation. The algorithms compared include a featureless model, linear and deep neural networks trained with cross-validation, logistic regression with cross-validation, and k-nearest neighbors with hyperparameter tuning using grid search.
+The graph above shows the test accuracy percentages for different algorithms applied to two datasets: `spam` and `zip`. 
+Each point represents the accuracy of a particular algorithm for a specific fold of cross-validation. 
+The algorithms compared include a featureless model, linear and deep neural networks trained with cross-validation, logistic regression with cross-validation, and k-nearest neighbors with hyperparameter tuning using grid search.
 
 ## Key Observations
 
@@ -406,14 +412,16 @@ The graph above shows the test accuracy percentages for different algorithms app
 - **GridSearchCV+KNNC**: Also achieves close to 90% accuracy, showing that k-nearest neighbors with optimal hyperparameters can perform well on this dataset.
 
 ### Zip Dataset
-- **Featureless Model**: The accuracy is around 65%, indicating the baseline performance for the zip dataset.
+- **Featureless Model**: The accuracy is around 65%, indicating the baseline performance for the `zip` dataset.
 - **TorchLearnerCV+Linear**: The accuracy is around 85%, showing that a simple linear neural network configuration is effective but leaves room for improvement.
-- **TorchLearnerCV+Deep**: Achieves nearly 100% accuracy, indicating that a deep neural network is highly effective for the zip dataset, likely capturing complex patterns in the data.
-- **LogisticRegressionCV**: Accuracy is around 90%, showing that logistic regression is also quite effective for the zip dataset but slightly less so than the deep neural network.
+- **TorchLearnerCV+Deep**: Achieves nearly 100% accuracy, indicating that a deep neural network is highly effective for the `zip` dataset, likely capturing complex patterns in the data.
+- **LogisticRegressionCV**: Accuracy is around 90%, showing that logistic regression is also quite effective for the `zip` dataset but slightly less so than the deep neural network.
 - **GridSearchCV+KNNC**: The accuracy is around 95%, indicating that k-nearest neighbors with optimal hyperparameters perform very well on this dataset.
 
 ## Conclusion
 - For the **spam dataset**, both simple and complex models (linear and deep neural networks, logistic regression, and k-nearest neighbors) perform similarly well, with accuracies around 90%.
-- For the **zip dataset**, the deep neural network outperforms all other models, achieving near-perfect accuracy. Other models, including logistic regression and k-nearest neighbors, also perform well but slightly less so.
+- For the **zip dataset**, the deep neural network outperforms all other models, achieving near-perfect accuracy. 
+Other models, including logistic regression and k-nearest neighbors, also perform well but slightly less so.
 
-This analysis highlights the importance of model selection and hyperparameter tuning tailored to the specific characteristics of each dataset. Complex models like deep neural networks can capture more intricate patterns, leading to better performance in datasets with higher complexity.
+This analysis highlights the importance of model selection and hyperparameter tuning tailored to the specific characteristics of each dataset. 
+Complex models like deep neural networks can capture more intricate patterns, leading to better performance in datasets with higher complexity.
