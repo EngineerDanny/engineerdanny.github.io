@@ -17,9 +17,13 @@ In the rapidly evolving field of machine learning, staying abreast of the latest
 4. **Comparative Analysis**: Compare the performance of different models using a standardized evaluation framework.
 5. **Visualization of Results**: Generate insightful visualizations using Plotnine to interpret the performance and behavior of models across different datasets and configurations.
 
-The project is structured to cover various aspects of machine learning model development and evaluation. We start with data preparation, including loading and scaling datasets. We then define custom classes for models and datasets, enabling seamless integration with PyTorch's data handling capabilities. The core of the project involves training neural networks with cross-validation to identify the optimal number of epochs for each model.
+The project is structured to cover various aspects of machine learning model development and evaluation. 
+We start with data preparation, including loading and scaling datasets. 
+We then define custom classes for models and datasets, enabling seamless integration with PyTorch's data handling capabilities. 
+The core of the project involves training neural networks with cross-validation to identify the optimal number of epochs for each model.
 
-Moreover, we implement a series of experiments to compare traditional machine learning models, like Logistic Regression and K-Nearest Neighbors, with our neural network models. The performance of these models is evaluated across multiple folds of cross-validation, ensuring a robust assessment.
+Moreover, we implement a series of experiments to compare traditional machine learning models, like Logistic Regression and K-Nearest Neighbors, with our neural network models. 
+The performance of these models is evaluated across multiple folds of cross-validation, ensuring a robust assessment.
 
 Finally, the project leverages Plotnine for creating detailed diagnostic plots and visualizations. These plots help in understanding the training dynamics and the effectiveness of different models, making it easier to draw actionable insights.
 
@@ -237,7 +241,7 @@ class TorchLearner:
 Load and preprocess the spam and zip datasets.
     
 ```python
-spam_df = pd.read_csv("./data/spam.data", header=None, sep=" ")
+spam_df = pd.read_csv("./spam.data", header=None, sep=" ")
 spam_features = spam_df.iloc[:, :-1].to_numpy()
 spam_labels = spam_df.iloc[:, -1].to_numpy()
 
@@ -245,7 +249,7 @@ spam_mean = spam_features.mean(axis=0)
 spam_sd = np.sqrt(spam_features.var(axis=0))
 spam_scaled_features = (spam_features - spam_mean) / spam_sd
 
-zip_df = pd.read_csv("./data/zip.test.gz", header=None, sep=" ")
+zip_df = pd.read_csv("./zip.test.gz", header=None, sep=" ")
 is01 = zip_df[0].isin([0, 1])
 zip01_df = zip_df.loc[is01, :]
 zip_features = zip01_df.loc[:, 1:].to_numpy()
@@ -292,7 +296,6 @@ def hyperparameter_training_and_diagnostic_plot():
     {% include figure.liquid path="assets/img/p7_spam_nnet.png" title="p7_spam_nnet" class="img-fluid rounded z-depth-1" %}
   </div>
 </div>
-
 
 <div class="row justify-content-sm-center">
   <div class="col-sm-6 mt-3 mt-md-0">
