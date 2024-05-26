@@ -183,7 +183,8 @@ data_dict = {
 ```
 
 ## Model Training and Evaluation
-Different models are trained and evaluated using cross-validation. Models include logistic regression, KNN with cross-validation, and featureless classifier. 
+Different models are trained and evaluated using cross-validation. 
+Models include logistic regression, KNN with cross-validation, and featureless classifier. 
 Hyperparameter tuning is performed for KNN using MyCV and GridSearchCV.
     
 ```python
