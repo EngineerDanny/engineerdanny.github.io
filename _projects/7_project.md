@@ -369,6 +369,11 @@ def experiments_and_application():
     gg.save("./accuracy_facetted.png")
 ```
 
+<div class="row">
+    <div class="col-sm mt-3 mt-md-0">
+        {% include figure.liquid loading="eager" path="assets/img/p7_accuracy_facetted.png" title="threshold_network_full" class="img-fluid rounded z-depth-1" width="600px" height="600px" %}
+    </div>
+</div> 
 
 # Interpretation of Test Accuracy Results
 
@@ -399,12 +404,6 @@ Other models, including logistic regression and k-nearest neighbors, also perfor
 
 This analysis highlights the importance of model selection and hyperparameter tuning tailored to the specific characteristics of each dataset. 
 Complex models like deep neural networks can capture more intricate patterns, leading to better performance in datasets with higher complexity.
-
-<div class="row">
-    <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/p7_accuracy_facetted.png" title="threshold_network_full" class="img-fluid rounded z-depth-1" width="600px" height="600px" %}
-    </div>
-</div> 
 
 
 <div class="row justify-content-sm-center">
