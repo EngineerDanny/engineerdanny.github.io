@@ -291,7 +291,7 @@ def hyperparameter_training_and_diagnostic_plot():
             gg.save(f"./{data_set}_{model_name}.png")
 ```
 
-## ROC Curve Plot
+<!-- ## ROC Curve Plot
 <div class="row justify-content-sm-center">
   <div class="col-sm-6 mt-3 mt-md-0">
     {% include figure.liquid path="assets/img/p7_spam_linear.png" title="p7_spam_linear" class="img-fluid rounded z-depth-1" %}
@@ -307,14 +307,12 @@ def hyperparameter_training_and_diagnostic_plot():
   </div>
   <div class="col-sm-6 mt-3 mt-md-0">
     {% include figure.liquid path="assets/img/p7_zip_nnet.png" title="p7_zip_nnet" class="img-fluid rounded z-depth-1" %}
-</div>
+</div> -->
 
 
 
 ## Experiments and Application
-
 Run experiments and evaluate model performance.
-
 ```python
 def experiments_and_application():
     test_acc_df_list = [] 
