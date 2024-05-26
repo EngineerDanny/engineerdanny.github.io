@@ -291,6 +291,15 @@ def hyperparameter_training_and_diagnostic_plot():
             gg.save(f"./{data_set}_{model_name}.png")
 ```
 
+<div class="row justify-content-sm-center">
+  <div class="col-sm-6 mt-3 mt-md-0">
+    {% include figure.liquid path="assets/img/p7_spam_linear.png" title="p7_spam_linear" class="img-fluid rounded z-depth-1" %}
+  </div>
+  <div class="col-sm-6 mt-3 mt-md-0">
+    {% include figure.liquid path="assets/img/p7_spam_nnet.png" title="p7_spam_nnet" class="img-fluid rounded z-depth-1" %}
+  </div>
+</div>
+
 
 ## Experiments and Application
 Run experiments and evaluate model performance.
@@ -406,14 +415,7 @@ This analysis highlights the importance of model selection and hyperparameter tu
 Complex models like deep neural networks can capture more intricate patterns, leading to better performance in datasets with higher complexity.
 
 
-<div class="row justify-content-sm-center">
-  <div class="col-sm-6 mt-3 mt-md-0">
-    {% include figure.liquid path="assets/img/p7_spam_linear.png" title="p7_spam_linear" class="img-fluid rounded z-depth-1" %}
-  </div>
-  <div class="col-sm-6 mt-3 mt-md-0">
-    {% include figure.liquid path="assets/img/p7_spam_nnet.png" title="p7_spam_nnet" class="img-fluid rounded z-depth-1" %}
-  </div>
-</div>
+
 
 <div class="row justify-content-sm-center">
   <div class="col-sm-6 mt-3 mt-md-0">
