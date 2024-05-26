@@ -301,14 +301,14 @@ def hyperparameter_training_and_diagnostic_plot():
   </div>
 </div>
 
-### Diagnostic Plots for Zip Dataset
+<!-- ### Diagnostic Plots for Zip Dataset
 <div class="row justify-content-sm-center">
   <div class="col-sm-6 mt-3 mt-md-0">
     {% include figure.liquid path="assets/img/p7_zip_linear.png" title="p7_zip_linear" class="img-fluid rounded z-depth-1" %}
   </div>
   <div class="col-sm-6 mt-3 mt-md-0">
     {% include figure.liquid path="assets/img/p7_zip_nnet.png" title="p7_zip_nnet" class="img-fluid rounded z-depth-1" %}
-</div> 
+</div>  -->
 
 ## Experiments and Application
 Run experiments and evaluate model performance.
