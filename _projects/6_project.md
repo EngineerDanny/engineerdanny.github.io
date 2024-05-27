@@ -22,7 +22,6 @@ from sklearn.model_selection import GridSearchCV
 from sklearn.neighbors import KNeighborsClassifier
 ```
 
-
 ## Model Classes
 We define custom classes for different models and utilities.
 

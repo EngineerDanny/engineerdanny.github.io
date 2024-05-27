@@ -27,7 +27,8 @@ The core of the project involves training neural networks with cross-validation 
 Moreover, we implement a series of experiments to compare traditional machine learning models, like Logistic Regression and K-Nearest Neighbors, with our neural network models. 
 The performance of these models is evaluated across multiple folds of cross-validation, ensuring a robust assessment.
 
-Finally, the project leverages Plotnine for creating detailed diagnostic plots and visualizations. These plots help in understanding the training dynamics and the effectiveness of different models, making it easier to draw actionable insights.
+Finally, the project leverages Plotnine for creating detailed diagnostic plots and visualizations. 
+These plots help in understanding the training dynamics and the effectiveness of different models, making it easier to draw actionable insights.
 
 By the end of this project, you'll have a solid understanding of how to build, tune, and evaluate advanced machine learning models using a combination of powerful Python libraries.
 

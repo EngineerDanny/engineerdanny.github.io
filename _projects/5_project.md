@@ -8,10 +8,12 @@ category: work
 ---
 
 ## Introduction
-This project involves evaluating different machine learning models using the K-Nearest Neighbors (KNN) and Logistic Regression algorithms. The evaluation is performed on two datasets: handwritten digits (ZIP) and email spam classification (SPAM).
+This project involves evaluating different machine learning models using the K-Nearest Neighbors (KNN) and Logistic Regression algorithms. 
+The evaluation is performed on two datasets: handwritten digits (ZIP) and email spam classification (SPAM).
 
 ## Data Preparation
-Two datasets are loaded into pandas dataframes from compressed files. The ZIP dataset is filtered to include only the digits 0 and 1, while the SPAM dataset is used as is.
+Two datasets are loaded into pandas dataframes from compressed files. 
+The ZIP dataset is filtered to include only the digits 0 and 1, while the SPAM dataset is used as is.
 
 ```python
 import pandas as pd
@@ -48,7 +50,8 @@ data_dict = {
 ```
 
 ## Model Training and Evaluation
-A dictionary `data_dict` is created to store the input matrices and output vectors for both datasets. A K-Fold cross-validation approach is used to split the data into training and testing sets.
+A dictionary `data_dict` is created to store the input matrices and output vectors for both datasets. 
+A K-Fold cross-validation approach is used to split the data into training and testing sets.
 
 For each dataset:
 - A `GridSearchCV` object is instantiated with a KNN classifier to find the best number of neighbors (`n_neighbors`) from 1 to 20.
@@ -97,11 +100,11 @@ for data_set, (input_mat, output_vec) in data_dict.items():
             test_acc_df_list.append(pd.DataFrame(test_acc_dict, index=[0]))
 
 test_acc_df = pd.concat(test_acc_df_list)
-print(test_acc_df)
 ```
 
 ## Visualization
-A ggplot is created to visually examine which learning algorithm performs best for each dataset. The plot uses `geom_point` with `test_accuracy_percent` on the x-axis, `algorithm` on the y-axis, and `facet_grid` to create a panel for each dataset.
+A `ggplot` is created to visually examine which learning algorithm performs best for each dataset. 
+The plot uses `geom_point` with `test_accuracy_percent` on the x-axis, `algorithm` on the y-axis, and `facet_grid` to create a panel for each dataset.
 
 ```python
 gg = p9.ggplot() +\
@@ -122,7 +125,8 @@ gg.save("p5_accuracy_facetted.png")
 </div>
 
 ## Interpretation
-The figure above is a scatter plot that visualizes the test accuracy percentages of three different algorithms—nearest neighbors, linear model, and a featureless model—applied to two datasets: spam and zip. Each data point represents the accuracy achieved by an algorithm on a specific dataset.
+The figure above is a scatter plot that visualizes the test accuracy percentages of three different algorithms—nearest neighbors, linear model, and a featureless model—applied to two datasets: `spam` and `zip`. 
+Each data point represents the accuracy achieved by an algorithm on a specific dataset.
 
 - **Horizontal Axis (test_accuracy_percent)**: Ranges from 50 to 100, representing the accuracy percentage of the algorithms in predicting the correct outcomes on the test datasets.
 - **Vertical Axis (algorithm)**: Lists the three algorithms used in the evaluation: nearest neighbors, linear model, and featureless.

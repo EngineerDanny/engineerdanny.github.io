@@ -13,9 +13,9 @@ Building a machine learning pipeline from scratch can be a daunting task, especi
 This project post aims to simplify this process by providing a step-by-step guide to creating a comprehensive machine learning pipeline. 
 We'll cover everything from data preparation and model building to training, cross-validation, hyperparameter tuning, and visualization of results.
 
-In this post, we'll walk through the Python code necessary to build and evaluate machine learning models using libraries such as pandas, numpy, scikit-learn, PyTorch, and plotnine. 
+In this post, we'll walk through the Python code necessary to build and evaluate machine learning models using libraries such as `pandas`, `numpy`, `scikit-learn`, `PyTorch`, and `plotnine`. 
 We will start by importing the essential libraries and creating custom classes for modeling. 
-These classes include a featureless baseline model, a neural network implemented in PyTorch, and a custom cross-validation class. 
+These classes include a featureless baseline model, a neural network implemented in `PyTorch`, and a custom cross-validation class. 
 We will then move on to data preparation, where we'll preprocess datasets for training and testing.
 
 Following data preparation, we'll train our models using various hyperparameters and generate diagnostic plots to visualize the results. 
@@ -363,4 +363,6 @@ def experiments_and_application():
 
 
 # Conclusion
-This pipeline integrates various components of machine learning workflow, including data preparation, model building, training, hyperparameter tuning, and result visualization. The use of custom classes and functions allows for flexibility and reusability in different machine learning scenarios. This project post aims to provide a comprehensive overview and a practical implementation guide for building a machine learning pipeline from scratch.
+This pipeline integrates various components of machine learning workflow, including data preparation, model building, training, hyperparameter tuning, and result visualization. 
+The use of custom classes and functions allows for flexibility and reusability in different machine learning scenarios. 
+This project post aims to provide a comprehensive overview and a practical implementation guide for building a machine learning pipeline from scratch.
