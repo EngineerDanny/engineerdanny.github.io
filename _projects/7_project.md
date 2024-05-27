@@ -1,7 +1,7 @@
 ---
 layout: page
-title: Advanced Machine Learning Techniques with PyTorch
-description: Implementing advanced machine learning algorithms.
+title: Advanced ML Algorithms with PyTorch
+description: Implementing advanced machine learning algorithms using PyTorch and Scikit-Learn.
 img: assets/img/p7_zip_nnet.png
 importance: 4
 category: work

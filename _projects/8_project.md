@@ -1,7 +1,7 @@
 ---
 layout: page
 title: Regularized Neural Networks
-description: Implementing a regularized neural network from scratch.
+description: Implementing a regularized neural network from scratch using PyTorch.
 img: assets/img/p8_spam_02.png
 importance: 4
 category: work

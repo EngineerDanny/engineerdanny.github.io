@@ -2,12 +2,10 @@
 layout: page
 title: Rperform
 description: A package for tracking and improving the performance of R code.
-img: 
+img: assets/img/Rplot_time_updated.png 
 importance: 3
 category: work
 ---
-
-# Rperform
 
 [Rperform](https://github.com/EngineerDanny/Rperform) is a package that allows R developers to track quantitative performance metrics of their code.
  **Rperform only supports projects utilizing [testthat](https://github.com/r-lib/testthat) package for testing.**  
@@ -37,9 +35,9 @@ For integrating Rperform with your travis build, check out the instructions prov
 # Installation
 ``` r
 > library(devtools)
-> install_github("analyticalmonk/Rperform")
+> install_github("EngineerDanny/Rperform")
 ## OR
-> devtools::install_github("analyticalmonk/Rperform")
+> devtools::install_github("EngineerDanny/Rperform")
 ```
 
 # Basic Usage

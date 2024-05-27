@@ -1,8 +1,8 @@
 ---
 layout: page
-title: Custom ML Algorithms on benchmark datasets
-description: Evaluating custom ML models on spam and zip datasets.
-img:
+title: Custom ML Algorithms
+description: Evaluating custom ML models on spam and zip benchmark datasets.
+img: assets/img/p6_accuracy_facetted.png
 importance: 4
 category: work
 ---
@@ -256,12 +256,12 @@ gg = p9.ggplot() +\
         ),
         data=test_acc_df) +\
     p9.facet_wrap("data_set")
-gg.save("./custom_ml_on_bm_facetted.png")
+gg.save("./p6_accuracy_facetted.png")
 ```
 
 <div class="row">
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/custom_ml_on_bm_facetted.png" title="threshold_network_full" class="img-fluid rounded z-depth-1" width="600px" height="600px" %}
+        {% include figure.liquid loading="eager" path="assets/img/p6_accuracy_facetted.png" title="threshold_network_full" class="img-fluid rounded z-depth-1" width="600px" height="600px" %}
     </div>
 </div>
 

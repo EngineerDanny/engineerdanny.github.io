@@ -1,8 +1,8 @@
 ---
 layout: page
-title: Simple ML Algorithms on benchmark datasets
-description: Evaluating Simple ML models on spam and zip datasets.
-img:
+title: Simple ML Algorithms
+description: Evaluating Simple ML models on spam and zip benchmark datasets.
+img: assets/img/p5_accuracy_facetted.png
 importance: 3
 category: work
 ---
@@ -112,12 +112,12 @@ gg = p9.ggplot() +\
         ),
         data=test_acc_df) +\
     p9.facet_wrap("data_set")
-gg.save("ml_on_bm_facetted.png")
+gg.save("p5_accuracy_facetted.png")
 ```
 
 <div class="row">
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/ml_on_bm_facetted.png" title="threshold_network_full" class="img-fluid rounded z-depth-1" width="600px" height="600px" %}
+        {% include figure.liquid loading="eager" path="assets/img/p5_accuracy_facetted.png" title="threshold_network_full" class="img-fluid rounded z-depth-1" width="600px" height="600px" %}
     </div>
 </div>
 
