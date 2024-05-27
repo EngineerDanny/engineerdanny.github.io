@@ -208,43 +208,7 @@
                 <span class="n">p9</span><span class="p">.</span><span class="nf">scale_color_discrete</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="sh">"</span><span class="s">set_name</span><span class="sh">"</span><span class="p">)</span> <span class="o">+</span>\
                 <span class="n">p9</span><span class="p">.</span><span class="nf">labs</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="sa">f</span><span class="sh">"</span><span class="s">Loss for </span><span class="si">{</span><span class="n">data_set</span><span class="si">}</span><span class="s"> dataset, </span><span class="si">{</span><span class="n">model_name</span><span class="si">}</span><span class="s"> model</span><span class="sh">"</span><span class="p">)</span>
             <span class="n">gg</span><span class="p">.</span><span class="nf">save</span><span class="p">(</span><span class="sa">f</span><span class="sh">"</span><span class="s">./</span><span class="si">{</span><span class="n">data_set</span><span class="si">}</span><span class="s">_</span><span class="si">{</span><span class="n">model_name</span><span class="si">}</span><span class="s">.png</span><span class="sh">"</span><span class="p">)</span>
-</code></pre></div></div> <h3 id="diagnostic-plots-for-spam-dataset">Diagnostic Plots for Spam Dataset</h3> <div class="row justify-content-sm-center"> <div class="col-sm-6 mt-3 mt-md-0"> <figure> <picture> <source class="responsive-img-srcset" srcset="/assets/img/p7_spam_linear-480.webp 480w,/assets/img/p7_spam_linear-800.webp 800w,/assets/img/p7_spam_linear-1400.webp 1400w," sizes="95vw" type="image/webp"></source> <img src="/assets/img/p7_spam_linear.png" class="img-fluid rounded z-depth-1" width="100%" height="auto" title="p7_spam_linear" loading="lazy" onerror="this.onerror=null; $('.responsive-img-srcset').remove();"> </picture> </figure> </div> <div class="col-sm-6 mt-3 mt-md-0"> <figure> <picture> <source class="responsive-img-srcset" srcset="/assets/img/p7_spam_nnet-480.webp 480w,/assets/img/p7_spam_nnet-800.webp 800w,/assets/img/p7_spam_nnet-1400.webp 1400w," sizes="95vw" type="image/webp"></source> <img src="/assets/img/p7_spam_nnet.png" class="img-fluid rounded z-depth-1" width="100%" height="auto" title="p7_spam_nnet" loading="lazy" onerror="this.onerror=null; $('.responsive-img-srcset').remove();"> </picture> </figure> </div> </div> <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>&lt;!--
-  See https://www.debugbear.com/blog/responsive-images#w-descriptors-and-the-sizes-attribute and
-  https://developer.mozilla.org/en-US/docs/Learn/HTML/Multimedia_and_embedding/Responsive_images for info on defining 'sizes' for responsive images
---&gt;
-
-  &lt;source
-    class="responsive-img-srcset"
-    srcset="/assets/img/p7_zip_linear-480.webp 480w,/assets/img/p7_zip_linear-800.webp 800w,/assets/img/p7_zip_linear-1400.webp 1400w,"
-    
-      sizes="95vw"
-    
-    type="image/webp"
-  &gt;
-
-&lt;img
-  src="/assets/img/p7_zip_linear.png"
-  
-    class="img-fluid rounded z-depth-1"
-  
-  
-    width="100%"
-  
-  
-    height="auto"
-  
-  
-  
-  
-    title="p7_zip_linear"
-  
-  
-  
-    loading="lazy"
-  
-  onerror="this.onerror=null; $('.responsive-img-srcset').remove();"
-&gt;
-</code></pre></div></div> <p>&lt;/picture&gt;</p> <p>&lt;/figure&gt;</p> <p>&lt;/div&gt;</p> <div class="col-sm-6 mt-3 mt-md-0"> <figure> <picture> <source class="responsive-img-srcset" srcset="/assets/img/p7_zip_nnet-480.webp 480w,/assets/img/p7_zip_nnet-800.webp 800w,/assets/img/p7_zip_nnet-1400.webp 1400w," sizes="95vw" type="image/webp"></source> <img src="/assets/img/p7_zip_nnet.png" class="img-fluid rounded z-depth-1" width="100%" height="auto" title="p7_zip_nnet" loading="lazy" onerror="this.onerror=null; $('.responsive-img-srcset').remove();"> </picture> </figure> </div> <p>–&gt;</p> <h2 id="experiments-and-application">Experiments and Application</h2> <p>Run experiments and evaluate model performance.</p> <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">experiments_and_application</span><span class="p">():</span>
+</code></pre></div></div> <div class="row justify-content-sm-center"> <div class="col-sm-6 mt-3 mt-md-0"> <figure> <picture> <source class="responsive-img-srcset" srcset="/assets/img/p7_spam_linear-480.webp 480w,/assets/img/p7_spam_linear-800.webp 800w,/assets/img/p7_spam_linear-1400.webp 1400w," sizes="95vw" type="image/webp"></source> <img src="/assets/img/p7_spam_linear.png" class="img-fluid rounded z-depth-1" width="100%" height="auto" title="p7_spam_linear" loading="lazy" onerror="this.onerror=null; $('.responsive-img-srcset').remove();"> </picture> </figure> </div> <div class="col-sm-6 mt-3 mt-md-0"> <figure> <picture> <source class="responsive-img-srcset" srcset="/assets/img/p7_spam_nnet-480.webp 480w,/assets/img/p7_spam_nnet-800.webp 800w,/assets/img/p7_spam_nnet-1400.webp 1400w," sizes="95vw" type="image/webp"></source> <img src="/assets/img/p7_spam_nnet.png" class="img-fluid rounded z-depth-1" width="100%" height="auto" title="p7_spam_nnet" loading="lazy" onerror="this.onerror=null; $('.responsive-img-srcset').remove();"> </picture> </figure> </div> </div> <h2 id="experiments-and-application">Experiments and Application</h2> <p>Run experiments and evaluate model performance.</p> <div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">experiments_and_application</span><span class="p">():</span>
     <span class="n">test_acc_df_list</span> <span class="o">=</span> <span class="p">[]</span> 
     <span class="k">for</span> <span class="n">data_set</span><span class="p">,</span> <span class="p">(</span><span class="n">input_mat</span><span class="p">,</span> <span class="n">output_vec</span><span class="p">)</span> <span class="ow">in</span> <span class="n">data_dict</span><span class="p">.</span><span class="nf">items</span><span class="p">():</span>
         <span class="n">k_fold</span> <span class="o">=</span> <span class="nc">KFold</span><span class="p">(</span><span class="n">n_splits</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
