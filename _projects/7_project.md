@@ -291,7 +291,6 @@ def hyperparameter_training_and_diagnostic_plot():
             gg.save(f"./{data_set}_{model_name}.png")
 ```
 
-### Diagnostic Plots for Spam Dataset
 <div class="row justify-content-sm-center">
   <div class="col-sm-6 mt-3 mt-md-0">
     {% include figure.liquid path="assets/img/p7_spam_linear.png" title="p7_spam_linear" class="img-fluid rounded z-depth-1" %}
@@ -301,14 +300,6 @@ def hyperparameter_training_and_diagnostic_plot():
   </div>
 </div>
 
-<!-- ### Diagnostic Plots for Zip Dataset
-<div class="row justify-content-sm-center">
-  <div class="col-sm-6 mt-3 mt-md-0">
-    {% include figure.liquid path="assets/img/p7_zip_linear.png" title="p7_zip_linear" class="img-fluid rounded z-depth-1" %}
-  </div>
-  <div class="col-sm-6 mt-3 mt-md-0">
-    {% include figure.liquid path="assets/img/p7_zip_nnet.png" title="p7_zip_nnet" class="img-fluid rounded z-depth-1" %}
-</div>  -->
 
 ## Experiments and Application
 Run experiments and evaluate model performance.
@@ -422,7 +413,6 @@ Other models, including logistic regression and k-nearest neighbors, also perfor
 
 This analysis highlights the importance of model selection and hyperparameter tuning tailored to the specific characteristics of each dataset. 
 Complex models like deep neural networks can capture more intricate patterns, leading to better performance in datasets with higher complexity.
-
 
 
 
