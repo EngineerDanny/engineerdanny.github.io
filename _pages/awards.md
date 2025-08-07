@@ -1,6 +1,6 @@
 ---
 layout: page
-title: awards & honors
+title: awards
 permalink: /awards/
 description: "Recognition of research excellence through prestigious international funding and academic awards."
 nav: true
@@ -94,21 +94,4 @@ My research has been recognized through prestigious international funding totali
       Consistent placement on the Provost List for outstanding academic performance.
     </p>
   </div>
-</div>
-
----
-
-## Impact & Recognition
-
-These awards reflect the **international recognition** of my research contributions in:
-
-- **Cross-validation methods** for co-occurrence network inference
-- **Statistical modeling** for microbiome data analysis  
-- **High-performance computing** applications in bioinformatics
-- **International research collaboration** between USA and European institutions
-
-The combined funding has enabled **groundbreaking research collaborations** spanning three continents, contributing to advances in computational biology and statistical methodology with applications in medicine and genomics.
-
-<div class="alert alert-info mt-4" role="alert">
-  <strong>🌍 Global Research Network:</strong> These awards have established research partnerships across USA 🇺🇸, Canada 🇨🇦, France 🇫🇷, and broader European Union 🇪🇺, creating a truly international research profile.
 </div>
