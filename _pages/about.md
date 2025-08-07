@@ -28,13 +28,3 @@ In **Spring 2025**, I will be conducting research as a Statistical Learning Rese
 I have presented my research at prestigious institutions including the **University of California, Berkeley** (2024), **Arizona State University ML Day** (2023), and the **University of Arizona** (2023), demonstrating the international impact of my work.
 
 My research interests focus on developing fast, accurate, and interpretable algorithms for large-scale biological data analysis, particularly in **microbiome network inference** and **statistical modeling**. I leverage High-Performance Computing to address computational challenges, utilizing NAU's Monsoon cluster to run thousands of parallel jobs for hyperparameter optimization.
-
-My **published research in BMC Bioinformatics** presents a novel cross-validation framework for evaluating co-occurrence network inference algorithms. I am currently extending this work through international collaborations to develop ML models for predicting bacterial associations and exploring **Poisson Log-Normal statistical frameworks** for microbiome data analysis.
-
-## 🇫🇷 Upcoming International Research
-
-**Spring 2025** marks an exciting milestone as I join the research team at **INRAE/Université Paris-Saclay** in France for a four-month Statistical Learning Research internship. This collaboration, funded by over **€25,000 in international awards**, will focus on comprehensive benchmarking of Poisson Log-Normal models for microbial data analysis - directly building upon my published cross-validation methodologies.
-
-This international research exchange represents the culmination of prestigious funding awards including the **Quebec government's PBEEE scholarship**, **EU DATAIA mobility grant**, and **INRAE scientific mobility program**, establishing a unique tri-continental research network spanning North America, Europe, and Quebec.
-
-My work bridges **statistical theory with practical applications** in genomics and medicine, contributing to our understanding of microbial communities and their interactions in biological systems through both American innovation in high-performance computing and European advances in statistical modeling.

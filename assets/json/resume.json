@@ -148,26 +148,6 @@
       "summary": "Award honoring academic excellence of undergraduate students in engineering. Provost List recognition for years '18, '19, '20."
     }
   ],
-  "certificates": [
-    {
-      "name": "University of California, Berkeley Presentation",
-      "date": "2024",
-      "issuer": "UC Berkeley",
-      "summary": "Research presentation on machine learning and network inference algorithms."
-    },
-    {
-      "name": "Arizona State University ML Day Presentation",
-      "date": "2023",
-      "issuer": "Arizona State University",
-      "summary": "Presentation at ASU Machine Learning Day conference."
-    },
-    {
-      "name": "University of Arizona Seminar Presentation",
-      "date": "2023",
-      "issuer": "University of Arizona",
-      "summary": "Research seminar presentation on co-occurrence network inference."
-    }
-  ],
   "publications": [
     {
       "name": "Cross-Validation for Training and Testing Co-occurrence Network Inference Algorithms",

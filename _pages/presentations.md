@@ -7,13 +7,7 @@ nav: true
 nav_order: 6
 ---
 
-## Research Presentations
-
-My research has been presented at **leading academic institutions** across the United States, demonstrating the broad impact and recognition of work in machine learning, statistical modeling, and computational biology.
-
----
-
-## 🎓 Major Academic Presentations
+## Major Academic Presentations
 
 <div class="timeline">
 
@@ -147,7 +141,7 @@ My research has been presented at **leading academic institutions** across the U
 
 ---
 
-## 📊 Presentation Impact & Recognition
+## Presentation Impact & Recognition
 
 <div class="row">
   <div class="col-md-4">
@@ -177,72 +171,6 @@ My research has been presented at **leading academic institutions** across the U
 </div>
 
 ---
-
-## 🎯 Research Dissemination Strategy
-
-### **Target Audiences**
-- **Academic Researchers**: Statistical methodologists, computational biologists, machine learning theorists
-- **Graduate Students**: PhD candidates in related fields seeking methodological advances
-- **Industry Practitioners**: Biotech professionals applying network analysis in practice
-- **Interdisciplinary Collaborators**: Researchers bridging statistics, biology, and computer science
-
-### **Presentation Themes**
-<div class="row">
-  <div class="col-md-6">
-    <div class="card">
-      <div class="card-header">
-        <h6>🔬 Methodological Innovation</h6>
-      </div>
-      <div class="card-body">
-        <p class="small">
-          Novel approaches to cross-validation in network inference, addressing fundamental challenges 
-          in algorithm evaluation and comparison.
-        </p>
-      </div>
-    </div>
-  </div>
-  <div class="col-md-6">
-    <div class="card">
-      <div class="card-header">
-        <h6>💻 Computational Scalability</h6>
-      </div>
-      <div class="card-body">
-        <p class="small">
-          Leveraging high-performance computing for large-scale biological data analysis, 
-          enabling previously intractable computational experiments.
-        </p>
-      </div>
-    </div>
-  </div>
-</div>
-
----
-
-## 📅 Upcoming Presentations
-
-### **International Research Talks (2025)**
-- **INRAE/Université Paris-Saclay**: Research seminars during internship period (April-July 2025)
-- **European Conferences**: Potential presentations on PLN model benchmarking results
-- **NAU Research Symposium**: Presenting international collaboration outcomes
-
-### **Presentation Availability**
-🎤 **Available for Research Presentations** in:
-- Machine learning methodology and applications
-- Statistical modeling for biological data
-- High-performance computing in research
-- International research collaboration experiences
-- Academic career development and funding strategies
-
-<div class="alert alert-success mt-4" role="alert">
-  <strong>💡 Invitation for Speaking Engagements:</strong> Interested in having me present at your institution or conference? 
-  <a href="mailto:da2343@nau.edu">Contact me</a> to discuss potential speaking opportunities in computational biology, machine learning, or research methodology.
-</div>
-
----
-
-## 📹 Presentation Resources
-
-<div class="card">
   <div class="card-header">
     <h6>🎥 Presentation Materials</h6>
   </div>
