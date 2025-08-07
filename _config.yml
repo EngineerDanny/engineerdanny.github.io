@@ -2,14 +2,16 @@
 # Site settings
 # -----------------------------------------------------------------------------
 
-title: blank # the website title (if blank, full name will be used instead)
+title: Daniel Agyapong - ML Researcher # the website title (if blank, full name will be used instead)
 first_name: Daniel
 middle_name: 
 last_name: Agyapong
 email: da2343@nau.edu
-description:
-footer_text:
-keywords: jekyll, jekyll-theme, academic-website, portfolio-website # add your own keywords or leave empty
+description: International PhD researcher specializing in statistical modeling and machine learning for microbiome analysis. Recipient of prestigious international research funding and upcoming researcher at INRAE, France.
+footer_text: >
+  Powered by <a href="https://jekyllrb.com/" target="_blank">Jekyll</a> with <a href="https://github.com/alshedivat/al-folio">al-folio</a> theme.
+  Hosted by <a href="https://pages.github.com/" target="_blank">GitHub Pages</a>.
+keywords: machine learning, statistical modeling, microbiome analysis, cross-validation, network inference, bioinformatics, HPC, international research
 lang: en # the language of your site (for example: en, fr, cn, ru, etc.)
 icon:  # the emoji used as the favicon (alternatively, provide image name in /assets/img/)
 
@@ -55,8 +57,8 @@ max_width: 800px
 # -----------------------------------------------------------------------------
 # Display links to the page with a preview object on social media.
 # see https://schema.org/docs/faq.html for more information
-serve_og_meta: false # Include Open Graph meta tags in the HTML head
-serve_schema_org: false # Include Schema.org in the HTML head
+serve_og_meta: true # Include Open Graph meta tags in the HTML head
+serve_schema_org: true # Include Schema.org in the HTML head
 og_image: # The site-wide (default for all links) Open Graph preview image
 
 # -----------------------------------------------------------------------------
@@ -81,13 +83,13 @@ lattes_id: # your ID on Lattes (Brazilian Lattes CV)
 linkedin_username: engineerdanny # your LinkedIn user name
 mastodon_username: # your mastodon instance+username in the format instance.tld/@username
 medium_username: # your Medium username
-orcid_id: # your ORCID ID
+orcid_id: 0000-0000-0000-0000 # your ORCID ID - UPDATE WITH ACTUAL ID
 osf_id: # your OSF ID
 pinterest_id: # your pinterest id
 publons_id: # your ID on Publons
 quora_username: # your Quora username
-research_gate_profile: # your profile on ResearchGate
-scholar_userid:  # your Google Scholar ID
+research_gate_profile: Daniel-Agyapong # your profile on ResearchGate - UPDATE WITH ACTUAL PROFILE
+scholar_userid: your-scholar-id # your Google Scholar ID - UPDATE WITH ACTUAL ID
 scopus_id: # your profile on Scopus
 semanticscholar_id: # your Semantic Scholar ID
 spotify_id: # your spotify id
@@ -112,19 +114,19 @@ contact_note: >
 
 # For Google Analytics, see https://support.google.com/analytics/answer/10447272?hl=en&ref_topic=14088998&sjid=5129943941510317771-SA#zippy=%2Cgoogle-sites
 # and follow the instructions for Google Sites. You will need to create a Google Analytics property and copy the Google tag ID.
-google_analytics: # your Google Analytics measurement ID (format: G-XXXXXXXXXX)
+google_analytics: G-XXXXXXXXXX # your Google Analytics measurement ID (format: G-XXXXXXXXXX) - UPDATE WITH ACTUAL ID
 cronitor_analytics: # cronitor RUM analytics site ID (format: XXXXXXXXX)
 
 # For Google Search Console, see https://support.google.com/webmasters/answer/9008080?hl=en#meta_tag_verification&zippy=%2Chtml-tag
-google_site_verification: # your google-site-verification ID (Google Search Console)
+google_site_verification: your-verification-id # your google-site-verification ID (Google Search Console) - UPDATE WITH ACTUAL ID
 bing_site_verification: # out your bing-site-verification ID (Bing Webmaster)
 
 # -----------------------------------------------------------------------------
 # Blog
 # -----------------------------------------------------------------------------
 
-blog_name:  # blog_name will be displayed in your blog page
-blog_description: 
+blog_name: Research & Tech Blog # blog_name will be displayed in your blog page
+blog_description: Insights on machine learning, research experiences, and international collaborations in computational biology. 
 permalink: /blog/:year/:title/
 
 # Pagination
@@ -138,10 +140,10 @@ related_blog_posts:
 # Giscus comments (RECOMMENDED)
 # Follow instructions on https://giscus.app/ to setup for your repo to fill out the information below.
 giscus:
-  repo: # <your-github-user-name>/<your-github-repo-name>
-  repo_id: # leave empty or specify your repo_id (see https://giscus.app/)
+  repo: Engineerdanny/engineerdanny.github.io # <your-github-user-name>/<your-github-repo-name>
+  repo_id: # leave empty or specify your repo_id (see https://giscus.app/) - UPDATE WITH ACTUAL ID
   category: Comments # name of the category under which discussions will be created
-  category_id: # leave empty or specify your category_id (see https://giscus.app/)
+  category_id: # leave empty or specify your category_id (see https://giscus.app/) - UPDATE WITH ACTUAL ID
   mapping: title # identify discussions by post title
   strict: 1 # use strict identification mode
   reactions_enabled: 1 # enable (1) or disable (0) emoji reactions
