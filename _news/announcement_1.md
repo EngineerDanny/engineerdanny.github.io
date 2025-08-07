@@ -5,4 +5,4 @@ inline: true
 related_posts: false
 ---
 
-Submitted my paper on "Cross-Validation for Training and Testing Co-occurrence Network Inference Algorithms" to the BMC Bioinformatics Journal which passed technical checks and is currently under review.
+Submitted my paper on "Cross-Validation for Training and Testing Co-occurrence Network Inference Algorithms" to the BMC Bioinformatics Journal which passed technical checks and was accepted for publication.

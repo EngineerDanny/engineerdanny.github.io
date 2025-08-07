@@ -2,7 +2,7 @@
 layout: about
 title: Daniel Agyapong
 permalink: /
-description: Machine learning and Artificial Intelligence researcher, with a focus on deep learning, reinforcement learning, and computer vision.
+description: International PhD researcher specializing in statistical modeling and machine learning for microbiome analysis. Recipient of prestigious international research funding and upcoming researcher at INRAE, France.
 profile:
   align: right
   image: prof_pic.jpg
@@ -19,13 +19,16 @@ selected_papers: true # includes a list of papers marked as "selected={true}"
 social: true # includes social icons at the bottom of the page
 ---
 
-I am a Ph.D. student in the [School of Informatics, Computing, and Cyber Systems](https://nau.edu/school-of-informatics-computing-and-cyber-systems/) at Northern Arizona University.
-I work on developing new statistical models, optimization algorithms, interactive systems, and software for machine learning.
+I am a Ph.D. student in the [School of Informatics, Computing, and Cyber Systems](https://nau.edu/school-of-informatics-computing-and-cyber-systems/) at Northern Arizona University, with an international research profile spanning multiple continents.
 
-My research interests are focused on fast, accurate, and interpretable algorithms for learning from large data, using continuous optimization (clustering, regression, ranking, classification). The main application domains for these algorithms are genomics, medicine and microbiome data analysis.
+I am the recipient of **prestigious international research funding** totaling over $30,000, including the Quebec government's PBEEE Research Mobility Scholarship ($12,000 CAD) and the European Union's DATAIA International Mobility Grant (€13,500). These awards have enabled **international research collaborations** with leading institutions.
 
-One of the major problems in ML is tuning hyperparameters. Selecting the right hyperparameters from a combination of hyperparameters is a challenging task and time consuming.
-I address this issue by using High-Performance Computing (HPC) to parallelize the hyperparameter search process.
-At NAU, our HPC (Monsoon) could potentially run 1000s of jobs in parallel, which makes it possible to search for the best hyperparameters in a reasonable amount of time.
+In **Spring 2025**, I will be conducting research as a Statistical Learning Researcher at **INRAE/Université Paris-Saclay** in France, focusing on Poisson Log-Normal (PLN) model benchmarking for microbial data analysis.
 
-I am currently working on training and testing ML models for predicting associations between bacteria (Positive and Negative Association).
+I have presented my research at prestigious institutions including the **University of California, Berkeley** (2024), **Arizona State University ML Day** (2023), and the **University of Arizona** (2023), demonstrating the international impact of my work.
+
+My research interests focus on developing fast, accurate, and interpretable algorithms for large-scale biological data analysis, particularly in **microbiome network inference** and **statistical modeling**. I leverage High-Performance Computing to address computational challenges, utilizing NAU's Monsoon cluster to run thousands of parallel jobs for hyperparameter optimization.
+
+My **published research in BMC Bioinformatics** presents a novel cross-validation framework for evaluating co-occurrence network inference algorithms. I am currently extending this work through international collaborations to develop ML models for predicting bacterial associations and exploring **Poisson Log-Normal statistical frameworks** for microbiome data analysis.
+
+My work bridges **statistical theory with practical applications** in genomics and medicine, contributing to our understanding of microbial communities and their interactions in biological systems.
