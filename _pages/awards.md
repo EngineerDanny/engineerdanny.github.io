@@ -7,10 +7,6 @@ nav: true
 nav_order: 3
 ---
 
-## Research Funding & International Awards
-
-My research has been recognized through prestigious international funding totaling over **$30,000 USD**, enabling cutting-edge collaborations across continents.
-
 ### **International Research Mobility Awards (2025)**
 
 <div class="card mt-3">

@@ -2,15 +2,13 @@
 # Site settings
 # -----------------------------------------------------------------------------
 
-title: Daniel Agyapong - ML Researcher # the website title (if blank, full name will be used instead)
+title: # the website title (if blank, full name will be used instead)
 first_name: Daniel
 middle_name: 
 last_name: Agyapong
 email: da2343@nau.edu
 description: International PhD researcher specializing in statistical modeling and machine learning for microbiome analysis. Recipient of prestigious international research funding and upcoming researcher at INRAE, France.
-footer_text: >
-  Powered by <a href="https://jekyllrb.com/" target="_blank">Jekyll</a> with <a href="https://github.com/alshedivat/al-folio">al-folio</a> theme.
-  Hosted by <a href="https://pages.github.com/" target="_blank">GitHub Pages</a>.
+footer_text:
 keywords: machine learning, statistical modeling, microbiome analysis, cross-validation, network inference, bioinformatics, HPC, international research
 lang: en # the language of your site (for example: en, fr, cn, ru, etc.)
 icon:  # the emoji used as the favicon (alternatively, provide image name in /assets/img/)
@@ -83,13 +81,13 @@ lattes_id: # your ID on Lattes (Brazilian Lattes CV)
 linkedin_username: engineerdanny # your LinkedIn user name
 mastodon_username: # your mastodon instance+username in the format instance.tld/@username
 medium_username: # your Medium username
-orcid_id: 0000-0000-0000-0000 # your ORCID ID - UPDATE WITH ACTUAL ID
+orcid_id: # your ORCID ID - UPDATE WITH ACTUAL ID
 osf_id: # your OSF ID
 pinterest_id: # your pinterest id
 publons_id: # your ID on Publons
 quora_username: # your Quora username
-research_gate_profile: Daniel-Agyapong # your profile on ResearchGate - UPDATE WITH ACTUAL PROFILE
-scholar_userid: your-scholar-id # your Google Scholar ID - UPDATE WITH ACTUAL ID
+research_gate_profile: # your profile on ResearchGate - UPDATE WITH ACTUAL PROFILE
+scholar_userid: # your Google Scholar ID - UPDATE WITH ACTUAL ID
 scopus_id: # your profile on Scopus
 semanticscholar_id: # your Semantic Scholar ID
 spotify_id: # your spotify id
@@ -114,11 +112,11 @@ contact_note: >
 
 # For Google Analytics, see https://support.google.com/analytics/answer/10447272?hl=en&ref_topic=14088998&sjid=5129943941510317771-SA#zippy=%2Cgoogle-sites
 # and follow the instructions for Google Sites. You will need to create a Google Analytics property and copy the Google tag ID.
-google_analytics: G-XXXXXXXXXX # your Google Analytics measurement ID (format: G-XXXXXXXXXX) - UPDATE WITH ACTUAL ID
+google_analytics: # your Google Analytics measurement ID (format: G-XXXXXXXXXX) - UPDATE WITH ACTUAL ID
 cronitor_analytics: # cronitor RUM analytics site ID (format: XXXXXXXXX)
 
 # For Google Search Console, see https://support.google.com/webmasters/answer/9008080?hl=en#meta_tag_verification&zippy=%2Chtml-tag
-google_site_verification: your-verification-id # your google-site-verification ID (Google Search Console) - UPDATE WITH ACTUAL ID
+google_site_verification: # your google-site-verification ID (Google Search Console) - UPDATE WITH ACTUAL ID
 bing_site_verification: # out your bing-site-verification ID (Bing Webmaster)
 
 # -----------------------------------------------------------------------------

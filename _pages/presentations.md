@@ -19,7 +19,7 @@ nav_order: 6
           <small>2024</small>
         </div>
         <div class="col-auto">
-          <span class="badge badge-light">🏛️ Tier 1 Research University</span>
+          <span class="badge badge-light">Tier 1 Research University</span>
         </div>
       </div>
     </div>
@@ -61,7 +61,7 @@ nav_order: 6
           <small>2023</small>
         </div>
         <div class="col-auto">
-          <span class="badge badge-light">🤖 ML Conference</span>
+          <span class="badge badge-light">ML Conference</span>
         </div>
       </div>
     </div>
@@ -103,7 +103,7 @@ nav_order: 6
           <small>2023</small>
         </div>
         <div class="col-auto">
-          <span class="badge badge-light">🔬 Research Seminar</span>
+          <span class="badge badge-light">Research Seminar</span>
         </div>
       </div>
     </div>
@@ -167,21 +167,5 @@ nav_order: 6
         <p class="card-text">States Represented</p>
       </div>
     </div>
-  </div>
-</div>
-
----
-  <div class="card-header">
-    <h6>🎥 Presentation Materials</h6>
-  </div>
-  <div class="card-body">
-    <p>
-      Selected presentation materials and research summaries are available upon request. 
-      These include detailed methodological explanations, computational examples, and 
-      practical implementation guidelines suitable for both academic and industry audiences.
-    </p>
-    <a href="mailto:da2343@nau.edu?subject=Request for Presentation Materials" class="btn btn-outline-primary btn-sm">
-      Request Materials
-    </a>
   </div>
 </div>
