@@ -30,26 +30,6 @@ nav_order: 6
         The presentation highlighted the development of robust statistical approaches for handling high-dimensional biological data and 
         their applications in microbiome research.
       </p>
-      <div class="row">
-        <div class="col-md-6">
-          <strong>Key Topics Covered:</strong>
-          <ul class="small">
-            <li>Novel cross-validation methodologies</li>
-            <li>Network inference algorithm evaluation</li>
-            <li>Statistical validation in computational biology</li>
-            <li>High-performance computing applications</li>
-          </ul>
-        </div>
-        <div class="col-md-6">
-          <strong>Audience Impact:</strong>
-          <ul class="small">
-            <li>Faculty from Statistics & EECS departments</li>
-            <li>Graduate students in computational biology</li>
-            <li>Researchers in machine learning theory</li>
-            <li>Industry practitioners in biotech</li>
-          </ul>
-        </div>
-      </div>
     </div>
   </div>
 
@@ -72,26 +52,6 @@ nav_order: 6
         <strong>optimization techniques</strong> and biological data analysis. Demonstrated practical applications 
         of hyperparameter optimization in microbiome association prediction using high-performance computing resources.
       </p>
-      <div class="row">
-        <div class="col-md-6">
-          <strong>Technical Focus:</strong>
-          <ul class="small">
-            <li>Hyperparameter optimization strategies</li>
-            <li>Parallel computing for ML workflows</li>
-            <li>Microbiome data preprocessing</li>
-            <li>Cross-validation in biological contexts</li>
-          </ul>
-        </div>
-        <div class="col-md-6">
-          <strong>Conference Context:</strong>
-          <ul class="small">
-            <li>Multi-institutional ML researchers</li>
-            <li>Industry-academia collaboration focus</li>
-            <li>Emerging trends in computational biology</li>
-            <li>Practical ML implementation strategies</li>
-          </ul>
-        </div>
-      </div>
     </div>
   </div>
 
@@ -114,26 +74,6 @@ nav_order: 6
         <strong>co-occurrence network inference</strong> in computational biology. Discussed the challenges of 
         validating network inference algorithms and presented solutions through novel cross-validation approaches.
       </p>
-      <div class="row">
-        <div class="col-md-6">
-          <strong>Methodological Contributions:</strong>
-          <ul class="small">
-            <li>Network inference algorithm comparison</li>
-            <li>Cross-validation methodology development</li>
-            <li>Statistical significance testing</li>
-            <li>Computational complexity analysis</li>
-          </ul>
-        </div>
-        <div class="col-md-6">
-          <strong>Research Applications:</strong>
-          <ul class="small">
-            <li>Microbiome interaction networks</li>
-            <li>Gene co-expression analysis</li>
-            <li>Ecological network modeling</li>
-            <li>Medical diagnosis applications</li>
-          </ul>
-        </div>
-      </div>
     </div>
   </div>
 
