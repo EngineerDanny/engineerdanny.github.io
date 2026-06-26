@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Applied Computing Teaching Labs</title>
+    <meta name="description" content="Interactive undergraduate teaching labs for computer science, data science, machine learning, and applied computing.">
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='10' fill='%2316324f'/%3E%3Ctext x='32' y='39' text-anchor='middle' font-family='Arial' font-size='20' font-weight='700' fill='white'%3EDA%3C/text%3E%3C/svg%3E">
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="topbar-inner">
+        <a class="brand" href="#top" aria-label="Applied Computing Teaching Labs home">
+          <span class="brand-mark" aria-hidden="true">DA</span>
+          <span>Applied Computing Teaching Labs</span>
+        </a>
+        <nav class="nav-links" aria-label="Lab navigation">
+          <a href="#lab-model">Model Evaluation</a>
+          <a href="#lab-ml">Machine Learning</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="top">
+      <section class="hero" aria-label="Undergraduate teaching demos">
+        <div class="hero-copy">
+          <p class="eyebrow">Undergraduate teaching demos</p>
+          <p class="lead">
+            These activities turn common data science mistakes into classroom experiments. Students change the setup, see the result, then explain what the evidence supports.
+          </p>
+        </div>
+      </section>
+
+      <section class="lab-tabs" aria-label="Choose lab">
+        <button class="tab is-active" type="button" data-target="lab-model">Model Evaluation</button>
+        <button class="tab" type="button" data-target="lab-ml">Machine Learning</button>
+      </section>
+
+      <section id="lab-model" class="lab-section is-active" data-lab-panel>
+        <div class="lab-header">
+          <div>
+            <p class="eyebrow">Lab 1</p>
+            <h2>Model Evaluation and Data Leakage</h2>
+          </div>
+          <p>
+            Students compare a random split with a group held out split and decide which score supports a claim about new sites, cohorts, or sensors.
+          </p>
+        </div>
+
+        <div class="lab-layout">
+          <aside class="control-panel" aria-label="Model evaluation controls">
+            <label>
+              Number of sites
+              <input id="siteCount" type="range" min="4" max="14" value="8">
+              <span data-value-for="siteCount">8</span>
+            </label>
+            <label>
+              Site effect
+              <input id="siteEffect" type="range" min="5" max="55" value="32">
+              <span data-value-for="siteEffect">32</span>
+            </label>
+            <label>
+              Measurement noise
+              <input id="noiseLevel" type="range" min="4" max="42" value="18">
+              <span data-value-for="noiseLevel">18</span>
+            </label>
+            <div class="button-row" role="group" aria-label="Validation split">
+              <button class="choice is-selected" type="button" data-split="random">Random split</button>
+              <button class="choice" type="button" data-split="group">Group held out</button>
+            </div>
+          </aside>
+
+          <div class="activity-panel">
+            <div class="chart-shell">
+              <canvas id="modelCanvas" width="760" height="360" aria-label="Synthetic grouped model evaluation chart"></canvas>
+            </div>
+            <div class="metric-grid">
+              <article class="metric-card">
+                <span>Random split score</span>
+                <strong id="randomScore">0.86</strong>
+              </article>
+              <article class="metric-card">
+                <span>Group held out score</span>
+                <strong id="groupScore">0.54</strong>
+              </article>
+              <article class="metric-card">
+                <span>Leakage risk</span>
+                <strong id="leakageRisk">High</strong>
+              </article>
+            </div>
+            <div class="prompt-box">
+              <h3>Try this</h3>
+              <p id="modelPrompt">Use the controls to make the gap between the random split score and the group held out score larger or smaller. Which score would you trust for a new site, and why?</p>
+              <textarea aria-label="Model evaluation student response" placeholder="Write a two sentence interpretation."></textarea>
+              <button class="reveal" type="button" data-reveal="modelAnswer">Show sample answer</button>
+              <p id="modelAnswer" class="sample-answer" hidden>
+                The group held out score is better for a new site because the test data come from a setting the model did not see during training. The lower score does not mean the model got worse, it means the evaluation is asking a harder and more realistic question.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="lab-ml" class="lab-section" data-lab-panel>
+        <div class="lab-header">
+          <div>
+            <p class="eyebrow">Lab 2</p>
+            <h2>Machine Learning</h2>
+          </div>
+          <p>
+            Students adjust model complexity and data quality, then explain why a model can look impressive in training but fail to generalize.
+          </p>
+        </div>
+
+        <div class="lab-layout">
+          <aside class="control-panel" aria-label="Machine learning controls">
+            <label>
+              Model complexity
+              <input id="complexity" type="range" min="1" max="10" value="6">
+              <span data-value-for="complexity">6</span>
+            </label>
+            <label>
+              Training examples
+              <input id="sampleSize" type="range" min="40" max="260" value="120">
+              <span data-value-for="sampleSize">120</span>
+            </label>
+            <label>
+              Label noise
+              <input id="labelNoise" type="range" min="0" max="40" value="14">
+              <span data-value-for="labelNoise">14%</span>
+            </label>
+          </aside>
+
+          <div class="activity-panel">
+            <div class="chart-shell">
+              <canvas id="mlCanvas" width="760" height="360" aria-label="Machine learning generalization chart"></canvas>
+            </div>
+            <div class="metric-grid">
+              <article class="metric-card">
+                <span>Training accuracy</span>
+                <strong id="trainAcc">91%</strong>
+              </article>
+              <article class="metric-card">
+                <span>Test accuracy</span>
+                <strong id="testAcc">78%</strong>
+              </article>
+              <article class="metric-card">
+                <span>Overfit gap</span>
+                <strong id="overfitGap">13%</strong>
+              </article>
+            </div>
+            <div class="prompt-box">
+              <h3>Try this</h3>
+              <p>Increase model complexity and watch the training and test scores. At what point does the model start memorizing instead of learning a useful pattern?</p>
+              <textarea aria-label="Machine learning student response" placeholder="Explain what the model learned and what remains uncertain."></textarea>
+              <button class="reveal" type="button" data-reveal="mlAnswer">Show sample answer</button>
+              <p id="mlAnswer" class="sample-answer" hidden>
+                A high training score is not enough evidence that the model will work on new data. When the gap grows, the model may be fitting noise or details that do not repeat outside the training set.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <footer class="footer">
+      <span>Created by Daniel Agyapong</span>
+      <a href="https://engineerdanny.github.io">engineerdanny.github.io</a>
+    </footer>
+
+    <script src="app.js"></script>
+  </body>
+</html>
