@@ -28,3 +28,5 @@ In **Spring 2025**, I will be conducting research as a Statistical Learning Rese
 I have presented my research at prestigious institutions including the **University of California, Berkeley** (2024), **Arizona State University ML Day** (2023), and the **University of Arizona** (2023), demonstrating the international impact of my work.
 
 My research interests focus on developing fast, accurate, and interpretable algorithms for large-scale biological data analysis, particularly in **microbiome network inference** and **statistical modeling**. I leverage High-Performance Computing to address computational challenges, utilizing NAU's Monsoon cluster to run thousands of parallel jobs for hyperparameter optimization.
+
+Read my [research mentorship plan]({{ '/mentorship/' | relative_url }}) for how I approach working with students on computational research.
