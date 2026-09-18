@@ -7,8 +7,6 @@ nav: true
 nav_order: 4
 ---
 
-# Research mentorship plan
-
 My goal as a mentor is to help students become independent researchers. I am interested in machine learning, statistical computing, biological data analysis, and engineering applications. You do not need to know everything before starting a project. We will identify what you need to learn and work from there.
 
 ## What you will learn
