@@ -9,26 +9,41 @@ nav_order: 4
 
 # Research mentorship plan
 
-I work at the intersection of statistical computing, machine learning, and biological data analysis. My research has involved testing network inference methods, working with microbiome count data, and using high-performance computing to run large experiments. These projects have taught me how much research depends on decisions that are easy to overlook: what data to use, which comparison is fair, and whether someone else can reproduce the result.
+My goal as a mentor is to help students become independent researchers. I am interested in machine learning, statistical computing, biological data analysis, and engineering applications. You do not need to know everything before starting a project. We will identify what you need to learn and work from there.
 
-I want students I mentor to become comfortable making and explaining those decisions. A successful project might produce a paper, a software package, or a useful analysis. It should also leave the student more able to frame a question and carry it forward independently.
+## What you will learn
 
-## How we would work
+- Turn an idea into a research question that can be answered through experiments or analysis.
+- Read papers and examine existing software to understand what has already been done. Explain what your project adds and give credit to earlier work.
+- Implement and test ideas using tools appropriate to the project, including R, Python, or C++.
+- Compare methods fairly. Choose suitable data and evaluation measures, and keep training and testing separate when evaluating predictive models.
+- Understand unexpected results. Check your code and assumptions, and be willing to revise an idea when the evidence does not support it.
+- Explain your work through figures, presentations, and writing. A reader should be able to understand both your findings and their limitations.
+- Share useful software with others. For an R package project, this includes tests, documentation, examples, and instructions that another person can follow.
 
-We would start with a question small enough to test. Before building a new method, we would read relevant work and establish a baseline. If an experiment gives an unexpected result, we would inspect the data, code, and assumptions before deciding what it means. Sometimes the result will be that an idea does not work. That is still worth documenting clearly.
+## What I expect from you
 
-I would ask students to keep a short research log with links to code, figures, decisions, problems, and next steps. We would use it to make meetings concrete. The meeting schedule and level of direction should fit the student and the project; I would not expect a new researcher to work with the same independence as someone preparing a thesis.
+- Keep a research notebook in a shared document or project repository. Record what you tried, what happened, questions you have, and what you plan to do next. Include links to code and results.
+- Meet with me regularly. We will normally plan a weekly meeting and agree on a schedule that fits the project. Bring your notebook and any work you want us to discuss, including unfinished work.
+- Ask questions when something is unclear. Tell me when you are stuck so we can work through the problem together.
+- Agree with me on realistic goals and working hours. Let me know early when coursework, health, or other responsibilities affect your progress.
+- Keep your work organized. Use version control for code, record software dependencies, and back up important files. Keep private data and credentials out of public repositories.
+- Report results honestly, including experiments that did not work. Check references and any code or text produced with AI tools. You are responsible for understanding the work you submit.
+- Treat collaborators respectfully. Acknowledge their contributions and be willing to explain your decisions and listen to feedback.
 
-For computational projects, we would keep code and instructions in version control, record how results were produced, and review changes together. Students should be able to ask about a statistical assumption, a programming choice, or a confusing paper without feeling that they ought to know the answer already. I would give direct feedback on the work and make time to explain my feedback.
+## What you can expect from me
 
-## What students can expect from me
+- I will help you choose a manageable project and identify an initial task you can complete. We will adjust the scope as we learn more.
+- I will explain unfamiliar concepts and help you find relevant papers, datasets, and software. We can work through a small example together when that helps.
+- I will review your code, results, and writing. We will agree on when feedback is needed, and I will let you know if I need more time.
+- I will discuss authorship, software ownership, and credit with you early in the project. We will revisit these discussions as contributions develop.
+- I will help you prepare presentations and consider suitable places to share your work. Depending on the project, the outcome may be a paper, an R package, another software contribution, or a documented analysis.
+- I will discuss your goals beyond the project and help you identify relevant opportunities. Any funding or formal appointment arrangements will be agreed separately before you begin.
 
-I would help define a tractable project, point students toward useful reading and tools, and review their code, analyses, figures, and writing. We would discuss authorship and credit early, then revisit those conversations as the work changes. I would support students in presenting their work and in choosing the next step that fits their goals, whether that is further research, graduate study, or another technical path.
+## Adjusting the plan
 
-I cannot promise a publication, funding, or a particular outcome. Those depend on the project and the institution. I can promise to be candid about progress, expectations, and what support I am able to provide.
+- We will discuss your background and goals at the start. Some students need help learning to program; others need more guidance with experimental design or writing.
+- As you gain experience, I will ask you to propose the next experiment and explain why it is worth doing. We will review those decisions together.
+- Tell me when my feedback or our way of working is not helping. We can change the meeting schedule, break tasks into smaller steps, or try a different explanation.
 
-## What I ask of students
-
-Bring your questions and unfinished work to meetings. Tell me when a task is taking longer than expected or when an explanation has not helped. Keep enough notes that we can retrace an experiment, and give collaborators credit for their contributions. As a project develops, I will ask you to make more of its decisions yourself and explain the evidence behind them.
-
-If you are interested in working together, [email me](mailto:da2343@nau.edu) with the question you would like to explore and a little about your experience. A clear question is more useful than a polished proposal.
+To discuss a possible project, [email me](mailto:da2343@nau.edu) with your interests, relevant experience, and what you hope to learn.
